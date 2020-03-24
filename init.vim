@@ -8,7 +8,8 @@
 " -------------------------------------------------------------------------
 set encoding=utf-8
 set nu
-syntax on
+set title
+set lazyredraw " to avoid scrolling problems
 
 " tab缩进有关
 set tabstop=4
@@ -33,11 +34,9 @@ set mouse=a
 set showmatch
 set timeoutlen=500
 set hlsearch
-" 屏幕滚动保持显示3行
-set scrolloff=3
+" keep 3 lines when scrolling
+set scrolloff=3 
 
-" hi MatchParen ctermbg=white ctermfg=blue
-let loaded_matchparen=1
 
 " ---------------------------------------
 " - map
@@ -97,6 +96,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'rakr/vim-one'
     Plug 'morhetz/gruvbox'
     Plug 'altercation/vim-colors-solarized'
+    Plug 'kristijanhusak/vim-hybrid-material'
     Plug 'rafi/awesome-vim-colorschemes'
     " 插件显示图标
     Plug 'ryanoasis/vim-devicons'
@@ -119,22 +119,39 @@ call plug#begin('~/.vim/plugged')
     Plug 'Yggdroot/indentLine'
     Plug 'aserebryakov/vim-todo-lists'
     Plug 'airblade/vim-gitgutter'
+    Plug 'tpope/vim-fugitive'
     Plug 'junegunn/vim-easy-align'
     Plug 'skywind3000/vim-quickui'
     " Plug 'godlygeek/tabular' "必要插件，安装在vim-markdown前面
     " Plug 'plasticboy/vim-markdown'
     Plug 'sbdchd/neoformat'
     Plug 'dense-analysis/ale'
+    Plug 'majutsushi/tagbar'
 call plug#end()
 
 
 " ---------------------------------------
 " - colorscheme
 " ---------------------------------------
-let g:solarized_termcolors=256
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-colorscheme hybrid
+" If you would like some of the code to be bolded, like functions and language controls
+let g:enable_bold_font = 0
+" If you want comments to be in italic
+let g:enable_italic_font = 0
+" To use transparent background
+let g:hybrid_transparent_background = 0
+colorscheme hybrid_material
+
+
+" ---------------------------------------
+" tagbar
+" ---------------------------------------
+nmap <silent> <F8> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0    " sort by sourcefile
+"let g:tagbar_show_linenumbers = 1
+set updatetime=1000    " ms update
 
 
 " ---------------------------------------
@@ -201,12 +218,19 @@ au Syntax * RainbowParenthesesLoadBraces
 " ---------------------------------------
 " - Airline
 " ---------------------------------------
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='dark'
+let g:airline_theme='hybridline'
+let g:airline#extensions#tabline#enabled = 1
+function! ArilineInit()
+    let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+    let g:airline_section_b = airline#section#create_left(['ffenc', 'hunks', '%F'])
+    "let g:airline_section_c = airline#section#create(['filetype'])
+    let g:airline_section_x = airline#section#create(['%P'])
+    let g:airline_section_y = airline#section#create(['%B'])
+    let g:airline_section_z = airline#section#create_right(['%l', '%c'])
+endfunction
+autocmd VimEnter * call ArilineInit()
 
 
 " ---------------------------------------
