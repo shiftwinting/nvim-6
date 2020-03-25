@@ -248,6 +248,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " ---------------------------------------
 " - Coc.nvim
 " ---------------------------------------
+" 绑定 ctrl-space 触发补全
+inoremap <silent><expr> <c-space> coc#refresh()
 " TextEdit might fail if hidden is not set.
 set hidden
 
