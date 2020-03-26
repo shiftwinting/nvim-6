@@ -10,6 +10,8 @@ set encoding=utf-8
 set nu
 set title
 set lazyredraw " to avoid scrolling problems
+set nowrap
+set foldenable
 
 " tab缩进有关
 set tabstop=4
@@ -44,8 +46,6 @@ set scrolloff=3
 let mapleader=','
 let g:mapleader=','
 
-noremap [r :GoRun<CR>
-noremap <A-g> :GoDef<CR>
 
 inoremap jj <Esc>`^
 inoremap hhh <Esc>`^
@@ -115,7 +115,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'Blackrush/vim-gocode'
     Plug 'Yggdroot/indentLine'
     Plug 'aserebryakov/vim-todo-lists'
     Plug 'airblade/vim-gitgutter'
@@ -126,6 +125,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'sbdchd/neoformat'
     Plug 'dense-analysis/ale'
     Plug 'majutsushi/tagbar'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'wsdjeg/vim-lua'
 call plug#end()
 
 
@@ -141,6 +142,22 @@ let g:enable_italic_font = 0
 " To use transparent background
 let g:hybrid_transparent_background = 0
 colorscheme hybrid_material
+
+
+" ---------------------------------------
+" - vim-go
+" ---------------------------------------
+" https://github.com/fatih/vim-go-tutorial
+let g:go_version_warning = 0
+set autowrite
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>d  <Plug>(go-def)
+let g:go_list_type = "quickfix"
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave_enabled = ['golint']
+let g:go_metalinter_autosave = 1
 
 
 " ---------------------------------------
@@ -221,6 +238,7 @@ let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='hybridline'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
 function! ArilineInit()
     let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
     let g:airline_section_b = airline#section#create_left(['ffenc', 'hunks', '%F'])
