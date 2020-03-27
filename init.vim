@@ -126,6 +126,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'dense-analysis/ale'
     Plug 'majutsushi/tagbar'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     Plug 'wsdjeg/vim-lua'
 call plug#end()
 
@@ -158,6 +159,13 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['golint']
 let g:go_metalinter_autosave = 1
+
+
+" ---------------------------------------
+" - fzf.vim
+" ---------------------------------------
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <silent> <c-p> :Files<CR>
 
 
 " ---------------------------------------
