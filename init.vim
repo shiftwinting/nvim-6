@@ -68,9 +68,6 @@ nnoremap <silent> [n :bn<CR>
 " 不要s键功能
 nnoremap s <nop>
 
-nmap <leader>v "+gp<Esc><Esc><Esc>
-nmap <leader>c "+y<Esc><Esc><Esc>
-
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
