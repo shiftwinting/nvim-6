@@ -205,6 +205,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " - neoformat
 " ---------------------------------------
 nnoremap <F6> :Neoformat<CR>
+nnoremap ,ff :Neoformat<CR>
 let g:neoformat_enabled_python = ['autopep8', 'yapf']
 
 
@@ -264,7 +265,8 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore = [
             \ '\.git$', '\.hg$', '\.svn$', '\.stversions$', '\.pyc$', '\.pyo$', '\.svn$', '\.swp$',
             \ '\.DS_Store$', '\.sass-cache$', '__pycache__$', '\.egg-info$', '\.ropeproject$',
-            \ ]
+            \ '\.vscode'
+            \]
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
