@@ -48,11 +48,7 @@ let g:mapleader=','
 
 
 inoremap jj <Esc>`^
-inoremap hhh <Esc>`^
-inoremap kkk <Esc>`^
-inoremap lll <Esc>`^
-inoremap ooo <Esc>`^o
-
+ 
 nnoremap ee ZZ
 
 inoremap <leader>s <Esc>:w<cr>
@@ -273,8 +269,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " ---------------------------------------
 " - Coc.nvim
 " ---------------------------------------
-" 绑定 ctrl-space 触发补全
-inoremap <silent><expr> <space><space> coc#refresh()
+" 绑定 ctrl-q 触发补全
+inoremap <silent><expr> <C-q> coc#refresh()
 " TextEdit might fail if hidden is not set.
 set hidden
 
