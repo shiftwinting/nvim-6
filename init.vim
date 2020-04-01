@@ -151,7 +151,8 @@ let g:go_list_type = "quickfix"
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['golint']
-let g:go_metalinter_autosave = 1
+" 下方显示信息
+let g:go_metalinter_autosave = 0 
 
 
 " ---------------------------------------
