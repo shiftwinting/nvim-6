@@ -115,6 +115,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-easy-align'
     " Plug 'godlygeek/tabular' "必要插件，安装在vim-markdown前面
     " Plug 'plasticboy/vim-markdown'
+    Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
     Plug 'sbdchd/neoformat'
     Plug 'dense-analysis/ale'
     Plug 'majutsushi/tagbar'
@@ -153,6 +154,12 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['golint']
 " 下方显示信息
 let g:go_metalinter_autosave = 0 
+
+
+" ---------------------------------------
+" - vim-instant-markdown
+" ---------------------------------------
+let g:instant_markdown_autostart = 0
 
 
 " ---------------------------------------
