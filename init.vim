@@ -18,6 +18,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+autocmd FileType js,html,css,dart setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 set cc=99
 
@@ -46,6 +47,15 @@ set scrolloff=3
 let mapleader=','
 let g:mapleader=','
 
+autocmd FileType python nmap <Leader>r :!time python % <CR>
+
+" 插入模式自动切换相对行号
+set rnu
+augroup relative_numbers
+autocmd!
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
+augroup END
 
 inoremap jj <Esc>`^
  
@@ -107,6 +117,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'fatih/vim-go'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-speeddating'
     Plug 'jiangmiao/auto-pairs'
     Plug 'Yggdroot/indentLine'
     Plug 'aserebryakov/vim-todo-lists'
@@ -122,6 +133,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'wsdjeg/vim-lua'
+    Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 
@@ -154,6 +166,12 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['golint']
 " 下方显示信息
 let g:go_metalinter_autosave = 0 
+
+
+" ---------------------------------------
+" - dart-vim-plugin
+" ---------------------------------------
+autocmd BufWritePre *.dart* DartFmt
 
 
 " ---------------------------------------
@@ -283,6 +301,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " ---------------------------------------
 " 绑定 ctrl-q 触发补全
 inoremap <silent><expr> <C-q> coc#refresh()
+let g:airline#extensions#coc#enabled = 1
+" 提示标签
+let airline#extensions#coc#error_symbol = '😭:'
+let airline#extensions#coc#warning_symbol = '😢:'
 " TextEdit might fail if hidden is not set.
 set hidden
 
