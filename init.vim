@@ -18,7 +18,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-autocmd FileType js,html,css,dart setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType js,html,css,dart,yaml,json,xml,vue,json 
+            \setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 set cc=99
 
@@ -37,8 +38,8 @@ set mouse=a
 set showmatch
 set timeoutlen=500
 set hlsearch
-" keep 3 lines when scrolling
-set scrolloff=3 
+" keep 5 lines when scrolling
+set scrolloff=5 
 
 
 " ---------------------------------------
@@ -58,11 +59,11 @@ autocmd InsertLeave * :set relativenumber
 augroup END
 
 inoremap jj <Esc>`^
- 
-nnoremap ee ZZ
 
-inoremap <leader>s <Esc>:w<cr>
-nnoremap <leader>s :w<cr>
+nnoremap EE ZZ
+ 
+inoremap <silent> <leader>s <Esc>:w<cr>
+nnoremap <silent> <leader>s :w<cr>
 
 " 关闭搜索高亮
 nnoremap <silent> <leader>h :nohl<CR>
@@ -124,8 +125,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-fugitive'
     Plug 'junegunn/vim-easy-align'
-    " Plug 'godlygeek/tabular' "必要插件，安装在vim-markdown前面
-    " Plug 'plasticboy/vim-markdown'
     Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
     Plug 'sbdchd/neoformat'
     Plug 'dense-analysis/ale'
@@ -134,21 +133,28 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'wsdjeg/vim-lua'
     Plug 'dart-lang/dart-vim-plugin'
+    Plug 'moll/vim-bbye' " buffer
 call plug#end()
 
 
 " ---------------------------------------
 " - colorscheme
 " ---------------------------------------
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+  set termguicolors
+endif
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 " If you would like some of the code to be bolded, like functions and language controls
 let g:enable_bold_font = 0
 " If you want comments to be in italic
-let g:enable_italic_font = 0
+let g:enable_italic_font = 1
 " To use transparent background
 let g:hybrid_transparent_background = 0
-colorscheme hybrid_material
+colorscheme hybrid_reverse
 
 
 " ---------------------------------------
@@ -178,6 +184,13 @@ autocmd BufWritePre *.dart* DartFmt
 " - vim-instant-markdown
 " ---------------------------------------
 let g:instant_markdown_autostart = 0
+
+
+" ---------------------------------------
+" - vim-bbye
+" ---------------------------------------
+"  Bdelete : Ctrl-o will reopen the file. (Bwipeout)
+nnoremap <silent> \\ :Bdelete<CR>
 
 
 " ---------------------------------------
@@ -304,7 +317,7 @@ inoremap <silent><expr> <C-q> coc#refresh()
 let g:airline#extensions#coc#enabled = 1
 " 提示标签
 let airline#extensions#coc#error_symbol = '😭:'
-let airline#extensions#coc#warning_symbol = '😢:'
+let airline#extensions#coc#warning_symbol = '😗'
 " TextEdit might fail if hidden is not set.
 set hidden
 

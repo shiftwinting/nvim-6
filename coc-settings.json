@@ -1,9 +1,12 @@
 {
-    "languageserver": {
-        "golang": {
-            "command": "gopls",
-            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-            "filetypes": ["go"]
-        }
+  "suggest.snippetIndicator": "🌟",
+  "diagnostic.errorSign": "😭",
+  "diagnostic.warningSign": "😗",
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
     }
+  }
 }
