@@ -251,7 +251,7 @@ nnoremap ,ff :Neoformat<CR>
 let g:neoformat_enabled_python = ['autopep8', 'yapf']
 augroup fmt
   autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
+  autocmd BufWritePre * Neoformat
 augroup END
 
 
@@ -465,3 +465,11 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" -------------------------------------
+" for coc-extensions
+" ---------------------------------
+" coc-translator
+nmap tt <Plug>(coc-translator-p)
+vmap tt <Plug>(coc-translator-pv)
+" ------------------------------------
+
