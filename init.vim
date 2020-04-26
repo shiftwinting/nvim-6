@@ -475,6 +475,6 @@ vmap tt <Plug>(coc-translator-pv)
 " ------------------------------------
 
 
-if filereadable('profile.vim')
-    source profile.vim
+if filereadable(expand('~/.config/nvim/profile.vim'))
+    source ~/.config/nvim/profile.vim
 endif
