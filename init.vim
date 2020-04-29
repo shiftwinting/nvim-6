@@ -87,6 +87,10 @@ cnoremap w!! w !sudo tee % >/dev/null
 " ---------------------------------------
 " - vim-plug
 " ---------------------------------------
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
 call plug#begin('~/.vim/plugged')
     " Automatically install missing plugins on startup
     if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
@@ -115,7 +119,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'easymotion/vim-easymotion'
     Plug 'lfv89/vim-interestingwords'
     Plug 'itchyny/vim-cursorword'
-    Plug 'fatih/vim-go'
+    Plug 'fatih/vim-go',{ 'do': ':GoUpdateBinaries' }
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-speeddating'
