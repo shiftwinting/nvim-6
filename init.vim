@@ -327,7 +327,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 inoremap <silent><expr> <C-q> coc#refresh()
 let g:airline#extensions#coc#enabled = 1
 " 提示标签
-let airline#extensions#coc#error_symbol = '😭:'
+let airline#extensions#coc#error_symbol = '😭'
 let airline#extensions#coc#warning_symbol = '😗'
 " TextEdit might fail if hidden is not set.
 set hidden
