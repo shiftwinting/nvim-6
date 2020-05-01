@@ -62,7 +62,7 @@ inoremap jj <Esc>`^
 
 nnoremap EE ZZ
  
-inoremap <silent> <leader>s <Esc>:w<cr>
+" inoremap <silent> <leader>s <Esc>:w<cr>
 nnoremap <silent> <leader>s :w<cr>
 
 " 关闭搜索高亮
