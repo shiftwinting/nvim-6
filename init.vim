@@ -158,7 +158,9 @@ let g:enable_bold_font = 0
 let g:enable_italic_font = 1
 " To use transparent background
 let g:hybrid_transparent_background = 0
-colorscheme hybrid_reverse
+" colorscheme hybrid_reverse
+colorscheme one
+let g:one_allow_italics = 1
 
 
 " ---------------------------------------
@@ -292,7 +294,8 @@ au Syntax * RainbowParenthesesLoadBraces
 " ---------------------------------------
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='hybridline'
+" let g:airline_theme='hybridline'
+let g:airline_theme='one'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 0
 function! ArilineInit()
