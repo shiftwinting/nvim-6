@@ -83,6 +83,8 @@ noremap <C-l> <C-w>l
 
 cnoremap w!! w !sudo tee % >/dev/null
 
+noremap <silent> <leader>p "+p
+
 
 " ---------------------------------------
 " - vim-plug
@@ -203,7 +205,7 @@ nnoremap <silent> \\ :Bdelete<CR>
 " - ale
 " ---------------------------------------
 let g:ale_sign_error = '😭'
-let g:ale_sign_warning = '😗'
+let g:ale_sign_warning = '👻'
 
 
 " ---------------------------------------
@@ -331,7 +333,7 @@ inoremap <silent><expr> <C-q> coc#refresh()
 let g:airline#extensions#coc#enabled = 1
 " 提示标签
 let airline#extensions#coc#error_symbol = '😭'
-let airline#extensions#coc#warning_symbol = '😗'
+let airline#extensions#coc#warning_symbol = '👻'
 " TextEdit might fail if hidden is not set.
 set hidden
 

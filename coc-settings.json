@@ -1,7 +1,7 @@
 {
   "suggest.snippetIndicator": "🌟",
   "diagnostic.errorSign": "😭",
-  "diagnostic.warningSign": "😗",
+  "diagnostic.warningSign": "👻",
   "languageserver": {
     "golang": {
       "command": "gopls",
