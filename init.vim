@@ -91,7 +91,7 @@ noremap <silent> <leader>p "+p
 " ---------------------------------------
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://cdn.jsdelivr.net/gh/junegunn/vim-plug/plug.vim
 endif
 call plug#begin('~/.vim/plugged')
     " Automatically install missing plugins on startup
