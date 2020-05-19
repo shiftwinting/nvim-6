@@ -12,6 +12,7 @@ set title
 set lazyredraw " to avoid scrolling problems
 set nowrap
 set foldenable
+set ttyfast
 
 " tab缩进有关
 set tabstop=4
