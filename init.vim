@@ -331,7 +331,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " ---------------------------------------
 call coc#add_extension('coc-python', 'coc-flutter', 'coc-eslint', 'coc-json', 'coc-prettier',
             \ 'coc-snippets', 'coc-yaml', 'coc-translator', 'coc-emmet', 'coc-vetur', 'coc-html',
-            \ 'coc-css', 'coc-lua')
+            \ 'coc-css', 'coc-lua', 'coc-clangd')
 " 绑定 ctrl-q 触发补全
 inoremap <silent><expr> <C-q> coc#refresh()
 let g:airline#extensions#coc#enabled = 1
