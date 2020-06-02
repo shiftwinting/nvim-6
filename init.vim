@@ -223,7 +223,7 @@ call defx#custom#option('_', {
 
 function! s:defx_settings() abort
 
-    IndentLinesDisable
+    " IndentLinesDisable
     setl nospell
     setl signcolumn=no
     setl nonumber
