@@ -112,12 +112,12 @@ call plug#begin('~/.vim/plugged')
     " 插件显示图标
     Plug 'ryanoasis/vim-devicons'
     " 对图标进行美化
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'kien/rainbow_parentheses.vim'
 
-    Plug 'preservim/nerdtree'
+    " Plug 'preservim/nerdtree'
     Plug 'mhinz/vim-startify'
     Plug 'easymotion/vim-easymotion'
     Plug 'lfv89/vim-interestingwords'
@@ -141,6 +141,17 @@ call plug#begin('~/.vim/plugged')
     Plug 'wsdjeg/vim-lua'
     Plug 'dart-lang/dart-vim-plugin'
     Plug 'moll/vim-bbye' " buffer
+
+if has('nvim')
+    Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/defx.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+    Plug 'kristijanhusak/defx-icons'
+
 call plug#end()
 
 
@@ -193,6 +204,57 @@ autocmd BufWritePre *.dart* DartFmt
 " - vim-instant-markdown
 " ---------------------------------------
 let g:instant_markdown_autostart = 0
+
+
+" ---------------------------------------
+" - defx
+" ---------------------------------------
+nmap <silent> <Leader>t :Defx -columns=icons:indent:filename:type<cr>
+autocmd FileType defx call s:defx_settings()
+call defx#custom#option('_', {
+      \ 'winwidth': 30,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 0,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1
+      \ })
+
+function! s:defx_settings() abort
+
+    IndentLinesDisable
+    setl nospell
+    setl signcolumn=no
+    setl nonumber
+    nnoremap <silent><buffer><expr> <CR> defx#is_directory() ? defx#do_action('open_or_close_tree') : defx#do_action('drop')
+    nnoremap <silent><buffer><expr> o defx#is_directory() ? defx#do_action('open_or_close_tree') : defx#do_action('drop')
+    nnoremap <silent><buffer><expr> h defx#do_action('close_tree')
+    nnoremap <silent><buffer><expr> C defx#do_action('copy')
+    nnoremap <silent><buffer><expr> P defx#do_action('paste')
+    nnoremap <silent><buffer><expr> M defx#do_action('rename')
+    nnoremap <silent><buffer><expr> D defx#do_action('remove_trash')
+    nnoremap <silent><buffer><expr> A defx#do_action('new_multiple_files')
+    nnoremap <silent><buffer><expr> s defx#do_action('open', 'vsplit')
+    nnoremap <silent><buffer><expr> U defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
+    nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select')
+    nnoremap <silent><buffer><expr> R defx#do_action('redraw')
+    nnoremap <silent><buffer><expr> <Tab> <SID>defx_toggle_zoom()
+
+endfunction
+
+function s:defx_toggle_zoom() abort
+    let b:DefxOldWindowSize = get(b:, 'DefxOldWindowSize', winwidth('%'))
+    let size = b:DefxOldWindowSize
+    if exists("b:DefxZoomed") && b:DefxZoomed
+        exec "silent vertical resize ". size
+        let b:DefxZoomed = 0
+    else
+        exec "vertical resize ". get(g:, 'DefxWinSizeMax', '')
+        let b:DefxZoomed = 1
+    endif
+endfunction
 
 
 " ---------------------------------------
@@ -315,8 +377,8 @@ autocmd VimEnter * call ArilineInit()
 " ---------------------------------------
 " - NERDTree
 " ---------------------------------------
-nmap <silent> ,v :NERDTreeFind<cr>
-nmap <silent> ,t :NERDTreeToggle<cr>
+" nmap <silent> ,v :NERDTreeFind<cr>
+" nmap <silent> ,t :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = [
             \ '\.git$', '\.hg$', '\.svn$', '\.stversions$', '\.pyc$', '\.pyo$', '\.svn$', '\.swp$',
@@ -324,6 +386,19 @@ let NERDTreeIgnore = [
             \ '\.vscode'
             \]
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeGitStatusIndicatorMap = {
+         \ 'Modified'  : '✹',
+         \ 'Staged'    : '✚',
+         \ 'Untracked' : '✭',
+         \ 'Renamed'   : '➜',
+         \ 'Unmerged'  : '═',
+         \ 'Deleted'   : '✖',
+         \ 'Dirty'     : '✗',
+         \ 'Clean'     : '✔︎',
+         \ 'Ignored'   : '',
+         \ 'Unknown'   : '?'
+         \ }
 
 
 " ---------------------------------------
