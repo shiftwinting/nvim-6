@@ -22,7 +22,7 @@ set expandtab
 autocmd FileType js,html,css,dart,yaml,json,xml,vue,json 
             \setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
-set cc=99
+set cc=88
 
 " 自动对齐
 set autoindent 
