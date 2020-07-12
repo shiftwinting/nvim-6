@@ -8,5 +8,11 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }
-  }
+  },
+  "python.sortImports.args": [
+    "-sl"
+  ],
+  "python.formatting.autopep8Args": [
+    "--ignore=E402, E501"
+  ]
 }
