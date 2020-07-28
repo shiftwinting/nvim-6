@@ -81,6 +81,13 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+" insert模式
+" 结尾编辑
+inoremap <C-l> <C-o>A
+" 下面新建一行编辑
+inoremap <C-j> <C-o>o
+" 上面新建一行编辑
+inoremap <C-k> <C-o>O
 
 cnoremap w!! w !sudo tee % >/dev/null
 
