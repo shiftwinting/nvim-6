@@ -19,8 +19,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-autocmd FileType js,html,css,dart,yaml,json,xml,vue,json 
-            \setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType js,javascript,html,css,dart,yaml,json,xml,vue,rst
+        \ setlocal shiftwidth=2 tabstop=2 softtabstop=2 
 
 set cc=80
 
@@ -148,7 +148,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'wsdjeg/vim-lua'
     Plug 'dart-lang/dart-vim-plugin'
     Plug 'moll/vim-bbye' " buffer
-
+    Plug 'voldikss/vim-floaterm'
+ 
 if has('nvim')
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -264,6 +265,16 @@ function s:defx_toggle_zoom() abort
 endfunction
 
 
+
+" ---------------------------------------
+" - vim-bbye
+" ---------------------------------------
+" let g:floaterm_keymap_new    = '<F7>'
+" let g:floaterm_keymap_prev   = '<F8>'
+" let g:floaterm_keymap_next   = '<F9>'
+let g:floaterm_keymap_toggle = '<F12>'
+
+
 " ---------------------------------------
 " - vim-bbye
 " ---------------------------------------
@@ -276,7 +287,8 @@ nnoremap <silent> \\ :Bdelete<CR>
 " ---------------------------------------
 let g:ale_sign_error = '😭'
 let g:ale_sign_warning = '👻'
-
+" let g:ale_sign_error = '✗'
+" let g:ale_sign_warning = '⚡'
 
 " ---------------------------------------
 " - fzf.vim
@@ -411,9 +423,23 @@ let g:NERDTreeGitStatusIndicatorMap = {
 " ---------------------------------------
 " - Coc.nvim
 " ---------------------------------------
-call coc#add_extension('coc-python', 'coc-flutter', 'coc-eslint', 'coc-json', 'coc-prettier',
-            \ 'coc-snippets', 'coc-yaml', 'coc-translator', 'coc-emmet', 'coc-vetur', 'coc-html',
-            \ 'coc-css', 'coc-lua', 'coc-clangd')
+call coc#add_extension(
+            \'coc-python', 
+            \'coc-flutter',
+            \'coc-lua',
+            \'coc-clangd',
+            \'coc-tsserver',
+            \'coc-eslint',
+            \'coc-prettier',
+            \'coc-snippets',
+            \'coc-json',
+            \'coc-yaml',
+            \'coc-emmet',
+            \'coc-vetur',
+            \'coc-html',
+            \'coc-css',
+            \'coc-translator'
+            \)
 " 绑定 ctrl-q 触发补全
 inoremap <silent><expr> <C-q> coc#refresh()
 let g:airline#extensions#coc#enabled = 1
