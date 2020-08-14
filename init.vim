@@ -125,7 +125,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'kien/rainbow_parentheses.vim'
 
     " Plug 'preservim/nerdtree'
-    Plug 'mhinz/vim-startify'
+    " Plug 'mhinz/vim-startify'
+    Plug 'hardcoreplayers/dashboard-nvim'
     Plug 'easymotion/vim-easymotion'
     Plug 'lfv89/vim-interestingwords'
     Plug 'itchyny/vim-cursorword'
@@ -212,6 +213,35 @@ autocmd BufWritePre *.dart* DartFmt
 " - vim-instant-markdown
 " ---------------------------------------
 let g:instant_markdown_autostart = 0
+
+
+" ---------------------------------------
+" - indent-line
+" ---------------------------------------
+let g:indentLine_fileTypeExclude = ['dashboard']
+
+
+" ---------------------------------------
+" - dashboard
+" ---------------------------------------
+let g:dashboard_default_executive ='fzf'
+" let g:dashboard_default_header = ''
+nmap <space>ss :<C-u>SessionSave<CR>
+nmap <space>sl :<C-u>SessionLoad<CR>
+nnoremap <silent> <space>fh :History<CR>
+nnoremap <silent> <space>ff :Files<CR>
+nnoremap <silent> <space>tc :Colors<CR>
+nnoremap <silent> <space>fa :Rg<CR>
+nnoremap <silent> <space>fb :Marks<CR>
+
+let g:dashboard_custom_shortcut={
+  \ 'last_session'       : 'SPC s l',
+  \ 'find_history'       : 'SPC f h',
+  \ 'find_file'          : 'SPC f f',
+  \ 'change_colorscheme' : 'SPC t c',
+  \ 'find_word'          : 'SPC f a',
+  \ 'book_marks'         : 'SPC f b',
+  \ }
 
 
 " ---------------------------------------
