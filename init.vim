@@ -150,6 +150,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'dart-lang/dart-vim-plugin'
     Plug 'moll/vim-bbye' " buffer
     Plug 'voldikss/vim-floaterm'
+    Plug 'cespare/vim-toml'
  
 if has('nvim')
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -457,6 +458,7 @@ call coc#add_extension(
             \'coc-python', 
             \'coc-flutter',
             \'coc-lua',
+            \'coc-rust-analyzer',
             \'coc-clangd',
             \'coc-tsserver',
             \'coc-eslint',
