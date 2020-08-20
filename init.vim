@@ -51,13 +51,15 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sbdchd/neoformat'
 Plug 'dense-analysis/ale'
-Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'moll/vim-bbye'
 Plug 'voldikss/vim-floaterm'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'liuchengxu/vista.vim'
+Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
+Plug 'pechorin/any-jump.vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 Plug 'wsdjeg/vim-lua', { 'for': 'lua' }
@@ -322,14 +324,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
-" >>> majutsushi/tagbar
-nmap <silent> <F8> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-let g:tagbar_sort = 0    " sort by sourcefile
-"let g:tagbar_show_linenumbers = 1
-set updatetime=1000    " ms update
-
-
 " >>> easymotion/vim-easymotion
 nmap ss <Plug>(easymotion-overwin-f2)
 map <Leader>l <Plug>(easymotion-bd-jk)
@@ -402,6 +396,7 @@ call coc#add_extension(
             \'coc-html',
             \'coc-json',
             \'coc-lua',
+            \'coc-marketplace',
             \'coc-prettier',
             \'coc-python', 
             \'coc-rust-analyzer',
