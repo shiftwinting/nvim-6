@@ -16,13 +16,14 @@ else
 endif
 
 call plug#begin('~/.vim/plugged')
+" colorschemes
 Plug 'w0ng/vim-hybrid'
-Plug 'rakr/vim-one'
 Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'rafi/awesome-vim-colorschemes'
+Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
+
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'kien/rainbow_parentheses.vim'
 
@@ -42,6 +43,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'kristijanhusak/defx-icons'
+Plug 'kristijanhusak/defx-git'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'aserebryakov/vim-todo-lists'
@@ -84,6 +86,8 @@ set showmatch
 set timeoutlen=500
 set hlsearch
 set scrolloff=5 
+set ignorecase
+set smartcase
 
 " >> autocmd
 autocmd FileType js,javascript,html,css,dart,yaml,json,xml,vue,rst,vim
@@ -105,18 +109,12 @@ autocmd BufReadPost *
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
 
-nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
-nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
-
-nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
-
+" >> mappings
 let mapleader=','
 let g:mapleader=','
 
-" >> mappings
-" normal
-nnoremap EE ZZ
+" > normal
+nnoremap <leader>e ZZ
  
 nnoremap <silent> <leader>s :w<cr>
 
@@ -134,12 +132,23 @@ noremap <C-l> <C-w>l
 
 noremap <silent> <leader>p "+p
 
+nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
+
+nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+
 " > insert
 inoremap jj <Esc>`^
 
 inoremap <C-l> <C-o>A
 inoremap <C-j> <C-o>o
 inoremap <C-k> <C-o>O
+
+inoremap <C-w> <up>
+inoremap <C-a> <left>
+inoremap <C-s> <down>
+inoremap <C-d> <right>
 
 " > command
 cnoremap w!! w !sudo tee % >/dev/null
@@ -153,12 +162,14 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme one
+colorscheme hybrid_reverse
+" hybrid material
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
+let g:hybrid_transparent_background = 1
 let g:enable_bold_font = 0
 let g:enable_italic_font = 1
-let g:hybrid_transparent_background = 0
+" one
 let g:one_allow_italics = 1
 
 
@@ -229,14 +240,14 @@ call defx#custom#option('_', {
 
 call defx#custom#column('git', {
 	\   'indicators': {
-	\     'Modified'  : '•',
+	\     'Modified'  : 'Ⅿ',
 	\     'Staged'    : '✚',
-	\     'Untracked' : 'ᵁ',
-	\     'Renamed'   : '≫',
+	\     'Untracked' : 'U',
+	\     'Renamed'   : '➜',
 	\     'Unmerged'  : '≠',
 	\     'Ignored'   : 'ⁱ',
-	\     'Deleted'   : '✖',
-	\     'Unknown'   : '⁇'
+	\     'Deleted'   : '✗',
+	\     'Unknown'   : '?'
 	\   }
 	\ })
 
@@ -387,6 +398,7 @@ call coc#add_extension(
             \'coc-emmet',
             \'coc-eslint',
             \'coc-flutter',
+            \'coc-highlight',
             \'coc-html',
             \'coc-json',
             \'coc-lua',
