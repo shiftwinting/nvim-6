@@ -57,6 +57,7 @@ Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'pechorin/any-jump.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'farmergreg/vim-lastplace'
+Plug 'rhysd/accelerated-jk'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 Plug 'wsdjeg/vim-lua', { 'for': 'lua' }
