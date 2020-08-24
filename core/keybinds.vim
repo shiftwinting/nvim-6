@@ -1,7 +1,3 @@
-" >> mappings
-let mapleader=','
-let g:mapleader=','
-
 " > normal
 nnoremap <leader>e ZZ
  
@@ -41,5 +37,3 @@ inoremap <C-a> <left>
 inoremap <C-s> <down>
 inoremap <C-d> <right>
 
-" > command
-cnoremap w!! w !sudo tee % >/dev/null

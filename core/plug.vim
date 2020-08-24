@@ -12,15 +12,14 @@ endif
 
 call plug#begin('~/.vim/plugged')
 " colorschemes
-Plug 'w0ng/vim-hybrid'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
 
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
 Plug 'Yggdroot/indentLine'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'hardcoreplayers/spaceline.vim'
 
 Plug 'easymotion/vim-easymotion'
 Plug 'lfv89/vim-interestingwords'
@@ -42,19 +41,18 @@ Plug 'kristijanhusak/defx-git'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'aserebryakov/vim-todo-lists'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'sbdchd/neoformat'
+Plug 'sbdchd/neoformat', { 'on': 'Neoformat' }
 Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'moll/vim-bbye'
+Plug 'moll/vim-bbye', { 'on': 'Bdelete' }
 Plug 'voldikss/vim-floaterm'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
 Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
-Plug 'pechorin/any-jump.vim'
+Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'farmergreg/vim-lastplace'
 Plug 'rhysd/accelerated-jk'
@@ -67,9 +65,6 @@ call plug#end()
 
 for s:plugin_name in g:plugs_order
   if isdirectory(g:plugs[s:plugin_name].dir)
-    let s:config_path = '~/.config/nvim/config/plugins/' . s:plugin_name . '.vim'
-    if filereadable(expand(s:config_path))
-        exec 'source' fnameescape(s:config_path)
-    endif
+		call utils#check_source(expand('~/.config/nvim/plugins/' . s:plugin_name . '.vim'))
   endif
 endfor
