@@ -297,4 +297,7 @@ autocmd InsertLeave * :set relativenumber
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
 
+autocmd FileType js,javascript,html,css,dart,yaml,json,xml,vue,rst,vim
+       \ setlocal shiftwidth=2 tabstop=2
+
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :

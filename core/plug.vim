@@ -38,7 +38,7 @@ else
 endif
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
-Plug 'tpope/vim-commentary'
+Plug 'tyru/caw.vim'
 Plug 'tpope/vim-surround'
 Plug 'aserebryakov/vim-todo-lists'
 Plug 'tpope/vim-fugitive'
@@ -56,6 +56,7 @@ Plug 'pechorin/any-jump.vim', { 'on': 'AnyJump' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'farmergreg/vim-lastplace'
 Plug 'rhysd/accelerated-jk'
+Plug 'thinca/vim-quickrun', { 'on': 'QuickRun' }
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 Plug 'wsdjeg/vim-lua', { 'for': 'lua' }
