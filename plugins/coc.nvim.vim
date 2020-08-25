@@ -5,6 +5,7 @@ call coc#add_extension(
             \'coc-emmet',
             \'coc-eslint',
             \'coc-flutter',
+            \'coc-git',
             \'coc-highlight',
             \'coc-html',
             \'coc-json',
