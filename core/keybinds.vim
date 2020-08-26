@@ -1,5 +1,5 @@
 " > normal
-nnoremap gg :x<CR>
+nnoremap zz :x<CR>
 
 nnoremap <silent> <leader>s :w<cr>
 
