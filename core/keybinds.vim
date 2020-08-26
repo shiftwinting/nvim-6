@@ -1,6 +1,4 @@
 " > normal
-nnoremap <leader>e ZZ
- 
 nnoremap <silent> <leader>s :w<cr>
 
 nnoremap <silent> <leader>h :nohl<CR>

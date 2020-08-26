@@ -57,6 +57,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'farmergreg/vim-lastplace'
 Plug 'rhysd/accelerated-jk'
 Plug 'thinca/vim-quickrun', { 'on': 'QuickRun' }
+Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 Plug 'wsdjeg/vim-lua', { 'for': 'lua' }

@@ -1,5 +1,5 @@
 " >>> Shougo/defx.nvim
-nnoremap <silent> <Leader>t :Defx<CR>
+nnoremap <silent> <Leader>e :Defx<CR>
 
 call defx#custom#option('_', {
 	\ 'resume': 1,
