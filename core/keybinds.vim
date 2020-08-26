@@ -1,4 +1,6 @@
 " > normal
+nnoremap gg :x<CR>
+
 nnoremap <silent> <leader>s :w<cr>
 
 nnoremap <silent> <leader>h :nohl<CR>
