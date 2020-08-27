@@ -21,9 +21,6 @@ call coc#add_extension(
             \'coc-yaml',
             \)
 inoremap <silent><expr> <C-q> coc#refresh()
-let g:airline#extensions#coc#enabled = 1
-let airline#extensions#coc#error_symbol = '😭'
-let airline#extensions#coc#warning_symbol = '👻'
 set hidden
 set nobackup
 set nowritebackup
