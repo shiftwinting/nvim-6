@@ -9,7 +9,16 @@ else
           \ https://cdn.jsdelivr.net/gh/junegunn/vim-plug/plug.vim
   endif
 endif
+function! g:BuffetSetCustomColors()
+    hi! link BuffetTab Keyword 
+    hi! link BuffetBuffer Visual
+    hi! link BuffetActiveBuffer StatusLineNC
 
+    " Need to fix in Buffet:
+    " if use CursorLineNr, the ugly default separator will appear,
+    " i think because of the different between: LabelBg vs SeparatorBg
+    hi! link BuffetCurrentBuffer Function
+endfunction
 call plug#begin('~/.vim/plugged')
 " colorschemes
 Plug 'kristijanhusak/vim-hybrid-material'
@@ -58,6 +67,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'rhysd/accelerated-jk'
 Plug 'thinca/vim-quickrun', { 'on': 'QuickRun' }
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'bagrat/vim-buffet'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 Plug 'wsdjeg/vim-lua', { 'for': 'lua' }

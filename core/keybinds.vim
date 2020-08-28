@@ -5,9 +5,6 @@ nnoremap <silent> <leader>s :w<cr>
 
 nnoremap <silent> <leader>h :nohl<CR>
 
-nnoremap <silent> [b :bp<CR>
-nnoremap <silent> [n :bn<CR>
-
 nnoremap s <nop>
 
 noremap Y y$
