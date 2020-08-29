@@ -211,9 +211,16 @@ if dein#tap('fzf.vim')
 	nnoremap <silent> <space>fb :Marks<CR>
 endif
 
+if dein#tap('goyo.vim')
+  nnoremap <Leader>G :Goyo<CR>
+  if s:enable_whichkey
+    let g:which_key_map.G = 'Goyo'
+  endif
+endif
+
+
 " base mappings
 nnoremap s <nop>
-nnoremap zz :x<CR>
 noremap Y y$
 nnoremap <silent> <leader>s :w<cr>
 nnoremap <silent> <leader>h :nohl<CR>

@@ -197,6 +197,11 @@ hook_source = '''
       \ }
 '''
 
+[[plugins]]
+repo = 'junegunn/goyo.vim'
+on_cmd = 'Goyo'
+hook_source = 'source $VIM_PATH/configs/goyo.vim'
+
 # filetype
 [[plugins]]
 repo = 'cespare/vim-toml'
