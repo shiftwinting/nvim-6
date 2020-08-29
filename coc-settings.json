@@ -36,8 +36,8 @@
   },
 
   // diagnostic
-  "diagnostic.errorSign": "😭",
-  "diagnostic.warningSign": "👻",
+  "diagnostic.errorSign": "✗",
+  "diagnostic.warningSign": "≈",
 
   // python
   "python.sortImports.args": ["-sl"],

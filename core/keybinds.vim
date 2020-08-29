@@ -189,6 +189,10 @@ if dein#tap('vim-quickrun')
 	nnoremap <silent> <F5> :QuickRun<CR>
 endif
 
+if dein#tap('neoformat')
+  noremap <silent> <F6> :Neoformat<CR>
+endif
+
 if dein#tap('vim-easy-align')
   xmap ga <Plug>(EasyAlign)
   nmap ga <Plug>(EasyAlign)
@@ -206,7 +210,6 @@ if dein#tap('fzf.vim')
 	nnoremap <silent> <space>fa :Rg<CR>
 	nnoremap <silent> <space>fb :Marks<CR>
 endif
-
 
 " base mappings
 nnoremap s <nop>
