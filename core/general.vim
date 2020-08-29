@@ -1,6 +1,5 @@
+
 "General settins{{{
-set ttyfast
-set lazyredraw
 set mouse=nv                 " Disable mouse in command-line mode
 set report=0                 " Don't report on line changes
 set errorbells               " Trigger bell on error
@@ -81,7 +80,7 @@ set undodir=$DATA_PATH/undo//,$DATA_PATH,~/tmp,/var/tmp,/tmp
 set backupdir=$DATA_PATH/backup/,$DATA_PATH,~/tmp,/var/tmp,/tmp
 set viewdir=$DATA_PATH/view/
 " Use the coc-spell-checker to do this
-" set spellfile=$VIM_PATH/spell/en.utf-8.add
+set spellfile=~/.cache/vim/spell/en.utf-8.add
 
 " History saving
 set history=2000
@@ -134,16 +133,15 @@ augroup END
 
 " Tabs and Indents {{{
 " ----------------
-set textwidth=80   " Text width maximum chars before wrapping
-set expandtab      " Expand tabs to spaces
-set tabstop=4      " The number of spaces a tab is
-set shiftwidth=4   " Number of spaces to use in auto(indent)
-set softtabstop=-1 " Automatically keeps in sync with shiftwidth
-set smarttab       " Tab insert blanks according to 'shiftwidth'
-set autoindent     " Use same indenting on new lines
-set smartindent    " Smart autoindenting on new lines
-set shiftround     " Round indent to multiple of 'shiftwidth'
-set cc=80
+set textwidth=80    " Text width maximum chars before wrapping
+set expandtab       " Expand tabs to spaces!
+set tabstop=4       " The number of spaces a tab is
+set shiftwidth=4    " Number of spaces to use in auto(indent)
+set softtabstop=-1  " Automatically keeps in sync with shiftwidth
+set smarttab        " Tab insert blanks according to 'shiftwidth'
+set autoindent      " Use same indenting on new lines
+set smartindent     " Smart autoindenting on new lines
+set shiftround      " Round indent to multiple of 'shiftwidth'
 
 if exists('&breakindent')
 	set breakindentopt=shift:2,min:20
@@ -204,11 +202,6 @@ set completeopt+=noselect,noinsert
 if exists('+completepopup')
 	set completeopt+=popup
 	set completepopup=height:4,width:60,highlight:InfoPopup
-endif
-
-" Use the new Neovim :h jumplist-stack
-if has('nvim-0.5')
-	set jumpoptions=stack
 endif
 
 if has('patch-8.1.0360') || has('nvim-0.4')
@@ -297,7 +290,7 @@ autocmd InsertLeave * :set relativenumber
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
 
-autocmd FileType js,javascript,html,css,dart,yaml,json,xml,vue,rst,vim
+autocmd FileType js,javascript,html,css,dart,yaml,json,xml,vue,rst,vim,toml
        \ setlocal shiftwidth=2 tabstop=2
 
 " vim: set foldmethod=marker ts=2 sw=2 tw=80 noet :

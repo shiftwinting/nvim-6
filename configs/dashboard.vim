@@ -1,13 +1,4 @@
-" >>> hardcoreplayers/dashboard-nvim
 let g:dashboard_default_executive ='fzf'
-nmap <space>ss :<C-u>SessionSave<CR>
-nmap <space>sl :<C-u>SessionLoad<CR>
-nmap <space>nf :<C-u>DashboardNewFile<CR>
-nnoremap <silent> <space>fh :History<CR>
-nnoremap <silent> <space>ff :Files<CR>
-nnoremap <silent> <space>tc :Colors<CR>
-nnoremap <silent> <space>fa :Rg<CR>
-nnoremap <silent> <space>fb :Marks<CR>
 
 let g:dashboard_custom_shortcut={
   \ 'new_file':           'SPC n f',

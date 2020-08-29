@@ -1,19 +1,225 @@
-" > normal
-nnoremap zz :x<CR>
+let s:enable_whichkey = dein#tap('vim-which-key')
 
-nnoremap <silent> <leader>s :w<cr>
+if s:enable_whichkey
+  function! InitWhickey()
+    let s:leader_key=substitute(get(g:,"mapleader","\\"), ' ', ',', '')
+    let s:localleader_key= get(g:,'maplocalleader',';')
+    execute 'nnoremap <silent> <Leader> :<c-u>WhichKey "'.s:leader_key.'"<CR>'
+    execute 'vnoremap <silent> <Leader> :<c-u>WhichKeyVisual "'.s:leader_key.'"<CR>'
+    execute 'nnoremap <silent> <LocalLeader> :<c-u>WhichKey "' .s:localleader_key.'"<CR>'
+  endfunction
+  call InitWhickey()
+  let g:which_key_map.c = { 'name': '+code' }
+  let g:which_key_map.f = { 'name': '+find'}
+  let g:which_key_map.o = { 'name': '+open' }
+  let g:which_key_map.t = { 'name': '+toggle'}
+  let g:which_key_map.g = { 'name': '+versioncontrol'}
+endif
 
-nnoremap <silent> <leader>h :nohl<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('dein.vim')
+	nnoremap <silent> <Leader>pu  :call dein#update()<CR>
+	nnoremap <silent> <Leader>pr  :call dein#recache_runtimepath()<CR>
+	nnoremap <silent> <Leader>pl  :echo dein#get_updates_log()<CR>
+	if s:enable_whichkey
+		let g:which_key_map.p = { 'name': '+plugin'}
+		let g:which_key_map.p.u = 'update all plugins'
+		let g:which_key_map.p.r = 'reache runtime path'
+		let g:which_key_map.p.l = 'plugins update log'
+	endif
+endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('vim-buffet')
+	nnoremap  ]b :<C-u>bp<CR>
+	nnoremap  [b :<C-u>bn<CR>
+	nnoremap <silent> <Leader>bc :Bonly<CR>
+	nnoremap <silent> <Leader>bx :Bw<CR>
+	nmap <leader>1 <Plug>BuffetSwitch(1)
+	nmap <leader>2 <Plug>BuffetSwitch(2)
+	nmap <leader>3 <Plug>BuffetSwitch(3)
+	nmap <leader>4 <Plug>BuffetSwitch(4)
+	nmap <leader>5 <Plug>BuffetSwitch(5)
+	nmap <leader>6 <Plug>BuffetSwitch(6)
+	nmap <leader>7 <Plug>BuffetSwitch(7)
+	nmap <leader>8 <Plug>BuffetSwitch(8)
+	nmap <leader>9 <Plug>BuffetSwitch(9)
+	nmap <leader>0 <Plug>BuffetSwitch(10)
+	if s:enable_whichkey
+		let g:which_key_map.b = { 'name': '+buffer' }
+		let g:which_key_map.b.c = 'keep current buffer'
+		let g:which_key_map.b.x = 'remove all buffers'
+		let g:which_key_map.1 = 'select window-1'
+		let g:which_key_map.2 = 'select window-2'
+		let g:which_key_map.3 = 'select window-3'
+		let g:which_key_map.4 = 'select window-4'
+		let g:which_key_map.5 = 'select window-5'
+		let g:which_key_map.6 = 'select window-6'
+		let g:which_key_map.7 = 'select window-7'
+		let g:which_key_map.8 = 'select window-8'
+		let g:which_key_map.9 = 'select window-9'
+		let g:which_key_map.0 = 'select window-10'
+	endif
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('dashboard-nvim')
+	nnoremap <silent> <Leader>os  :<C-u>Dashboard<CR>
+	if s:enable_whichkey
+		let g:which_key_map.o.s = 'open dashboard'
+	endif
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('vim-floaterm')
+	nnoremap <silent> <Leader>ot :<C-u>FloatermToggle<CR>
+	nnoremap <silent> <Leader>gz :<C-u>FloatermNew height=0.7 width=0.8 lazygit<CR>
+	if s:enable_whichkey
+		let g:which_key_map.o.t = 'open terminal'
+		let g:which_key_map.g.z = 'lazygit'
+	endif
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('vim-go')
+	function! InitGoKeyMap() abort
+		nnoremap <silent> <LocalLeader>ga :GoAddTags<CR>
+		nnoremap <silent> <LocalLeader>gr :GoRemoveTags<CR>
+		nnoremap <silent> <LocalLeader>gi :GoImpl<CR>
+		nnoremap <silent> <LocalLeader>gd :GoDef<CR>
+		nnoremap <silent> <LocalLeader>gc :GoCallees<CR>
+		nnoremap <silent> <LocalLeader>gC :GoCallers<CR>
+		nnoremap <silent> <LocalLeader>gs :GoCallstack<CR>
+		if s:enable_whichkey
+			let g:which_key_localmap.g = { 'name': '+GoToolKit'}
+			let g:which_key_localmap.g.a = 'Add tags'
+			let g:which_key_localmap.g.r = 'Remove tags'
+			let g:which_key_localmap.g.i = 'Go impl'
+			let g:which_key_localmap.g.d = 'Go definition'
+			let g:which_key_localmap.g.c = 'Go Callees'
+			let g:which_key_localmap.g.C = 'Go Callers'
+			let g:which_key_localmap.g.s = 'Go Callstack'
+		endif
+	endfunction
+	autocmd FileType go call InitGoKeyMap()
+endif
+
+if dein#tap('vim-fugitive')
+	nnoremap <silent> <Leader>ga :Git add %:p<CR>
+	nnoremap <silent> <Leader>gd :Gdiffsplit<CR>
+	nnoremap <silent> <Leader>gc :Git commit<CR>
+	nnoremap <silent> <Leader>gb :Git blame<CR>
+	nnoremap <silent> <Leader>gf :Gfetch<CR>
+	nnoremap <silent> <Leader>gs :Git<CR>
+	nnoremap <silent> <Leader>gp :Gpush<CR>
+	if s:enable_whichkey
+		let g:which_key_map.g.a = 'git add'
+		let g:which_key_map.g.d = 'git diff split'
+		let g:which_key_map.g.b = 'git blame'
+		let g:which_key_map.g.f = 'git fetch'
+		let g:which_key_map.g.c = 'git commit'
+		let g:which_key_map.g.s = 'git status'
+		let g:which_key_map.g.p = 'git push'
+	endif
+endif
+
+if dein#tap('vim-mundo')
+	nnoremap <silent> <Leader>m :MundoToggle<CR>
+	if s:enable_whichkey
+		let g:which_key_map.m = 'MundoToggle'
+	endif
+endif
+
+if dein#tap('caw.vim')
+	function! InitCaw() abort
+		if ! &l:modifiable
+			silent! nunmap <buffer> gc
+			silent! xunmap <buffer> gc
+			silent! nunmap <buffer> gcc
+			silent! xunmap <buffer> gcc
+		else
+			nmap <buffer> gc <Plug>(caw:prefix)
+			xmap <buffer> gc <Plug>(caw:prefix)
+			nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+			xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+		endif
+	endfunction
+	autocmd FileType * call InitCaw()
+	call InitCaw()
+endif
+
+if dein#tap('vim-smoothie')
+	nnoremap <silent> <C-f> :<C-U>call smoothie#forwards()<CR>
+	nnoremap <silent> <C-b> :<C-U>call smoothie#backwards()<CR>
+	nnoremap <silent> <C-d> :<C-U>call smoothie#downwards()<CR>
+	nnoremap <silent> <C-u> :<C-U>call smoothie#upwards()<CR>
+endif
+
+if dein#tap('defx.nvim')
+	nnoremap <silent> <Leader>e
+		\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
+	nnoremap <silent> <Leader>F
+		\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+	if s:enable_whichkey
+		let g:which_key_map.e = 'Open defx'
+		let g:which_key_map.F = 'Open current file on defx'
+	endif
+endif
+
+if dein#tap('vista.vim')
+	nnoremap <silent> <Leader>i :<C-u>Vista!!<CR>
+	if s:enable_whichkey
+		let g:which_key_map.i = 'Vista'
+	endif
+endif
+
+if dein#tap('vim-easymotion')
+	nmap ss <Plug>(easymotion-overwin-f2)
+	map  <Leader>l <Plug>(easymotion-bd-jk)
+	nmap <Leader>l <Plug>(easymotion-overwin-line)
+	map  <Leader>w <Plug>(easymotion-bd-w)
+	nmap <Leader>w <Plug>(easymotion-overwin-w)
+endif
+
+if dein#tap('any-jump.vim')
+	nnoremap <silent> <Leader>j :AnyJump<CR>
+endif
+
+if dein#tap('vim-quickrun')
+	nnoremap <silent> <F5> :QuickRun<CR>
+endif
+
+if dein#tap('vim-easy-align')
+  xmap ga <Plug>(EasyAlign)
+  nmap ga <Plug>(EasyAlign)
+endif
+
+if dein#tap('accelerated-jk')
+	nmap <silent>j <Plug>(accelerated_jk_gj)
+	nmap <silent>k <Plug>(accelerated_jk_gk)
+endif
+
+if dein#tap('fzf.vim')
+	nnoremap <silent> <space>fh :History<CR>
+	nnoremap <silent> <space>ff :Files<CR>
+	nnoremap <silent> <space>tc :Colors<CR>
+	nnoremap <silent> <space>fa :Rg<CR>
+	nnoremap <silent> <space>fb :Marks<CR>
+endif
+
+
+" base mappings
 nnoremap s <nop>
-
+nnoremap zz :x<CR>
 noremap Y y$
-
+nnoremap <silent> <leader>s :w<cr>
+nnoremap <silent> <leader>h :nohl<CR>
+" switch window
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-
+" clipboard
 noremap <silent> <leader>p "+p
 
 nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
@@ -22,15 +228,14 @@ nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
 nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
 nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
-" > insert
+" back to normal
 inoremap jj <Esc>`^
 
 inoremap <C-l> <C-o>A
 inoremap <C-j> <C-o>o
 inoremap <C-k> <C-o>O
-
+" move
 inoremap <C-w> <up>
 inoremap <C-a> <left>
 inoremap <C-s> <down>
 inoremap <C-d> <right>
-

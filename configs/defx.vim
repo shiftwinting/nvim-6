@@ -1,6 +1,3 @@
-" >>> Shougo/defx.nvim
-nnoremap <silent> <Leader>e :Defx<CR>
-
 call defx#custom#option('_', {
 	\ 'resume': 1,
   \ 'toggle': 1,
@@ -17,10 +14,10 @@ call defx#custom#option('_', {
 
 call defx#custom#column('git', {
 	\   'indicators': {
-	\     'Modified'  : 'Ⅿ',
+	\     'Modified'  : '•',
 	\     'Staged'    : '✚',
-	\     'Untracked' : 'U',
-	\     'Renamed'   : '➜',
+	\     'Untracked' : 'ᵁ',
+	\     'Renamed'   : '≫',
 	\     'Unmerged'  : '≠',
 	\     'Ignored'   : 'ⁱ',
 	\     'Deleted'   : '✗',
