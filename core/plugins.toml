@@ -41,9 +41,6 @@ repo = 'rakr/vim-one'
 repo = 'kristijanhusak/vim-hybrid-material'
 
 [[plugins]]
-repo = 'crusoexia/vim-monokai'
-
-[[plugins]]
 repo = 'hardcoreplayers/dashboard-nvim'
 hook_add = 'source $VIM_PATH/configs/dashboard.vim'
 

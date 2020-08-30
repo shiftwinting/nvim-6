@@ -1,5 +1,6 @@
 " >>> neoclide/coc.nvim
-call coc#add_extension(
+let g:coc_global_extensions = [
+            \'coc-calc',
             \'coc-clangd',
             \'coc-css',
             \'coc-emmet',
@@ -19,7 +20,8 @@ call coc#add_extension(
             \'coc-tsserver',
             \'coc-vetur',
             \'coc-yaml',
-            \)
+            \'coc-yank'
+            \]
 inoremap <silent><expr> <C-q> coc#refresh()
 set hidden
 set nobackup

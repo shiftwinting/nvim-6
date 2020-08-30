@@ -36,8 +36,26 @@
   },
 
   // diagnostic
+  "diagnostic.enable": true,
+  "diagnostic.infoSign": "»",
+  "diagnostic.hintSign": "»",
   "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "≈",
+  "diagnostic.refreshOnInsertMode": true,
+
+  // calc
+  "calc.replaceOriginalExpression": false,
+
+  // pairs
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+
+  // yank
+  "yank.priority": 10,
+  "yank.highlight.enable": true,
+  "yank.highlight.duration": 100,
+  "yank.limit": 2,
+  "yank.list.maxsize": 100,
+  "yank.enableCompletion": false,
 
   // python
   "python.sortImports.args": ["-sl"],
@@ -47,6 +65,7 @@
   "javascript.suggestionActions.enabled": false,
 
   // prettier
+  "prettier.printWidth": 90,
   "prettier.singleQuote": true,
   "prettier.eslintIntegration": true,
 
@@ -58,11 +77,10 @@
   // preferences
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": [
-    "css",
     "markdown",
     "javascript",
+    "typescript",
     "json",
-    "html",
     "rust"
   ],
 
