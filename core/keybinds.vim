@@ -18,58 +18,92 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 if dein#tap('dein.vim')
-	nnoremap <silent> <Leader>pu  :call dein#update()<CR>
-	nnoremap <silent> <Leader>pr  :call dein#recache_runtimepath()<CR>
-	nnoremap <silent> <Leader>pl  :echo dein#get_updates_log()<CR>
-	if s:enable_whichkey
-		let g:which_key_map.p = { 'name': '+plugin'}
-		let g:which_key_map.p.u = 'update all plugins'
-		let g:which_key_map.p.r = 'reache runtime path'
-		let g:which_key_map.p.l = 'plugins update log'
-	endif
+  nnoremap <silent> <Leader>pu  :call dein#update()<CR>
+  nnoremap <silent> <Leader>pr  :call dein#recache_runtimepath()<CR>
+  nnoremap <silent> <Leader>pl  :echo dein#get_updates_log()<CR>
+  if s:enable_whichkey
+    let g:which_key_map.p = { 'name': '+plugin'}
+    let g:which_key_map.p.u = 'update all plugins'
+    let g:which_key_map.p.r = 'reache runtime path'
+    let g:which_key_map.p.l = 'plugins update log'
+  endif
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('vim-clap')
+  nnoremap <silent> <space>tc :<C-u>Clap colors<CR>
+  nnoremap <silent> <space>bb :<C-u>Clap buffers<CR>
+  nnoremap <silent> <space>fa :<C-u>Clap grep2<CR>
+  nnoremap <silent> <space>fb :<C-u>Clap marks<CR>
+ 
+  nnoremap <silent> <C-x><C-f> :<C-u>Clap filer<CR>
+  nnoremap <silent> <space>ff :<C-u>Clap files ++finder=rg --ignore --hidden --files<cr>
+  nnoremap <silent> <space>fg :<C-u>Clap gfiles<CR>
+  nnoremap <silent> <space>fw :<C-u>Clap grep ++query=<cword><cr>
+  nnoremap <silent> <space>fh :<C-u>Clap history<CR>
+  nnoremap <silent> <space>fW :<C-u>Clap windows<CR>
+  nnoremap <silent> <space>fl :<C-u>Clap loclist<CR>
+  nnoremap <silent> <space>fu :<C-u>Clap git_diff_files<CR>
+  nnoremap <silent> <space>fv :<C-u>Clap grep ++query=@visual<CR>
+  nnoremap <silent> <space>oc :<C-u>Clap personalconf<CR>
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('coc-clap')
+  " Show all diagnostics
+  nnoremap <silent> <space>a  :Clap coc_diagnostics<CR>
+  " Manage extensions
+  nnoremap <silent> <space>e  :Clap coc_extensions<CR>
+  " Show commands
+  nnoremap <silent> <space>c  :Clap coc_commands<CR>
+  " Search workspace symbols
+  nnoremap <silent> <space>s  :Clap coc_symbols<CR>
+  nnoremap <silent> <space>S  :Clap coc_services<CR>
+  nnoremap <silent> <space>o  :Clap coc_outline<CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 if dein#tap('vim-buffet')
-	nnoremap  ]b :<C-u>bp<CR>
-	nnoremap  [b :<C-u>bn<CR>
-	nnoremap <silent> <Leader>bc :Bonly<CR>
-	nnoremap <silent> <Leader>bx :Bw<CR>
-	nmap <leader>1 <Plug>BuffetSwitch(1)
-	nmap <leader>2 <Plug>BuffetSwitch(2)
-	nmap <leader>3 <Plug>BuffetSwitch(3)
-	nmap <leader>4 <Plug>BuffetSwitch(4)
-	nmap <leader>5 <Plug>BuffetSwitch(5)
-	nmap <leader>6 <Plug>BuffetSwitch(6)
-	nmap <leader>7 <Plug>BuffetSwitch(7)
-	nmap <leader>8 <Plug>BuffetSwitch(8)
-	nmap <leader>9 <Plug>BuffetSwitch(9)
-	nmap <leader>0 <Plug>BuffetSwitch(10)
-	if s:enable_whichkey
-		let g:which_key_map.b = { 'name': '+buffer' }
-		let g:which_key_map.b.c = 'keep current buffer'
-		let g:which_key_map.b.x = 'remove all buffers'
-		let g:which_key_map.1 = 'select window-1'
-		let g:which_key_map.2 = 'select window-2'
-		let g:which_key_map.3 = 'select window-3'
-		let g:which_key_map.4 = 'select window-4'
-		let g:which_key_map.5 = 'select window-5'
-		let g:which_key_map.6 = 'select window-6'
-		let g:which_key_map.7 = 'select window-7'
-		let g:which_key_map.8 = 'select window-8'
-		let g:which_key_map.9 = 'select window-9'
-		let g:which_key_map.0 = 'select window-10'
-	endif
+  nnoremap  ]b :<C-u>bp<CR>
+  nnoremap  [b :<C-u>bn<CR>
+  nnoremap <silent> <Leader>bc :Bonly<CR>
+  nnoremap <silent> <Leader>bx :Bw<CR>
+  nmap <leader>1 <Plug>BuffetSwitch(1)
+  nmap <leader>2 <Plug>BuffetSwitch(2)
+  nmap <leader>3 <Plug>BuffetSwitch(3)
+  nmap <leader>4 <Plug>BuffetSwitch(4)
+  nmap <leader>5 <Plug>BuffetSwitch(5)
+  nmap <leader>6 <Plug>BuffetSwitch(6)
+  nmap <leader>7 <Plug>BuffetSwitch(7)
+  nmap <leader>8 <Plug>BuffetSwitch(8)
+  nmap <leader>9 <Plug>BuffetSwitch(9)
+  nmap <leader>0 <Plug>BuffetSwitch(10)
+  if s:enable_whichkey
+    let g:which_key_map.b = { 'name': '+buffer' }
+    let g:which_key_map.b.c = 'keep current buffer'
+    let g:which_key_map.b.x = 'remove all buffers'
+    let g:which_key_map.1 = 'select window-1'
+    let g:which_key_map.2 = 'select window-2'
+    let g:which_key_map.3 = 'select window-3'
+    let g:which_key_map.4 = 'select window-4'
+    let g:which_key_map.5 = 'select window-5'
+    let g:which_key_map.6 = 'select window-6'
+    let g:which_key_map.7 = 'select window-7'
+    let g:which_key_map.8 = 'select window-8'
+    let g:which_key_map.9 = 'select window-9'
+    let g:which_key_map.0 = 'select window-10'
+  endif
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 if dein#tap('dashboard-nvim')
-	nnoremap <silent> <Leader>os  :<C-u>Dashboard<CR>
-	if s:enable_whichkey
-		let g:which_key_map.o.s = 'open dashboard'
-	endif
+  nnoremap <silent> <Leader>os  :<C-u>Dashboard<CR>
+  if s:enable_whichkey
+    let g:which_key_map.o.s = 'open dashboard'
+  endif
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if dein#tap('coc.nvim')
   " Use K for show documentation in float window
   nnoremap <silent> K :call CocActionAsync('doHover')<CR>
@@ -124,23 +158,6 @@ if dein#tap('coc.nvim')
   command! -nargs=? Fold :call     CocAction('fold', <f-args>)
   " Add `:OR` command for organize imports of the current buffer.
   command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-  " Mappings for CoCList
-  " Show all diagnostics.
-  nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-  " Manage extensions.
-  nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-  " Show commands.
-  nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-  " Find symbol of current document.
-  nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-  " Search workspace symbols.
-  nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-  " Do default action for next item.
-  nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-  " Do default action for previous item.
-  nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-  " Resume latest coc list.
-  nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
   """"""""""""""""coc-translator""""""""""""""""""""""""
   nmap tt <Plug>(coc-translator-p)
   vmap tt <Plug>(coc-translator-pv)
@@ -296,6 +313,8 @@ endif
 
 
 " base mappings
+nnoremap <space><space> zz
+
 nnoremap s <nop>
 noremap Y y$
 nnoremap <silent> <leader>s :w<cr>

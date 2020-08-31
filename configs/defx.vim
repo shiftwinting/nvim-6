@@ -6,7 +6,10 @@ call defx#custom#option('_', {
 	\ 'direction': 'topleft',
 	\ 'show_ignored_files': 0,
 	\ 'columns': 'indent:git:icons:filename',
-	\ 'root_marker': '',
+	\ 'root_marker': ' ',
+  \ 'floating_preview': 1,
+  \ 'vertical_preview': 1,
+  \ 'preview_height': 50,
 	\ 'ignored_files':
 	\     '.mypy_cache,.pytest_cache,.git,.hg,.svn,.stversions'
 	\   . ',__pycache__,.sass-cache,*.egg-info,.DS_Store,*.pyc'
@@ -49,6 +52,7 @@ function! s:defx_settings() abort
   nnoremap <silent><buffer><expr> K  defx#do_action('new_directory')
   nnoremap <silent><buffer><expr> N  defx#do_action('new_multiple_files')
   nnoremap <silent><buffer><expr> s defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P     defx#do_action('preview')
   nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> R defx#do_action('redraw')
   nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')

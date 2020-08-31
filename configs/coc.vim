@@ -18,6 +18,7 @@ let g:coc_global_extensions = [
             \'coc-json',
             \'coc-lua',
             \'coc-marketplace',
+            \'coc-pairs',
             \'coc-prettier',
             \'coc-python', 
             \'coc-rust-analyzer',

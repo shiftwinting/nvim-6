@@ -1,5 +1,3 @@
-let g:dashboard_default_executive ='fzf'
-
 let g:dashboard_custom_shortcut={
   \ 'new_file':           'SPC n f',
   \ 'last_session':       'SPC s l',

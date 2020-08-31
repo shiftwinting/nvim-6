@@ -30,6 +30,18 @@ on_source = 'defx.nvim'
 repo = 'kristijanhusak/defx-icons'
 on_source = 'defx.nvim'
 
+# finder
+[[plugins]]
+repo = 'liuchengxu/vim-clap'
+merged = 0
+build = 'bash install.sh'
+on_map = { n = '<Plug>' }
+hook_source = 'source $VIM_PATH/configs/vim-clap.vim'
+
+[[plugins]]
+repo = 'vn-ki/coc-clap'
+on_source = 'vim-clap'
+
 # UI
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -39,6 +51,9 @@ repo = 'rakr/vim-one'
 
 [[plugins]]
 repo = 'kristijanhusak/vim-hybrid-material'
+
+[[plugins]]
+repo = 'hardcoreplayers/oceanic-material'
 
 [[plugins]]
 repo = 'hardcoreplayers/dashboard-nvim'
@@ -153,23 +168,6 @@ if = 1
 [[plugins]]
 repo = 'sbdchd/neoformat'
 on_cmd = 'Neoformat'
-
-[[plugins]]
-repo = 'dense-analysis/ale'
-on_event = ['BufReadPre','BufNewFile']
-hook_add = '''
-	let g:ale_sign_error = '✗'
-	let g:ale_sign_warning = '≈'
-'''
-
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-on_cmd = ['Files', 'History', 'Colors', 'Rg', 'Marks']
-
-[[plugins]]
-repo = 'junegunn/fzf'
-on_source = 'fzf.vim'
-
 
 [[plugins]]
 repo = 'voldikss/vim-floaterm'
