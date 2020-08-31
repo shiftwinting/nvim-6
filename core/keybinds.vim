@@ -102,6 +102,8 @@ if dein#tap('coc.nvim')
   " Example: `<leader>aap` for current paragraph
   xmap <leader>a  <Plug>(coc-codeaction-selected)
   nmap <leader>a  <Plug>(coc-codeaction-selected)
+  " Apply AutoFix to problem on the current line.
+  nmap <leader>qf  <Plug>(coc-fix-current)
   " Map function and class text objects
   " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
   xmap if <Plug>(coc-funcobj-i)
