@@ -1,7 +1,7 @@
 {
   // suggest
   "suggest.snippetIndicator": "🌟",
-  "suggest.timeout": 5000,
+  "suggest.timeout": 1000,
   "suggest.detailField": "abbr",
   "suggest.maxCompleteItemCount": 50,
   "suggest.maxPreviewWidth": 80,
@@ -59,8 +59,10 @@
   "yank.enableCompletion": false,
 
   // python
-  "python.sortImports.args": ["-sl"],
+  "python.sortImports.args": ["-m3"],
+  "python.formatting.provider": "black",
   "python.formatting.autopep8Args": ["--ignore=E402, E501"],
+  "python.formatting.blackArgs": ["--skip-string-normalization"],
 
   // javascript
   "javascript.suggestionActions.enabled": false,
