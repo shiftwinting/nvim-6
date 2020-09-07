@@ -44,6 +44,6 @@ augroup common "{{{
   " Make directory automatically.
   autocmd BufWritePre * call initself#mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
 
-  " autocmd BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc
+  autocmd BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc
 
 augroup END "}}}

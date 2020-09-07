@@ -56,25 +56,28 @@ repo = 'kristijanhusak/vim-hybrid-material'
 repo = 'hardcoreplayers/oceanic-material'
 
 [[plugins]]
+repo = 'ayu-theme/ayu-vim'
+
+[[plugins]]
 repo = 'hardcoreplayers/dashboard-nvim'
 hook_add = 'source $VIM_PATH/configs/dashboard.vim'
 
 [[plugins]]
 repo = 'hardcoreplayers/vim-buffet'
-on_event = ['BufReadPre','BufNewFile']
+if = 1
 hook_source = '''
-    function! g:BuffetSetCustomColors()
-        hi! link BuffetTab Keyword
-        hi! link BuffetBuffer Visual
-        hi! link BuffetActiveBuffer StatusLineNC
-        hi! link BuffetCurrentBuffer Function
-    endfunction
-    let g:buffet_show_index = 10
-    let g:buffet_powerline_separators = 0
-    let g:buffet_tab_icon = ""
-    let g:buffet_left_trunc_icon = ""
-    let g:buffet_right_trunc_icon = ""
-    let g:buffet_modified_icon = ' ⭒'
+  function! g:BuffetSetCustomColors()
+    hi! link BuffetTab Keyword
+    hi! link BuffetBuffer Visual
+    hi! link BuffetActiveBuffer StatusLineNC
+    hi! link BuffetCurrentBuffer Function
+  endfunction
+  let g:buffet_show_index = 10
+  let g:buffet_powerline_separators = 0
+  let g:buffet_tab_icon = ""
+  let g:buffet_left_trunc_icon = ""
+  let g:buffet_right_trunc_icon = ""
+  let g:buffet_modified_icon = ' ⭒'
 '''
 
 [[plugins]]
@@ -220,6 +223,10 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
+repo = 'kevinoid/vim-jsonc'
+on_ft = 'json'
+
+[[plugins]]
 repo = 'dart-lang/dart-vim-plugin'
 on_ft = 'dart'
 
@@ -250,7 +257,6 @@ hook_post_source = '''
   call s:register_whichkey()
 '''
 
-
 # version
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -266,3 +272,32 @@ hook_source = '''
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft =  'markdown'
+hook_add = '''
+  let g:vim_markdown_frontmatter = 1
+  let g:vim_markdown_strikethrough = 1
+  let g:vim_markdown_folding_level = 6
+  let g:vim_markdown_override_foldtext = 1
+  let g:vim_markdown_folding_style_pythonic = 1
+  let g:vim_markdown_conceal = 1
+  let g:vim_markdown_conceal_code_blocks = 1
+  let g:vim_markdown_new_list_item_indent = 0
+  let g:vim_markdown_toc_autofit = 0
+  let g:vim_markdown_edit_url_in = 'vsplit'
+  let g:vim_markdown_fenced_languages = [
+    \ 'c++=cpp',
+    \ 'viml=vim',
+    \ 'bash=sh',
+    \ 'ini=dosini',
+    \ 'js=javascript',
+    \ 'json=javascript',
+    \ 'jsx=javascriptreact',
+    \ 'tsx=typescriptreact',
+    \ 'docker=Dockerfile',
+    \ 'makefile=make',
+    \ 'py=python'
+    \ ]
+'''

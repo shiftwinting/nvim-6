@@ -56,8 +56,8 @@ call initself#source_file($VIM_PATH,'core/dein.vim')
 call initself#source_file($VIM_PATH,'core/general.vim')
 call initself#source_file($VIM_PATH,'core/event.vim')
 call initself#source_file($VIM_PATH,'core/keybinds.vim')
-call theme#theme_init()
 call initself#check_source($VIM_PATH . '/profile.vim')
+call theme#theme_init()
 
 set secure
 
