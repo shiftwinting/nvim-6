@@ -97,7 +97,7 @@ function! s:defx_mappings() abort
 	" Defx's buffer management
 	nnoremap <silent><buffer><expr> q      defx#do_action('quit')
 	nnoremap <silent><buffer><expr> se     defx#do_action('save_session')
-	nnoremap <silent><buffer><expr> <C-r>  defx#do_action('redraw')
+	nnoremap <silent><buffer><expr> R      defx#do_action('redraw')
 	nnoremap <silent><buffer><expr> <C-g>  defx#do_action('print')
 
 	" File/dir management
