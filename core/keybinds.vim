@@ -340,8 +340,7 @@ inoremap jj <Esc>`^
 inoremap <C-l> <C-o>A
 inoremap <C-j> <C-o>o
 inoremap <C-k> <C-o>O
-" move
-inoremap <C-w> <up>
-inoremap <C-a> <left>
-inoremap <C-s> <down>
-inoremap <C-d> <right>
+
+inoremap <C-w> <C-o>ciw
+inoremap <C-d> <Del>
+inoremap <C-h> <BS>
