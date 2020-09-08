@@ -59,6 +59,9 @@ repo = 'hardcoreplayers/oceanic-material'
 repo = 'ayu-theme/ayu-vim'
 
 [[plugins]]
+repo = 'arcticicestudio/nord-vim'
+
+[[plugins]]
 repo = 'hardcoreplayers/dashboard-nvim'
 hook_add = 'source $VIM_PATH/configs/dashboard.vim'
 
@@ -272,6 +275,10 @@ hook_source = '''
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
