@@ -1,7 +1,7 @@
 {
   // suggest
   "suggest.snippetIndicator": "🌟",
-  "suggest.timeout": 1000,
+  "suggest.timeout": 5000,
   "suggest.detailField": "abbr",
   "suggest.maxCompleteItemCount": 50,
   "suggest.maxPreviewWidth": 80,
