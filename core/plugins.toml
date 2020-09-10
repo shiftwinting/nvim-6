@@ -3,6 +3,10 @@
 repo = 'Shougo/dein.vim'
 on_func = 'dein#'
 
+[[plugins]]
+repo = 'wsdjeg/dein-ui.vim'
+on_cmd = 'DeinUpdate'
+
 # completion
 [[plugins]]
 repo = 'neoclide/coc.nvim'
@@ -99,6 +103,14 @@ hook_add = '''
 [[plugins]]
 repo = 'rhysd/accelerated-jk'
 on_map = {n = '<Plug>'}
+
+[[plugins]]
+repo = 'kana/vim-niceblock'
+on_map = {x = '<Plug>'}
+hook_add = '''
+  xmap I  <Plug>(niceblock-I)
+  xmap A  <Plug>(niceblock-A)
+'''
 
 [[plugins]]
 repo = 'psliwka/vim-smoothie'

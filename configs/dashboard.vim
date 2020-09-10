@@ -18,3 +18,5 @@ let g:dashboard_custom_header = [
       \'',
       \'Welcome😃    ',
       \]
+
+nnoremap <silent><buffer> q :q<CR>

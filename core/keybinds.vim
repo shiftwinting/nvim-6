@@ -342,5 +342,7 @@ inoremap <C-j> <C-o>o
 inoremap <C-k> <C-o>O
 
 inoremap <C-w> <C-o>ciw
+nnoremap <C-w> ciw
+
 inoremap <C-d> <Del>
 inoremap <C-h> <BS>
