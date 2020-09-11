@@ -337,7 +337,7 @@ nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 " back to normal
 inoremap jj <Esc>`^
 
-inoremap <C-i> <C-o>I
+" inoremap <C-i> <C-o>I
 inoremap <C-l> <C-o>A
 inoremap <C-j> <C-o>o
 inoremap <C-k> <C-o>O
