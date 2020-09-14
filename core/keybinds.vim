@@ -315,6 +315,7 @@ endif
 
 " base mappings
 nnoremap <space><space> zz
+nnoremap <space>q ZZ
 
 nnoremap s <nop>
 noremap Y y$
