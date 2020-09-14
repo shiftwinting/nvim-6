@@ -92,6 +92,7 @@ repo = 'glepnir/spaceline.vim'
 hook_add = '''
   let g:spaceline_colorscheme = 'one'
   let g:spaceline_seperate_style= 'none'
+  let g:spaceline_custom_vim_status = {'n': " ", 'V': " ", 'v': " ", "\<C-v>": "C-V", 'i':" ", 'R':"גּ ", 's':" ", 't':"ﭨ ", 'c':"↪ ", "!": "SE"}
   let g:spaceline_custom_diff_icon =  [' ',' ',' ']
   let g:spaceline_git_branch_icon= ' '
   let g:spaceline_diagnostic_errorsign = '✗ '
