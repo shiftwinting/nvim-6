@@ -314,13 +314,15 @@ endif
 
 
 " base mappings
+nnoremap s <nop>
+
 nnoremap <space><space> zz
 nnoremap <space>q ZZ
 
-nnoremap s <nop>
 noremap Y y$
 nnoremap <silent> <leader>s :w<cr>
-nnoremap <silent> <leader>h :nohl<CR>
+nnoremap <silent> <leader>h :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+
 " switch window
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -348,3 +350,6 @@ nnoremap <C-w> ciw
 
 inoremap <C-d> <Del>
 inoremap <C-h> <BS>
+
+xnoremap <  <gv
+xnoremap >  >gv
