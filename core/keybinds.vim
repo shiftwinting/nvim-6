@@ -353,3 +353,6 @@ inoremap <C-h> <BS>
 
 xnoremap <  <gv
 xnoremap >  >gv
+
+nnoremap dl D
+nnoremap dh d0
