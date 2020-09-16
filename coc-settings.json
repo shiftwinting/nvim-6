@@ -84,7 +84,8 @@
     "javascript",
     "typescript",
     "json",
-    "rust"
+    "rust",
+    "go"
   ],
 
   // git

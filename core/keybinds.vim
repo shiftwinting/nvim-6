@@ -130,8 +130,8 @@ if dein#tap('coc.nvim')
   " Symbol renaming.
   nmap <leader>rn <Plug>(coc-rename)
   " Format current buffer
-  xmap <leader>f  <Plug>(coc-format)
-  nmap <leader>f  <Plug>(coc-format)
+  xmap <silent> <leader>f  <Plug>(coc-format)
+  nmap <silent> <leader>f  <Plug>(coc-format)
   " Applying codeAction to the selected region.
   " Example: `<leader>aap` for current paragraph
   xmap <leader>a  <Plug>(coc-codeaction-selected)

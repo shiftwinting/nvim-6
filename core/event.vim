@@ -1,4 +1,3 @@
-
 augroup common "{{{
   autocmd!
   " Reload vim config automatically
@@ -44,7 +43,10 @@ augroup common "{{{
   " Make directory automatically.
   autocmd BufWritePre * call initself#mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
 
-  autocmd BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc
-  autocmd BufNewFile,BufRead go.mod            setlocal filetype=gomod
+  autocmd InsertEnter * :set norelativenumber
+  autocmd InsertLeave * :set relativenumber
+
+  autocmd InsertLeave,WinEnter * set cursorline
+  autocmd InsertEnter,WinLeave * set nocursorline
 
 augroup END "}}}
