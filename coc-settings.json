@@ -109,8 +109,17 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
+      "filetypes": ["go"],
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
+      "args": ["-remote", "auto"],
+      "env": { "TMPDIR": "/tmp" },
+      "disableWorkspaceFolders": true,
+      "initializationOptions": {
+        "staticcheck": true,
+        "usePlaceholders": true,
+        "completeUnimported": true,
+        "caseSensitiveCompletion": true
+      }
     },
     "bash": {
       "command": "bash-language-server",
