@@ -57,9 +57,6 @@ repo = 'rakr/vim-one'
 repo = 'kristijanhusak/vim-hybrid-material'
 
 [[plugins]]
-repo = 'glepnir/oceanic-material'
-
-[[plugins]]
 repo = 'ayu-theme/ayu-vim'
 
 [[plugins]]
@@ -186,10 +183,6 @@ hook_source = '''
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
 if = 1
-
-[[plugins]]
-repo = 'sbdchd/neoformat'
-on_cmd = 'Neoformat'
 
 [[plugins]]
 repo = 'voldikss/vim-floaterm'

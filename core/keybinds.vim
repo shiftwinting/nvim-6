@@ -283,10 +283,6 @@ if dein#tap('vim-quickrun')
 	nnoremap <silent> <F5> :QuickRun<CR>
 endif
 
-if dein#tap('neoformat')
-  noremap <silent> <F6> :Neoformat<CR>
-endif
-
 if dein#tap('vim-easy-align')
   xmap ga <Plug>(EasyAlign)
   nmap ga <Plug>(EasyAlign)
@@ -306,7 +302,7 @@ if dein#tap('fzf.vim')
 endif
 
 if dein#tap('goyo.vim')
-  nnoremap <Leader>G :Goyo<CR>
+  nnoremap <silent> <Leader>G :Goyo<CR>
   if s:enable_whichkey
     let g:which_key_map.G = 'Goyo'
   endif
@@ -355,4 +351,4 @@ xnoremap <  <gv
 xnoremap >  >gv
 
 nnoremap dl D
-nnoremap dh d0
+nnoremap dh d0x
