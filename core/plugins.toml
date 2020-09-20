@@ -181,6 +181,10 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+on_cmd = 'TableModeToggle'
+
+[[plugins]]
 repo = 'junegunn/vim-easy-align'
 if = 1
 
