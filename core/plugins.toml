@@ -129,6 +129,29 @@ repo = 'itchyny/vim-cursorword'
 if = 1
 
 [[plugins]]
+repo = 'Xuyuanp/scrollbar.nvim'
+on_event = ['BufEnter', 'BufLeave']
+hook_add = '''
+  let g:scrollbar_shape = {
+  \ 'head': '▕',
+  \ 'body': '▕',
+  \ 'tail': '▕',
+  \ }
+  let g:scrollbar_highlight = {
+  \ 'head': 'Comment',
+  \ 'body': 'Comment',
+  \ 'tail': 'Comment',
+  \ }
+  let g:scrollbar_max_size = 3
+  autocmd BufEnter    * silent! lua require('scrollbar').show()
+  autocmd BufLeave    * silent! lua require('scrollbar').clear()
+  autocmd CursorMoved * silent! lua require('scrollbar').show()
+  autocmd VimResized  * silent! lua require('scrollbar').show()
+  autocmd FocusGained * silent! lua require('scrollbar').show()
+  autocmd FocusLost   * silent! lua require('scrollbar').clear()
+'''
+
+[[plugins]]
 repo = 'Yggdroot/indentLine'
 on_event = 'BufReadPre'
 hook_source = '''

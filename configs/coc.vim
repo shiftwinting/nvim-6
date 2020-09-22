@@ -23,6 +23,7 @@ let g:coc_global_extensions = [
             \'coc-python', 
             \'coc-rust-analyzer',
             \'coc-snippets',
+            \'coc-toml',
             \'coc-translator',
             \'coc-tsserver',
             \'coc-vetur',
