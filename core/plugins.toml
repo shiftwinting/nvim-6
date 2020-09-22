@@ -143,6 +143,7 @@ hook_add = '''
   \ 'tail': 'Comment',
   \ }
   let g:scrollbar_max_size = 3
+  let g:scrollbar_excluded_filetypes = ['defx', 'tagbar', 'dashboard', 'vista_kind']
   autocmd BufEnter    * silent! lua require('scrollbar').show()
   autocmd BufLeave    * silent! lua require('scrollbar').clear()
   autocmd CursorMoved * silent! lua require('scrollbar').show()
