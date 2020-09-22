@@ -175,29 +175,20 @@ if dein#tap('vim-floaterm')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap('vim-go')
-	function! InitGoKeyMap() abort
-		nnoremap <silent> <LocalLeader>ga :GoAddTags<CR>
-		nnoremap <silent> <LocalLeader>gr :GoRemoveTags<CR>
-		nnoremap <silent> <LocalLeader>gi :GoImpl<CR>
-		nnoremap <silent> <LocalLeader>gd :GoDef<CR>
-		nnoremap <silent> <LocalLeader>gc :GoCallees<CR>
-		nnoremap <silent> <LocalLeader>gC :GoCallers<CR>
-		nnoremap <silent> <LocalLeader>gs :GoCallstack<CR>
-		if s:enable_whichkey
-			let g:which_key_localmap.g = { 'name': '+GoToolKit'}
-			let g:which_key_localmap.g.a = 'Add tags'
-			let g:which_key_localmap.g.r = 'Remove tags'
-			let g:which_key_localmap.g.i = 'Go impl'
-			let g:which_key_localmap.g.d = 'Go definition'
-			let g:which_key_localmap.g.c = 'Go Callees'
-			let g:which_key_localmap.g.C = 'Go Callers'
-			let g:which_key_localmap.g.s = 'Go Callstack'
-		endif
-	endfunction
-	autocmd FileType go call InitGoKeyMap()
+if dein#tap('go.vim')
+  function! InitGoKeyMap() abort
+    nnoremap <silent> <LocalLeader>ga :GoAddTags<CR>
+    nnoremap <silent> <LocalLeader>gr :GoRemoveTags<CR>
+    if s:enable_whichkey
+      let g:which_key_localmap.g = { 'name': '+GoToolKit'}
+      let g:which_key_localmap.g.a = 'Add tags'
+      let g:which_key_localmap.g.r = 'Remove tags'
+    endif
+  endfunction
+  autocmd FileType go call InitGoKeyMap()
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if dein#tap('vim-fugitive')
 	nnoremap <silent> <Leader>ga :Git add %:p<CR>
 	nnoremap <silent> <Leader>gd :Gdiffsplit<CR>

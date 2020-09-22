@@ -338,9 +338,9 @@ hook_source = '''
 '''
 
 # language
-# [[plugins]]
-# repo = 'fatih/vim-go'
-# on_ft = 'go'
+[[plugins]]
+repo = 'fannheyward/go.vim'
+on_ft = 'go'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
