@@ -12,6 +12,7 @@ let g:coc_global_extensions = [
             \'coc-emmet',
             \'coc-eslint',
             \'coc-flutter',
+            \'coc-go',
             \'coc-git',
             \'coc-highlight',
             \'coc-html',
