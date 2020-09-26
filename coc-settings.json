@@ -73,7 +73,7 @@
   "prettier.eslintIntegration": true,
 
   // eslint
-  "eslint.enable": false,
+  "eslint.enable": true,
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": ["javascript", "typescript"],
 
