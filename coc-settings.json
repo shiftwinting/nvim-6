@@ -79,15 +79,7 @@
 
   // preferences
   "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "markdown",
-    "javascript",
-    "typescript",
-    "json",
-    "jsonc",
-    "rust",
-    "go"
-  ],
+  "coc.preferences.formatOnSaveFiletypes": ["rust", "go"],
 
   // git
   "git.enableGutters": true,
