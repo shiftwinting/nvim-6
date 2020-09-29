@@ -63,6 +63,9 @@ repo = 'ayu-theme/ayu-vim'
 repo = 'arcticicestudio/nord-vim'
 
 [[plugins]]
+repo = 'sainnhe/sonokai'
+
+[[plugins]]
 repo = 'glepnir/dashboard-nvim'
 hook_add = 'source $VIM_PATH/configs/dashboard.vim'
 
@@ -268,6 +271,31 @@ hook_add = '''
 
 # filetype
 [[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_ft = ['python', 'go', 'javascript', 'typescript', 'html', 'css', 'rust', 'toml', 'lua', 'vue', 'yaml']
+hook_source = '''
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
+  },
+  ensure_installed = 'all'
+}
+EOF
+'''
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
@@ -289,12 +317,12 @@ hook_source = '''
   let g:instant_markdown_autostart = 0
 '''
 
-[[plugins]]
-repo = 'vim-python/python-syntax'
-on_ft = 'python'
-hook_source = '''
-  let g:python_highlight_all = 1
-'''
+# [[plugins]]
+# repo = 'vim-python/python-syntax'
+# on_ft = 'python'
+# hook_source = '''
+#   let g:python_highlight_all = 1
+# '''
 
 [[plugins]]
 repo = 'raimon49/requirements.txt.vim'
