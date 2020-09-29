@@ -270,10 +270,6 @@ if dein#tap('any-jump.vim')
 	nnoremap <silent> <Leader>j :AnyJump<CR>
 endif
 
-if dein#tap('vim-quickrun')
-	nnoremap <silent> <F5> :QuickRun<CR>
-endif
-
 if dein#tap('vim-easy-align')
   xmap ga <Plug>(EasyAlign)
   nmap ga <Plug>(EasyAlign)
