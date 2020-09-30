@@ -24,6 +24,7 @@ let g:coc_global_extensions = [
             \'coc-python', 
             \'coc-rust-analyzer',
             \'coc-snippets',
+            \'coc-syntax',
             \'coc-toml',
             \'coc-translator',
             \'coc-tsserver',
