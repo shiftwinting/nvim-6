@@ -1,12 +1,14 @@
 {
   // suggest
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
   "suggest.snippetIndicator": "🌟",
   "suggest.timeout": 5000,
-  "suggest.detailField": "abbr",
+  "suggest.detailField": "preview",
   "suggest.maxCompleteItemCount": 50,
   "suggest.maxPreviewWidth": 80,
   "suggest.triggerAfterInsertEnter": false,
-  "suggest.detailMaxLength": 30,
+  "suggest.detailMaxLength": 50,
   "suggest.completionItemKindLabels": {
     "keyword": "",
     "variable": "",
@@ -37,12 +39,16 @@
 
   // diagnostic
   "diagnostic.enable": true,
+  "diagnostic.displayByAle": false,
   "diagnostic.infoSign": "»",
   "diagnostic.hintSign": "»",
-  "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "≈",
-  "diagnostic.displayByAle": false,
+  "diagnostic.errorSign": "✗",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": "  ❄ ",
   "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.refreshAfterSave": false,
+  "diagnostic.checkCurrentLine": true,
 
   // calc
   "calc.replaceOriginalExpression": false,
@@ -77,7 +83,10 @@
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": ["javascript", "typescript"],
 
-  // preferences
+  // coc.preferences
+  "coc.preferences.hoverTarget": "preview",
+  "coc.preferences.enableFloatHighlight": true,
+  "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["rust", "go"],
 
