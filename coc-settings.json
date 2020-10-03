@@ -85,6 +85,7 @@
 
   // coc.preferences
   "coc.preferences.hoverTarget": "preview",
+  "coc.preferences.previewMaxHeight": 20,
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnType": true,
