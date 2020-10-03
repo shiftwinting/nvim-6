@@ -1,0 +1,152 @@
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'rakr/vim-one'
+
+[[plugins]]
+repo = 'kristijanhusak/vim-hybrid-material'
+
+[[plugins]]
+repo = 'sainnhe/sonokai'
+
+[[plugins]]
+repo = 'glepnir/dashboard-nvim'
+hook_add = '''
+  let g:dashboard_custom_shortcut={
+    \ 'new_file':           'spc n f',
+    \ 'last_session':       'spc s l',
+    \ 'find_history':       'spc f h',
+    \ 'find_file':          'spc f f',
+    \ 'change_colorscheme': 'spc t c',
+    \ 'find_word':          'spc f a',
+    \ 'book_marks':         'spc f b',
+    \ }
+
+  let g:dashboard_custom_footer = ['']
+  let g:dashboard_custom_header = [
+        \'',
+        \'',
+        \'',
+        \'',
+        \'',
+        \'Welcome😃    ',
+        \]
+
+  nnoremap <silent><buffer> q :q<CR>
+'''
+
+[[plugins]]
+repo = 'hardcoreplayers/vim-buffet'
+if = 1
+hook_source = '''
+  function! g:BuffetSetCustomColors()
+    hi! link BuffetTab Keyword
+    hi! link BuffetBuffer Visual
+    hi! link BuffetActiveBuffer StatusLineNC
+    hi! link BuffetCurrentBuffer Function
+  endfunction
+  let g:buffet_show_index = 10
+  let g:buffet_powerline_separators = 0
+  let g:buffet_tab_icon = ""
+  let g:buffet_left_trunc_icon = ""
+  let g:buffet_right_trunc_icon = ""
+  let g:buffet_modified_icon = ' ⭒'
+'''
+
+[[plugins]]
+repo = 'glepnir/spaceline.vim'
+hook_add = '''
+  let g:spaceline_colorscheme = 'one'
+  let g:spaceline_seperate_style= 'none'
+  let g:spaceline_custom_vim_status = {'n': " ", 'V': " ", 'v': " ", "\<C-v>": "C-V", 'i':" ", 'R':"גּ ", 's':" ", 't':"ﭨ ", 'c':"↪ ", "!": "SE"}
+  let g:spaceline_custom_diff_icon =  [' ',' ',' ']
+  let g:spaceline_git_branch_icon= ' '
+  let g:spaceline_diagnostic_errorsign = '✗ '
+  let g:spaceline_diagnostic_warnsign = '≈ '
+'''
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+on_cmd = 'Defx'
+hook_source = 'source $VIM_PATH/configs/defx.vim'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+on_source = 'defx.nvim'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+on_source = 'defx.nvim'
+
+# [[plugins]]
+# repo = 'wfxr/minimap.vim'
+# on_event = ['BufEnter', 'BufLeave']
+# hook_source = '''
+#   let g:minimap_width = 10
+#   let g:minimap_highlight = 'keyword'
+#   let g:minimap_auto_start = 1
+# '''
+
+[[plugins]]
+repo = 'Xuyuanp/scrollbar.nvim'
+on_event = ['BufEnter', 'BufLeave']
+hook_add = '''
+  let g:scrollbar_shape = {
+  \ 'head': '▕',
+  \ 'body': '▕',
+  \ 'tail': '▕',
+  \ }
+  let g:scrollbar_highlight = {
+  \ 'head': 'Comment',
+  \ 'body': 'Comment',
+  \ 'tail': 'Comment',
+  \ }
+  let g:scrollbar_max_size = 3
+  let g:scrollbar_excluded_filetypes = ['defx', 'tagbar', 'dashboard', 'vista_kind']
+  autocmd BufEnter    * silent! lua require('scrollbar').show()
+  autocmd BufLeave    * silent! lua require('scrollbar').clear()
+  autocmd CursorMoved * silent! lua require('scrollbar').show()
+  autocmd VimResized  * silent! lua require('scrollbar').show()
+  autocmd FocusGained * silent! lua require('scrollbar').show()
+  autocmd FocusLost   * silent! lua require('scrollbar').clear()
+'''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+on_event = 'BufReadPre'
+hook_source = '''
+    let g:indentLine_enabled = 1
+    let g:indentLine_char='┆'
+    let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','tagbar','vista_kind','vista','coc-explorer','dashboard']
+    let g:indentLine_concealcursor = 'niv'
+    let g:indentLine_showFirstIndentLevel =1
+'''
+
+[[plugins]]
+repo = 'kien/rainbow_parentheses.vim'
+hook_post_source = '''
+  let g:rbpt_colorpairs = [
+                      \ ['brown',       'RoyalBlue3'],
+                      \ ['Darkblue',    'SeaGreen3'],
+                      \ ['darkgray',    'DarkOrchid3'],
+                      \ ['darkgreen',   'firebrick3'],
+                      \ ['darkcyan',    'RoyalBlue3'],
+                      \ ['darkred',     'SeaGreen3'],
+                      \ ['darkmagenta', 'DarkOrchid3'],
+                      \ ['brown',       'firebrick3'],
+                      \ ['gray',        'RoyalBlue3'],
+                      \ ['darkmagenta', 'DarkOrchid3'],
+                      \ ['Darkblue',    'firebrick3'],
+                      \ ['darkgreen',   'RoyalBlue3'],
+                      \ ['darkcyan',    'SeaGreen3'],
+                      \ ['darkred',     'DarkOrchid3'],
+                      \ ['red',         'firebrick3'],
+                      \ ]
+  let g:rbpt_max = 16
+  let g:rbpt_loadcmd_toggle = 0
+  au VimEnter * RainbowParenthesesToggle
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * RainbowParenthesesLoadBraces
+'''

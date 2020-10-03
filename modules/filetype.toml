@@ -1,0 +1,47 @@
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_ft = ['python', 'go', 'javascript', 'typescript', 'html', 'css', 'rust', 'toml', 'lua', 'vue', 'yaml']
+hook_source = '''
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
+  },
+  ensure_installed = 'all'
+}
+EOF
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'neoclide/jsonc.vim'
+on_ft = 'jsonc'
+
+[[plugins]]
+repo = 'dart-lang/dart-vim-plugin'
+on_ft = 'dart'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'raimon49/requirements.txt.vim'
+on_ft = 'requirements'
+
+[[plugins]]
+repo = 'johejo/gomod.vim'
+on_ft = 'gomod'

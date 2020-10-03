@@ -12,6 +12,9 @@ let $VIM_PATH =
 let $DATA_PATH =
 	\ expand(($XDG_CACHE_HOME ? $XDG_CACHE_HOME : '~/.cache') . '/vim')
 
+" Collection of  plugins list config file-paths
+let s:config_paths = split(globpath('$VIM_PATH/modules', '*'), '\n')
+
 function! s:main()
 	if has('vim_starting')
 		" When using VIMINIT trick for exotic MYVIMRC locations, add path now.
@@ -92,7 +95,9 @@ function! s:use_dein()
 		" Start propagating file paths and plugin presets
 		call dein#begin(l:cache_path)
 
-			call dein#load_toml($VIM_PATH . '/core/plugins.toml')
+      for l:repo_toml in s:config_paths
+        call dein#load_toml(l:repo_toml)
+      endfor
 
 		call dein#end()
 
