@@ -9,6 +9,7 @@ repo = 'kristijanhusak/vim-hybrid-material'
 
 [[plugins]]
 repo = 'sainnhe/sonokai'
+hook_add = "let g:sonokai_style = 'andromeda'"
 
 [[plugins]]
 repo = 'glepnir/dashboard-nvim'
@@ -24,14 +25,7 @@ hook_add = '''
     \ }
 
   let g:dashboard_custom_footer = ['']
-  let g:dashboard_custom_header = [
-        \'',
-        \'',
-        \'',
-        \'',
-        \'',
-        \'Welcome😃    ',
-        \]
+  let g:dashboard_custom_header = ['','','','','','Welcome😃    ',]
 
   nnoremap <silent><buffer> q :q<CR>
 '''
