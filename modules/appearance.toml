@@ -9,7 +9,7 @@ repo = 'kristijanhusak/vim-hybrid-material'
 
 [[plugins]]
 repo = 'sainnhe/sonokai'
-hook_add = "let g:sonokai_style = 'andromeda'"
+hook_add = "let g:sonokai_style = 'atlantis'"
 
 [[plugins]]
 repo = 'glepnir/dashboard-nvim'
