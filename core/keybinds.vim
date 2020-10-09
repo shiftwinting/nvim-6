@@ -287,14 +287,6 @@ if dein#tap('accelerated-jk')
 	nmap <silent>k <Plug>(accelerated_jk_gk)
 endif
 
-if dein#tap('fzf.vim')
-	nnoremap <silent> <space>fh :History<CR>
-	nnoremap <silent> <space>ff :Files<CR>
-	nnoremap <silent> <space>tc :Colors<CR>
-	nnoremap <silent> <space>fa :Rg<CR>
-	nnoremap <silent> <space>fb :Marks<CR>
-endif
-
 if dein#tap('goyo.vim')
   nnoremap <silent> <Leader>G :Goyo<CR>
   if s:enable_whichkey
