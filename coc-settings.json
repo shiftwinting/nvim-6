@@ -46,6 +46,7 @@
   "diagnostic.errorSign": "✗",
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "  ❄ ",
+  "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.refreshAfterSave": false,
   "diagnostic.checkCurrentLine": true,
