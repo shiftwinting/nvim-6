@@ -302,7 +302,7 @@ nnoremap <space><space> zz
 nnoremap <space>q ZZ
 
 noremap Y y$
-nnoremap <silent> <leader>s :w<cr>
+nnoremap <silent> <leader>s :w!<cr>
 nnoremap <silent> <leader>h :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 " switch window
