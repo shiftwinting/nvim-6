@@ -85,7 +85,7 @@
   "eslint.filetypes": ["javascript", "typescript"],
 
   // coc.preferences
-  "coc.preferences.hoverTarget": "preview",
+  "coc.preferences.hoverTarget": "float",
   "coc.preferences.previewMaxHeight": 20,
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.extensionUpdateCheck": "daily",
