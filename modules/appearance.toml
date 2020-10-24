@@ -8,11 +8,10 @@ repo = 'rakr/vim-one'
 repo = 'kristijanhusak/vim-hybrid-material'
 
 [[plugins]]
-repo = 'sainnhe/sonokai'
 hook_add = "let g:sonokai_style = 'atlantis'"
+repo     = 'sainnhe/sonokai'
 
 [[plugins]]
-repo = 'glepnir/dashboard-nvim'
 hook_add = '''
   let g:dashboard_custom_shortcut={
     \ 'new_file':           'spc n f',
@@ -29,10 +28,9 @@ hook_add = '''
 
   nnoremap <silent><buffer> q :q<CR>
 '''
+repo     = 'glepnir/dashboard-nvim'
 
 [[plugins]]
-repo = 'hardcoreplayers/vim-buffet'
-if = 1
 hook_source = '''
   function! g:BuffetSetCustomColors()
     hi! link BuffetTab Keyword
@@ -47,9 +45,10 @@ hook_source = '''
   let g:buffet_right_trunc_icon = ""
   let g:buffet_modified_icon = ' ⭒'
 '''
+if          = 1
+repo        = 'hardcoreplayers/vim-buffet'
 
 [[plugins]]
-repo = 'glepnir/spaceline.vim'
 hook_add = '''
   let g:spaceline_colorscheme = 'one'
   let g:spaceline_seperate_style= 'none'
@@ -59,19 +58,20 @@ hook_add = '''
   let g:spaceline_diagnostic_errorsign = '✗ '
   let g:spaceline_diagnostic_warnsign = '≈ '
 '''
+repo     = 'glepnir/spaceline.vim'
 
 [[plugins]]
-repo = 'Shougo/defx.nvim'
-on_cmd = 'Defx'
 hook_source = 'source $VIM_PATH/configs/defx.vim'
+on_cmd      = 'Defx'
+repo        = 'Shougo/defx.nvim'
 
 [[plugins]]
-repo = 'kristijanhusak/defx-git'
 on_source = 'defx.nvim'
+repo      = 'kristijanhusak/defx-git'
 
 [[plugins]]
-repo = 'kristijanhusak/defx-icons'
 on_source = 'defx.nvim'
+repo      = 'kristijanhusak/defx-icons'
 
 # [[plugins]]
 # repo = 'wfxr/minimap.vim'
@@ -83,8 +83,6 @@ on_source = 'defx.nvim'
 # '''
 
 [[plugins]]
-repo = 'Xuyuanp/scrollbar.nvim'
-on_event = ['BufEnter', 'BufLeave']
 hook_add = '''
   let g:scrollbar_shape = {
   \ 'head': '▕',
@@ -105,10 +103,10 @@ hook_add = '''
   autocmd FocusGained * silent! lua require('scrollbar').show()
   autocmd FocusLost   * silent! lua require('scrollbar').clear()
 '''
+on_event = ['BufEnter', 'BufLeave']
+repo     = 'Xuyuanp/scrollbar.nvim'
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
-on_event = 'BufReadPre'
 hook_source = '''
     let g:indentLine_enabled = 1
     let g:indentLine_char='┆'
@@ -116,9 +114,10 @@ hook_source = '''
     let g:indentLine_concealcursor = 'niv'
     let g:indentLine_showFirstIndentLevel =1
 '''
+on_event    = 'BufReadPre'
+repo        = 'Yggdroot/indentLine'
 
 [[plugins]]
-repo = 'kien/rainbow_parentheses.vim'
 hook_post_source = '''
   let g:rbpt_colorpairs = [
                       \ ['brown',       'RoyalBlue3'],
@@ -144,3 +143,4 @@ hook_post_source = '''
   au Syntax * RainbowParenthesesLoadSquare
   au Syntax * RainbowParenthesesLoadBraces
 '''
+repo             = 'kien/rainbow_parentheses.vim'

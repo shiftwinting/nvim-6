@@ -1,11 +1,11 @@
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-merged = 0
-rev = 'release'
 hook_add = 'source $VIM_PATH/configs/coc.vim'
+merged   = 0
+repo     = 'neoclide/coc.nvim'
+rev      = 'release'
 
 [[plugins]]
-repo = 'honza/vim-snippets'
 depends = 'coc.nvim'
-if = 'has("python3")'
-merged =  0
+if      = 'has("python3")'
+merged  = 0
+repo    = 'honza/vim-snippets'

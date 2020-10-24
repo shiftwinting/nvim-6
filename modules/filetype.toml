@@ -1,6 +1,4 @@
 [[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-on_ft = ['python', 'go', 'javascript', 'typescript', 'html', 'css', 'rust', 'toml', 'lua', 'vue', 'yaml']
 hook_source = '''
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -22,26 +20,40 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 '''
+on_ft       = [
+  'python',
+  'go',
+  'javascript',
+  'typescript',
+  'html',
+  'css',
+  'rust',
+  'toml',
+  'lua',
+  'vue',
+  'yaml',
+]
+repo        = 'nvim-treesitter/nvim-treesitter'
 
 [[plugins]]
-repo = 'cespare/vim-toml'
 on_ft = 'toml'
+repo  = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'neoclide/jsonc.vim'
 on_ft = 'jsonc'
+repo  = 'neoclide/jsonc.vim'
 
 [[plugins]]
-repo = 'dart-lang/dart-vim-plugin'
 on_ft = 'dart'
+repo  = 'dart-lang/dart-vim-plugin'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
-repo = 'raimon49/requirements.txt.vim'
 on_ft = 'requirements'
+repo  = 'raimon49/requirements.txt.vim'
 
 [[plugins]]
-repo = 'johejo/gomod.vim'
 on_ft = 'gomod'
+repo  = 'johejo/gomod.vim'

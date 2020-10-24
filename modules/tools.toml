@@ -1,33 +1,37 @@
 [[plugins]]
-repo = 'Shougo/dein.vim'
 on_func = 'dein#'
+repo    = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'liuchengxu/vim-clap'
-merged = 0
-build = 'bash install.sh'
-on_map = { n = '<Plug>' }
+build       = 'bash install.sh'
 hook_source = 'source $VIM_PATH/configs/vim-clap.vim'
+merged      = 0
+on_map      = { n = '<Plug>' }
+repo        = 'liuchengxu/vim-clap'
 
 [[plugins]]
-repo = 'vn-ki/coc-clap'
 on_source = 'vim-clap'
+repo      = 'vn-ki/coc-clap'
 
 [[plugins]]
-repo = 'simnalamburt/vim-mundo'
 on_cmd = 'MundoToggle'
+repo   = 'simnalamburt/vim-mundo'
 
 [[plugins]]
-repo = 'pechorin/any-jump.vim'
 on_cmd = 'AnyJump'
+repo   = 'pechorin/any-jump.vim'
 
 [[plugins]]
-repo = 'voldikss/vim-floaterm'
-on_cmd = ['FloatermNew', 'FloatermToggle', 'FloatermPrev', 'FloatermNext', 'FloatermSend']
+on_cmd = [
+  'FloatermNew',
+  'FloatermToggle',
+  'FloatermPrev',
+  'FloatermNext',
+  'FloatermSend',
+]
+repo   = 'voldikss/vim-floaterm'
 
 [[plugins]]
-repo = 'liuchengxu/vista.vim'
-on_cmd = ['Vista', 'Vista!', 'Vista!!']
 hook_source = '''
     let g:vista#renderer#enable_icon = 1
     let g:vista_disable_statusline = 1
@@ -43,11 +47,10 @@ hook_source = '''
       \ 'typescriptreact': 'coc',
       \ }
 '''
+on_cmd      = ['Vista', 'Vista!', 'Vista!!']
+repo        = 'liuchengxu/vista.vim'
 
 [[plugins]]
-repo = 'ludovicchabant/vim-gutentags'
-if = "executable('ctags')"
-on_event = [ 'BufReadPost', 'BufWritePost' ]
 hook_source = '''
   let g:gutentags_cache_dir = $DATA_PATH . '/tags'
   let g:gutentags_project_root = ['.root', '.git', '.svn', '.hg', '.project','go.mod','.Cargo.toml','tsconfig.js','jsconfig.js']
@@ -56,11 +59,12 @@ hook_source = '''
   let g:gutentags_generate_on_new = 0
   let g:gutentags_exclude_filetypes = [ 'defx', 'denite', 'vista', 'magit' ]
 '''
+if          = "executable('ctags')"
+on_event    = ['BufReadPost', 'BufWritePost']
+repo        = 'ludovicchabant/vim-gutentags'
 
 [[plugins]]
-repo = 'liuchengxu/vim-which-key'
-on_cmd = ['Whichkey', 'Whichkey!']
-hook_add = '''
+hook_add         = '''
   let g:which_key_map =  { 'name' : 'Leader'}
   let g:which_key_localmap =  {'name' : 'LocalLeader'}
 '''
@@ -73,17 +77,19 @@ hook_post_source = '''
   endfunction
   call s:register_whichkey()
 '''
+on_cmd           = ['Whichkey', 'Whichkey!']
+repo             = 'liuchengxu/vim-which-key'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-on_cmd = [ 'G', 'Git', 'Gfetch', 'Gpush', 'Glog', 'Gclog', 'Gdiffsplit' ]
 hook_source = '''
 augroup user_fugitive_plugin
   autocmd!
   autocmd FileType fugitiveblame normal A
 augroup END
 '''
+on_cmd      = ['G', 'Git', 'Gfetch', 'Gpush', 'Glog', 'Gclog', 'Gdiffsplit']
+repo        = 'tpope/vim-fugitive'
 
 [[plugins]]
-repo = 'skywind3000/asyncrun.vim'
 on_cmd = 'AsyncRun'
+repo   = 'skywind3000/asyncrun.vim'
