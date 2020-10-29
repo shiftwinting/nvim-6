@@ -34,19 +34,25 @@ hook_add = '''
 repo     = 'glepnir/dashboard-nvim'
 
 [[plugins]]
-hook_add = '''
+hook_post_source = '''
 lua << EOF
-require'bufferline'.setup {
-  options = {
-    view = "multiwindow",
-    mappings = true,
-    sort_by = "extension"
-  };
-}
+require'bufferline'.setup{
+    options = {
+      modified_icon = '✥',
+      buffer_close_icon = '',
+      mappings = true,
+      always_show_bufferline = false,
+    };
+    highlights = {
+      bufferline_selected = {
+        gui = "bold",
+      };
+    };
+  }
 EOF
 '''
-on_event = ['BufEnter', 'BufLeave']
-repo     = 'akinsho/nvim-bufferline.lua'
+on_event         = 'VimEnter'
+repo             = 'akinsho/nvim-bufferline.lua'
 
 [[plugins]]
 hook_add = '''
