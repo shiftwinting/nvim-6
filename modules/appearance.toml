@@ -2,6 +2,9 @@
 repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
 repo = 'rakr/vim-one'
 
 [[plugins]]
@@ -31,22 +34,19 @@ hook_add = '''
 repo     = 'glepnir/dashboard-nvim'
 
 [[plugins]]
-hook_source = '''
-  function! g:BuffetSetCustomColors()
-    hi! link BuffetTab Keyword
-    hi! link BuffetBuffer Visual
-    hi! link BuffetActiveBuffer StatusLineNC
-    hi! link BuffetCurrentBuffer Function
-  endfunction
-  let g:buffet_show_index = 10
-  let g:buffet_powerline_separators = 0
-  let g:buffet_tab_icon = ""
-  let g:buffet_left_trunc_icon = ""
-  let g:buffet_right_trunc_icon = ""
-  let g:buffet_modified_icon = ' ⭒'
+hook_add = '''
+lua << EOF
+require'bufferline'.setup {
+  options = {
+    view = "multiwindow",
+    mappings = true,
+    sort_by = "extension"
+  };
+}
+EOF
 '''
-if          = 1
-repo        = 'hardcoreplayers/vim-buffet'
+on_event = ['BufEnter', 'BufLeave']
+repo     = 'akinsho/nvim-bufferline.lua'
 
 [[plugins]]
 hook_add = '''
@@ -109,10 +109,10 @@ repo     = 'Xuyuanp/scrollbar.nvim'
 [[plugins]]
 hook_source = '''
     let g:indentLine_enabled = 1
-    let g:indentLine_char='┆'
+    let g:indentLine_char='│'
     let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','tagbar','vista_kind','vista','coc-explorer','dashboard']
     let g:indentLine_concealcursor = 'niv'
-    let g:indentLine_showFirstIndentLevel =1
+    let g:indentLine_showFirstIndentLevel = 2
 '''
 on_event    = 'BufReadPre'
 repo        = 'Yggdroot/indentLine'
