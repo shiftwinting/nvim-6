@@ -28,8 +28,6 @@ hook_add = '''
 
   let g:dashboard_custom_footer = ['']
   let g:dashboard_custom_header = ['','','','','','Welcome😃    ',]
-
-  nnoremap <silent><buffer> q :q<CR>
 '''
 repo     = 'glepnir/dashboard-nvim'
 
@@ -66,18 +64,18 @@ hook_add = '''
 '''
 repo     = 'glepnir/spaceline.vim'
 
-[[plugins]]
-hook_source = 'source $VIM_PATH/configs/defx.vim'
-on_cmd      = 'Defx'
-repo        = 'Shougo/defx.nvim'
-
-[[plugins]]
-on_source = 'defx.nvim'
-repo      = 'kristijanhusak/defx-git'
-
-[[plugins]]
-on_source = 'defx.nvim'
-repo      = 'kristijanhusak/defx-icons'
+# [[plugins]]
+# hook_source = 'source $VIM_PATH/configs/defx.vim'
+# on_cmd      = 'Defx'
+# repo        = 'Shougo/defx.nvim'
+# 
+# [[plugins]]
+# on_source = 'defx.nvim'
+# repo      = 'kristijanhusak/defx-git'
+# 
+# [[plugins]]
+# on_source = 'defx.nvim'
+# repo      = 'kristijanhusak/defx-icons'
 
 # [[plugins]]
 # repo = 'wfxr/minimap.vim'
@@ -114,9 +112,39 @@ repo     = 'Xuyuanp/scrollbar.nvim'
 
 [[plugins]]
 hook_source = '''
+  let g:lua_tree_hide_dotfiles = 1
+  let g:lua_tree_indent_markers = 1
+  let g:lua_tree_auto_open = 0
+  let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+  let g:lua_tree_bindings = {
+    \ 'edit':            ['<CR>', 'o'],
+    \ 'edit_vsplit':     's',
+    \ 'edit_split':      'i',
+    \ 'toggle_dotfiles': '.',
+    \ }
+  let g:lua_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✚",
+    \   'staged': "✚",
+    \   'unmerged': "≠",
+    \   'renamed': "≫",
+    \   'untracked': "★"
+    \   },
+    \ 'folder': {
+    \   'default': "",
+    \   'open': ""
+    \   }
+    \ }
+'''
+repo        = 'kyazdani42/nvim-tree.lua'
+
+[[plugins]]
+hook_source = '''
     let g:indentLine_enabled = 1
     let g:indentLine_char='│'
-    let g:indentLine_fileTypeExclude = ['defx', 'denite','startify','tagbar','vista_kind','vista','coc-explorer','dashboard']
+    let g:indentLine_fileTypeExclude = ['defx', 'LuaTree', 'denite','startify','tagbar','vista_kind','vista','coc-explorer','dashboard']
     let g:indentLine_concealcursor = 'niv'
     let g:indentLine_showFirstIndentLevel = 2
 '''

@@ -232,6 +232,11 @@ if dein#tap('defx.nvim')
 	endif
 endif
 
+if dein#tap('nvim-tree.lua')
+  nnoremap <silent> <leader>e :LuaTreeToggle<CR>
+  nnoremap <silent> <leader>F :LuaTreeFindFile<CR>
+endif
+
 if dein#tap('vista.vim')
 	nnoremap <silent> <Leader>i :<C-u>Vista!!<CR>
 	if s:enable_whichkey
