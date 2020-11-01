@@ -141,6 +141,15 @@ gls.left[13] = {
     highlight = {colors.blue,colors.bg},
   }
 }
+gls.left[14] = {
+  CocStatus = {
+    provider = function()
+        local status = vim.api.nvim_eval("get(g:, 'coc_status', '')")
+        return ' '..status
+    end,
+    highlight = {colors.fg,colors.bg},
+  }
+}
 gls.right[1]= {
   FileFormat = {
     provider = 'FileFormat',
