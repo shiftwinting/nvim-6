@@ -53,16 +53,22 @@ on_event         = 'VimEnter'
 repo             = 'akinsho/nvim-bufferline.lua'
 
 [[plugins]]
-hook_add = '''
-  let g:spaceline_colorscheme = 'one'
-  let g:spaceline_seperate_style= 'none'
-  let g:spaceline_custom_vim_status = {'n': " ", 'V': " ", 'v': " ", "\<C-v>": "C-V", 'i':" ", 'R':"גּ ", 's':" ", 't':"ﭨ ", 'c':"↪ ", "!": "SE"}
-  let g:spaceline_custom_diff_icon =  [' ',' ',' ']
-  let g:spaceline_git_branch_icon= ' '
-  let g:spaceline_diagnostic_errorsign = '✗ '
-  let g:spaceline_diagnostic_warnsign = '≈ '
+hook_post_source = '''
+lua require'eviline'
 '''
-repo     = 'glepnir/spaceline.vim'
+repo             = 'glepnir/galaxyline.nvim'
+
+# [[plugins]]
+# hook_add = '''
+#   let g:spaceline_colorscheme = 'one'
+#   let g:spaceline_seperate_style= 'none'
+#   let g:spaceline_custom_vim_status = {'n': " ", 'V': " ", 'v': " ", "\<C-v>": "C-V", 'i':" ", 'R':"גּ ", 's':" ", 't':"ﭨ ", 'c':"↪ ", "!": "SE"}
+#   let g:spaceline_custom_diff_icon =  [' ',' ',' ']
+#   let g:spaceline_git_branch_icon= ' '
+#   let g:spaceline_diagnostic_errorsign = '✗ '
+#   let g:spaceline_diagnostic_warnsign = '≈ '
+# '''
+# repo     = 'glepnir/spaceline.vim'
 
 # [[plugins]]
 # hook_source = 'source $VIM_PATH/configs/defx.vim'
@@ -86,29 +92,29 @@ repo     = 'glepnir/spaceline.vim'
 #   let g:minimap_auto_start = 1
 # '''
 
-[[plugins]]
-hook_add = '''
-  let g:scrollbar_shape = {
-  \ 'head': '▕',
-  \ 'body': '▕',
-  \ 'tail': '▕',
-  \ }
-  let g:scrollbar_highlight = {
-  \ 'head': 'Comment',
-  \ 'body': 'Comment',
-  \ 'tail': 'Comment',
-  \ }
-  let g:scrollbar_max_size = 3
-  let g:scrollbar_excluded_filetypes = ['defx', 'tagbar', 'dashboard', 'vista_kind']
-  autocmd BufEnter    * silent! lua require('scrollbar').show()
-  autocmd BufLeave    * silent! lua require('scrollbar').clear()
-  autocmd CursorMoved * silent! lua require('scrollbar').show()
-  autocmd VimResized  * silent! lua require('scrollbar').show()
-  autocmd FocusGained * silent! lua require('scrollbar').show()
-  autocmd FocusLost   * silent! lua require('scrollbar').clear()
-'''
-on_event = ['BufEnter', 'BufLeave']
-repo     = 'Xuyuanp/scrollbar.nvim'
+# [[plugins]]
+# hook_add = '''
+#   let g:scrollbar_shape = {
+#   \ 'head': '▕',
+#   \ 'body': '▕',
+#   \ 'tail': '▕',
+#   \ }
+#   let g:scrollbar_highlight = {
+#   \ 'head': 'Comment',
+#   \ 'body': 'Comment',
+#   \ 'tail': 'Comment',
+#   \ }
+#   let g:scrollbar_max_size = 3
+#   let g:scrollbar_excluded_filetypes = ['defx', 'tagbar', 'dashboard', 'vista_kind']
+#   autocmd BufEnter    * silent! lua require('scrollbar').show()
+#   autocmd BufLeave    * silent! lua require('scrollbar').clear()
+#   autocmd CursorMoved * silent! lua require('scrollbar').show()
+#   autocmd VimResized  * silent! lua require('scrollbar').show()
+#   autocmd FocusGained * silent! lua require('scrollbar').show()
+#   autocmd FocusLost   * silent! lua require('scrollbar').clear()
+# '''
+# on_event = ['BufEnter', 'BufLeave']
+# repo     = 'Xuyuanp/scrollbar.nvim'
 
 [[plugins]]
 hook_source = '''
