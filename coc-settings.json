@@ -95,7 +95,7 @@
   // git
   "git.enableGutters": true,
   "git.signOffset": 99,
-  "git.addGBlameToVirtualText": true,
+  "git.addGBlameToVirtualText": false,
   "git.virtualTextPrefix": "     ",
   "git.branchCharacter": "",
   "git.addedSign.text": "▊ ",

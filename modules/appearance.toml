@@ -121,7 +121,7 @@ hook_source = '''
   let g:lua_tree_hide_dotfiles = 1
   let g:lua_tree_indent_markers = 1
   let g:lua_tree_auto_open = 0
-  let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+  let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache' , '__pycache__']
   let g:lua_tree_bindings = {
     \ 'edit':            ['<CR>', 'o'],
     \ 'edit_vsplit':     's',
