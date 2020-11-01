@@ -150,7 +150,16 @@ gls.left[14] = {
     highlight = {colors.fg,colors.bg},
   }
 }
-gls.right[1]= {
+gls.right[1] = {
+    Vista = {
+        provider = function()
+            local symbol = vim.api.nvim_eval("get(b:, 'vista_nearest_method_or_function', '')")
+            return symbol..'   '
+        end,
+        highlight = {colors.fg,colors.bg},
+    }
+}
+gls.right[2]= {
   FileFormat = {
     provider = 'FileFormat',
     separator = ' ',
@@ -158,7 +167,7 @@ gls.right[1]= {
     highlight = {colors.fg,colors.line_bg},
   }
 }
-gls.right[2] = {
+gls.right[3] = {
   LineInfo = {
     provider = 'LineColumn',
     separator = ' | ',
@@ -166,7 +175,7 @@ gls.right[2] = {
     highlight = {colors.fg,colors.line_bg},
   },
 }
-gls.right[3] = {
+gls.right[4] = {
   PerCent = {
     provider = 'LinePercent',
     separator = ' ',
