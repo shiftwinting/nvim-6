@@ -80,3 +80,7 @@ hook_add = '''
   let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 '''
 repo     = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+on_event = 'BufReadPre'
+repo     = 'mg979/vim-visual-multi'
