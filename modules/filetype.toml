@@ -20,7 +20,7 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 '''
-on_ft       = [
+on_ft            = [
   'python',
   'go',
   'javascript',
@@ -33,7 +33,7 @@ on_ft       = [
   'vue',
   'yaml',
 ]
-repo        = 'nvim-treesitter/nvim-treesitter'
+repo             = 'nvim-treesitter/nvim-treesitter'
 
 [[plugins]]
 on_ft = 'toml'
@@ -57,3 +57,7 @@ repo  = 'raimon49/requirements.txt.vim'
 [[plugins]]
 on_ft = 'gomod'
 repo  = 'johejo/gomod.vim'
+
+[[plugins]]
+on_ft = 'kotlin'
+repo  = 'udalov/kotlin-vim'
