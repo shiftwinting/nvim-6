@@ -152,7 +152,7 @@ hook_source = '''
     let g:indentLine_char='¦'
     let g:indentLine_fileTypeExclude = ['defx', 'LuaTree', 'denite','startify','tagbar','vista_kind','vista','coc-explorer','dashboard']
     let g:indentLine_concealcursor = 'niv'
-    let g:indentLine_showFirstIndentLevel = 0
+    let g:indentLine_showFirstIndentLevel = 1
 '''
 on_event    = 'BufReadPre'
 repo        = 'Yggdroot/indentLine'
@@ -174,3 +174,7 @@ repo        = 'Yggdroot/indentLine'
 [[plugins]]
 hook_source = 'let g:rainbow_active = 1'
 repo        = 'luochen1990/rainbow'
+
+[[plugins]]
+on_event = 'BufReadPre'
+repo     = 'itchyny/vim-highlighturl'
