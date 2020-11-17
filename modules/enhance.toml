@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'romainl/vim-cool'
+
+[[plugins]]
 on_map = { n = '<Plug>' }
 repo   = 'rhysd/accelerated-jk'
 
@@ -84,3 +87,23 @@ repo     = 'editorconfig/editorconfig-vim'
 [[plugins]]
 on_event = 'BufReadPre'
 repo     = 'mg979/vim-visual-multi'
+
+[[plugins]]
+on_event = 'BufReadPre'
+repo     = 'matze/vim-move'
+
+[[plugins]]
+hook_source = '''
+let g:camelcasemotion_key = ';'
+'''
+on_map      = { nx = '<Plug>' }
+repo        = 'bkad/CamelCaseMotion'
+
+[[plugins]]
+repo = 'camspiers/animate.vim'
+
+[[plugins]]
+hook_source = '''
+let g:lens#disabled_filetypes = ['LuaTree', 'dashboard']
+'''
+repo        = 'camspiers/lens.vim'

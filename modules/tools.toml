@@ -93,3 +93,7 @@ repo        = 'tpope/vim-fugitive'
 [[plugins]]
 on_cmd = 'AsyncRun'
 repo   = 'skywind3000/asyncrun.vim'
+
+[[plugins]]
+on_ft = ['python', 'javascript']
+repo  = 'kkoomen/vim-doge'
