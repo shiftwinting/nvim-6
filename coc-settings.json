@@ -121,12 +121,6 @@
 
   // languageservers
   "languageserver": {
-    "bash": {
-      "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
-      "ignoredRootPaths": ["~"]
-    },
     "kotlin": {
       "command": "kotlin-language-server",
       "filetypes": ["kotlin"]
