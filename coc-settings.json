@@ -84,6 +84,9 @@
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": ["javascript", "typescript"],
 
+  // highlight
+  "highlight.disableLanguages": ["python", "go", "rust", "dart", "c", "cpp"],
+
   // coc.preferences
   "coc.preferences.hoverTarget": "float",
   "coc.preferences.previewMaxHeight": 20,
