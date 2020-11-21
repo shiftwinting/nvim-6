@@ -91,6 +91,7 @@
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["rust", "go"],
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
 
   // git
   "git.enableGutters": true,

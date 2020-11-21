@@ -91,6 +91,10 @@ on_cmd      = ['G', 'Git', 'Gfetch', 'Gpush', 'Glog', 'Gclog', 'Gdiffsplit']
 repo        = 'tpope/vim-fugitive'
 
 [[plugins]]
+on_event = ['BufReadPre', 'BufNewFile']
+repo     = 'airblade/vim-gitgutter'
+
+[[plugins]]
 on_cmd = 'AsyncRun'
 repo   = 'skywind3000/asyncrun.vim'
 

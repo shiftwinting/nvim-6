@@ -48,6 +48,9 @@ local buffer_not_empty = function()
 	return false
 end
 
+-----------------------
+-- left
+-----------------------
 gls.left[1] = {
 	FirstElement = {
 		provider = function()
@@ -120,7 +123,7 @@ gls.left[7] = {
 	DiffAdd = {
 		provider = 'DiffAdd',
 		condition = checkwidth,
-		icon = ' ',
+		icon = '  ',
 		highlight = {colors.green, colors.line_bg},
 	}
 }
@@ -128,7 +131,7 @@ gls.left[8] = {
 	DiffModified = {
 		provider = 'DiffModified',
 		condition = checkwidth,
-		icon = ' ',
+		icon = '  ',
 		highlight = {colors.orange, colors.line_bg},
 	}
 }
@@ -136,7 +139,7 @@ gls.left[9] = {
 	DiffRemove = {
 		provider = 'DiffRemove',
 		condition = checkwidth,
-		icon = ' ',
+		icon = '  ',
 		highlight = {colors.red, colors.line_bg},
 	}
 }
@@ -187,12 +190,14 @@ gls.left[15] = {
 		highlight = {colors.fg, colors.bg},
 	}
 }
-
+-----------------------
+-- right
+-----------------------
 gls.right[1] = {
-	Vista = {
+	CocCurrentFunction = {
 		provider = function()
-			local symbol = vim.api.nvim_eval("get(b:, 'vista_nearest_method_or_function', '')")
-			return symbol .. '   '
+			local func = vim.api.nvim_eval("get(b:, 'coc_current_function', '')")
+			return func .. '   '
 		end,
 		highlight = {colors.fg, colors.bg},
 	}
@@ -230,6 +235,9 @@ gls.right[5] = {
 	}
 }
 
+-----------------------
+-- short_line_left
+-----------------------
 gls.short_line_left[1] = {
 	BufferType = {
 		provider = 'FileTypeName',
@@ -238,6 +246,9 @@ gls.short_line_left[1] = {
 		highlight = {colors.fg, colors.purple}
 	}
 }
+-----------------------
+-- short_line_right
+-----------------------
 gls.short_line_right[1] = {
     BufferIcon = {
 		provider = 'BufferIcon',
