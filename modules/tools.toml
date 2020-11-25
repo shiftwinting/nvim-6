@@ -32,6 +32,21 @@ on_cmd = [
 repo   = 'voldikss/vim-floaterm'
 
 [[plugins]]
+hook_post_source = '''
+lua <<EOF
+require"toggleterm".setup{
+  size = 20,
+  open_mapping = [[<c-\>]],
+  shade_filetypes = {},
+  shade_terminals = true,
+  persist_size = true,
+  direction = 'horizontal'
+}
+EOF
+'''
+repo             = 'akinsho/nvim-toggleterm.lua'
+
+[[plugins]]
 hook_source = '''
     let g:vista#renderer#enable_icon = 1
     let g:vista_disable_statusline = 1

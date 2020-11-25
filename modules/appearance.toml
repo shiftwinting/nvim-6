@@ -16,6 +16,15 @@ repo     = 'sainnhe/sonokai'
 
 [[plugins]]
 hook_add = '''
+let g:edge_style = 'aura'
+'''
+repo     = 'sainnhe/edge'
+
+[[plugins]]
+repo = 'christianchiarulli/nvcode-color-schemes.vim'
+
+[[plugins]]
+hook_add = '''
   let g:dashboard_custom_shortcut={
     \ 'new_file':           'spc n f',
     \ 'last_session':       'spc s l',
