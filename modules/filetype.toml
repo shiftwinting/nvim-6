@@ -61,3 +61,7 @@ repo  = 'johejo/gomod.vim'
 [[plugins]]
 on_ft = 'kotlin'
 repo  = 'udalov/kotlin-vim'
+
+[[plugins]]
+on_ft = 'log'
+repo = 'MTDL9/vim-log-highlighting'
