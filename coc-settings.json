@@ -48,7 +48,6 @@
   "diagnostic.virtualTextPrefix": "  ❄ ",
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.refreshAfterSave": false,
   "diagnostic.checkCurrentLine": true,
 
   // calc
@@ -80,15 +79,12 @@
   "prettier.eslintIntegration": true,
 
   // eslint
-  "eslint.enable": true,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": ["javascript", "typescript"],
 
   // highlight
   "highlight.disableLanguages": ["python", "go", "rust", "dart", "c", "cpp"],
 
   // coc.preferences
-  "coc.preferences.hoverTarget": "float",
   "coc.preferences.previewMaxHeight": 20,
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.extensionUpdateCheck": "daily",
@@ -98,7 +94,6 @@
 
   // git
   "git.enableGutters": true,
-  "git.signOffset": 99,
   "git.addGBlameToVirtualText": false,
   "git.virtualTextPrefix": "     ",
   "git.branchCharacter": "",

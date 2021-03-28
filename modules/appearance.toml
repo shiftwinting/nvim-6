@@ -165,8 +165,7 @@ repo        = 'kyazdani42/nvim-tree.lua'
 [[plugins]]
 hook_post_source = ''' 
 lua <<EOF
-  require('indent_guides').options.indent_guide_size =1
-  require('indent_guides').options.exclude_filetypes = {'LuaTree','vista','help','dashboard'}
+  require('indent_guides')
 EOF
 '''
 on_event         = 'BufReadPre'

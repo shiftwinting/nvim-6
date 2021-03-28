@@ -233,8 +233,8 @@ if dein#tap('defx.nvim')
 endif
 
 if dein#tap('nvim-tree.lua')
-  nnoremap <silent> <leader>e :LuaTreeToggle<CR>
-  nnoremap <silent> <leader>F :LuaTreeFindFile<CR>
+  nnoremap <silent> <leader>e :NvimTreeToggle<CR>
+  nnoremap <silent> <leader>F :NvimTreeFindFile<CR>
 endif
 
 if dein#tap('vista.vim')
