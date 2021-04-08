@@ -21,7 +21,12 @@ packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 
 	-- colorscheme
-	use({ { "rakr/vim-one" }, { "sainnhe/sonokai" }, { "sainnhe/edge" } })
+	use({
+		{ "rakr/vim-one" },
+		{ "sainnhe/sonokai" },
+		{ "sainnhe/edge" },
+		{ "arcticicestudio/nord-vim" },
+	})
 	-- File Tree
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -39,8 +44,18 @@ packer.startup(function(use)
 		{ "glepnir/dashboard-nvim", config = [[require('config.dashboard')]] },
 		-- statusline
 		{ "glepnir/galaxyline.nvim", config = [[require('statusline')]] },
-		-- indent guide
-		{ "glepnir/indent-guides.nvim", event = "BufReadPre", config = [[require('indent_guides')]] },
+		-- indent line
+		{
+			"Yggdroot/indentLine",
+			event = "BufReadPre",
+			config = function()
+				vim.g.indentLine_enabled = 1
+				vim.g.indentLine_char = "¦"
+				vim.g.indentLine_fileTypeExclude = { "NvimTree", "vista_kind", "vista", "dashboard" }
+				vim.g.indentLine_concealcursor = "niv"
+				vim.g.indentLine_showFirstIndentLevel = 1
+			end,
+		},
 		-- rainbow pairs
 		{ "luochen1990/rainbow", event = "BufReadPre", setup = [[vim.g.rainbow_active = 1]] },
 	})
