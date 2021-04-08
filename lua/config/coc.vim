@@ -6,7 +6,6 @@ let g:coc_status_warning_sign = '≈'
 let g:coc_disable_transparent_cursor = 1
 
 let g:coc_global_extensions = [
-            \'coc-actions',
             \'coc-calc',
             \'coc-clangd',
             \'coc-css',
@@ -27,7 +26,6 @@ let g:coc_global_extensions = [
             \'coc-sh',
             \'coc-snippets',
             \'coc-syntax',
-            \'coc-toml',
             \'coc-translator',
             \'coc-tsserver',
             \'coc-vetur',
