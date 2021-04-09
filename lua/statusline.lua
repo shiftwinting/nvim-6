@@ -3,8 +3,8 @@ local gls = gl.section
 gl.short_line_list = { "LuaTree", "vista", "dbui" }
 
 local colors = {
-	bg = "#282c34",
-	line_bg = "#21242b",
+	bg = "NONE",
+	line_bg = "NONE",
 	fg = "#c0c0c0",
 
 	yellow = "#fabd2f",
@@ -239,7 +239,7 @@ gls.right[5] = {
 		provider = "LinePercent",
 		separator = " ",
 		separator_highlight = { colors.line_bg, colors.line_bg },
-		highlight = { colors.fg, colors.darkblue },
+		highlight = { colors.fg, "NONE" },
 	},
 }
 
@@ -251,7 +251,7 @@ gls.short_line_left[1] = {
 		provider = "FileTypeName",
 		separator = " ",
 		separator_highlight = { colors.purple, colors.bg },
-		highlight = { colors.fg, colors.purple },
+		highlight = { colors.fg, "NONE" },
 	},
 }
 -----------------------
@@ -262,6 +262,6 @@ gls.short_line_right[1] = {
 		provider = "BufferIcon",
 		separator = " ",
 		separator_highlight = { colors.purple, colors.bg },
-		highlight = { colors.fg, colors.purple },
+		highlight = { colors.fg, "NONE" },
 	},
 }
