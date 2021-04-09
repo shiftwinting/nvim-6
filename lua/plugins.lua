@@ -48,13 +48,7 @@ packer.startup(function(use)
 		{
 			"Yggdroot/indentLine",
 			event = "BufReadPre",
-			config = function()
-				vim.g.indentLine_enabled = 1
-				vim.g.indentLine_char = "¦"
-				vim.g.indentLine_fileTypeExclude = { "NvimTree", "vista_kind", "vista", "dashboard" }
-				vim.g.indentLine_concealcursor = "niv"
-				vim.g.indentLine_showFirstIndentLevel = 1
-			end,
+			config = [[require('config.indentLine')]]
 		},
 		-- rainbow pairs
 		{ "luochen1990/rainbow", event = "BufReadPre", setup = [[vim.g.rainbow_active = 1]] },
@@ -103,7 +97,7 @@ packer.startup(function(use)
 	})
 
 	--Movement
-	use({ { "matze/vim-move", event = "BufReadPre" }, "chaoren/vim-wordmotion" })
+	use({ { "matze/vim-move", event = "BufReadPre" }, {"chaoren/vim-wordmotion",event="BufReadPre" ,{"easymotion/vim-easymotion",config=[[require('config.easymotion')]]}}})
 	-- syntax
 	use({
 		"nvim-treesitter/nvim-treesitter",
