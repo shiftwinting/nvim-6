@@ -44,3 +44,5 @@ vim.g.dashboard_custom_section = {
 		command = "DashboardChangeColorscheme",
 	},
 }
+
+vim.cmd([[autocmd FileType dashboard nnoremap <buffer> q ZZ]])
