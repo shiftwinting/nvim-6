@@ -48,7 +48,7 @@ packer.startup(function(use)
 		{
 			"Yggdroot/indentLine",
 			event = "BufReadPre",
-			config = [[require('config.indentLine')]]
+			config = [[require('config.indentLine')]],
 		},
 		-- rainbow pairs
 		{ "luochen1990/rainbow", event = "BufReadPre", setup = [[vim.g.rainbow_active = 1]] },
@@ -97,7 +97,14 @@ packer.startup(function(use)
 	})
 
 	--Movement
-	use({ { "matze/vim-move", event = "BufReadPre" }, {"chaoren/vim-wordmotion",event="BufReadPre" ,{"easymotion/vim-easymotion",config=[[require('config.easymotion')]]}}})
+	use({
+		{ "matze/vim-move", event = "BufReadPre" },
+		{
+			"chaoren/vim-wordmotion",
+			event = "BufReadPre",
+			{ "easymotion/vim-easymotion", config = [[require('config.easymotion')]] },
+		},
+	})
 	-- syntax
 	use({
 		"nvim-treesitter/nvim-treesitter",
