@@ -26,7 +26,7 @@ packer.startup(function(use)
 		{ "sainnhe/sonokai" },
 		{ "sainnhe/edge" },
 		{ "arcticicestudio/nord-vim" },
-		{ "xiyaowong/nvim-transparent" },
+		{ "xiyaowong/nvim-transparent", config = [[require('config.transparent')]] },
 	})
 	-- File Tree
 	use({
