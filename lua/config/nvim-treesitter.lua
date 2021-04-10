@@ -14,5 +14,5 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 	},
-	ensure_installed = { "python", "lua", "go", "rust" },
+	ensure_installed = "maintained",
 })

@@ -1,6 +1,10 @@
 local cmd = vim.cmd
 local fn = vim.fn
 
+local function conf(name)
+	return string.format("require('config.%s')", name)
+end
+
 -- automaticlly install packer.nvim
 local install_path = fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -8,6 +12,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	cmd("packadd packer.nvim")
 end
 cmd([[packadd packer.nvim]])
+
 local packer = require("packer")
 
 packer.init({
@@ -27,41 +32,30 @@ packer.startup(function(use)
 		{ "sainnhe/edge" },
 		{ "arcticicestudio/nord-vim" },
 		{ "ChristianChiarulli/nvcode-color-schemes.vim" },
-		{ "xiyaowong/nvim-transparent", config = [[require('config.transparent')]] },
+		{ "xiyaowong/nvim-transparent", config = conf("transparent") },
 	})
 	-- File Tree
 	use({
 		"kyazdani42/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeOpen" },
-		config = [[require('config.nvim-tree')]],
+		config = conf("nvim-tree"),
 	})
 	-- UI
 	use({
 		-- Bufferline
-		{
-			"akinsho/nvim-bufferline.lua",
-			config = [[require('config.nvim-bufferline')]],
-		},
+		{ "akinsho/nvim-bufferline.lua", config = conf("nvim-bufferline") },
 		-- dashboard
-		{ "glepnir/dashboard-nvim", config = [[require('config.dashboard')]] },
+		{ "glepnir/dashboard-nvim", config = conf("dashboard") },
 		-- statusline
-		{ "glepnir/galaxyline.nvim", config = [[require('statusline')]] },
+		{ "glepnir/galaxyline.nvim", config = "require('statusline')" },
 		-- indent line
-		{
-			"Yggdroot/indentLine",
-			event = "BufReadPre",
-			config = [[require('config.indentLine')]],
-		},
+		{ "Yggdroot/indentLine", event = "BufReadPre", config = conf("indentLine") },
 		-- rainbow pairs
-		{ "luochen1990/rainbow", event = "BufReadPre", setup = [[vim.g.rainbow_active = 1]] },
+		{ "luochen1990/rainbow", event = "BufReadPre", setup = "vim.g.rainbow_active = 1" },
 	})
-	-- completion
+	-- lsp, completion
 	use({
-		{
-			"neoclide/coc.nvim",
-			branch = "release",
-			config = [[require('config.coc')]],
-		},
+		{ "neoclide/coc.nvim", branch = "release", config = conf("coc") },
 		"honza/vim-snippets",
 	})
 	-- Enhance
@@ -74,7 +68,7 @@ packer.startup(function(use)
 		"rhysd/clever-f.vim",
 		{
 			"psliwka/vim-smoothie",
-			setup = [[vim.g.smoothie_no_default_mappings = true]],
+			setup = "vim.g.smoothie_no_default_mappings = true",
 			event = "BufReadPre",
 		},
 		{ "lfv89/vim-interestingwords", event = "BufReadPre" },
@@ -88,9 +82,7 @@ packer.startup(function(use)
 		"camspiers/animate.vim",
 		{
 			"camspiers/lens.vim",
-			setup = function()
-				vim.cmd("let g:lens#disabled_filetypes = ['NvimTree', 'dashboard']")
-			end,
+			setup = "vim.cmd(\"let g:lens#disabled_filetypes = ['NvimTree', 'dashboard']\")",
 		},
 	})
 	use({
@@ -102,26 +94,10 @@ packer.startup(function(use)
 	use({
 		{ "matze/vim-move", event = "BufReadPre" },
 		{ "chaoren/vim-wordmotion", event = "BufReadPre" },
-		{ "easymotion/vim-easymotion", event = "BufReadPre", config = [[require('config.easymotion')]] },
+		{ "easymotion/vim-easymotion", event = "BufReadPre", config = conf("easymotion") },
 	})
 	-- syntax
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		config = [[require('config.nvim-treesitter')]],
-		ft = {
-			"python",
-			"go",
-			"javascript",
-			"typescript",
-			"html",
-			"css",
-			"rust",
-			"toml",
-			"lua",
-			"vue",
-			"yaml",
-		},
-	})
+	use({ "nvim-treesitter/nvim-treesitter", event = "BufRead", config = conf("nvim-treesitter") })
 	use({
 		{ "cespare/vim-toml", fy = "toml" },
 		{ "neoclide/jsonc.vim", ft = "jsonc" },
@@ -133,24 +109,11 @@ packer.startup(function(use)
 		{ "rust-lang/rust.vim", ft = "rust" },
 	})
 	use({ "skywind3000/asyncrun.vim", cmd = "AsyncRun" })
-	use({
-		"liuchengxu/vista.vim",
-		cmd = { "Vista" },
-		config = [[require('config.vista')]],
-	})
-	use({
-		"akinsho/nvim-toggleterm.lua",
-		cmd = "ToggleTerm",
-		config = [[require('config.nvim-toggleterm')]],
-	})
+	use({ "liuchengxu/vista.vim", cmd = "Vista", config = conf("vista") })
+	use({ "akinsho/nvim-toggleterm.lua", cmd = "ToggleTerm", config = conf("nvim-toggleterm") })
 	-- fuzzy finder
 	use({
-		{
-			"liuchengxu/vim-clap",
-			run = ":Clap install-binary!",
-			cmd = "Clap",
-			config = [[require('config.vim-clap')]],
-		},
+		{ "liuchengxu/vim-clap", run = ":Clap install-binary!", cmd = "Clap", config = conf("vim-clap") },
 		{ "vn-ki/coc-clap", after = { "vim-clap", "coc.nvim" } },
 	})
 end)
