@@ -26,6 +26,7 @@ packer.startup(function(use)
 		{ "sainnhe/sonokai" },
 		{ "sainnhe/edge" },
 		{ "arcticicestudio/nord-vim" },
+		{ "ChristianChiarulli/nvcode-color-schemes.vim" },
 		{ "xiyaowong/nvim-transparent", config = [[require('config.transparent')]] },
 	})
 	-- File Tree
@@ -100,11 +101,8 @@ packer.startup(function(use)
 	--Movement
 	use({
 		{ "matze/vim-move", event = "BufReadPre" },
-		{
-			"chaoren/vim-wordmotion",
-			event = "BufReadPre",
-			{ "easymotion/vim-easymotion", config = [[require('config.easymotion')]] },
-		},
+		{ "chaoren/vim-wordmotion", event = "BufReadPre" },
+		{ "easymotion/vim-easymotion", event = "BufReadPre", config = [[require('config.easymotion')]] },
 	})
 	-- syntax
 	use({
