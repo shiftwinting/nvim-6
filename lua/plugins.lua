@@ -48,8 +48,12 @@ packer.startup(function(use)
 		{ "glepnir/dashboard-nvim", config = conf("dashboard") },
 		-- statusline
 		{ "glepnir/galaxyline.nvim", config = "require('statusline')" },
-		-- indent line
-		{ "Yggdroot/indentLine", event = "BufReadPre", config = conf("indentLine") },
+		{
+			"lukas-reineke/indent-blankline.nvim",
+			event = "BufRead",
+			branch = "lua",
+			config = conf("indent-blakline"),
+		},
 		-- rainbow pairs
 		{ "luochen1990/rainbow", event = "BufReadPre", setup = "vim.g.rainbow_active = 1" },
 	})
