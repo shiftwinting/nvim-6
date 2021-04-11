@@ -88,7 +88,7 @@ packer.startup(function(use)
 			setup = "vim.cmd(\"let g:lens#disabled_filetypes = ['NvimTree', 'dashboard']\")",
 		},
 	})
-	use("talek/obvious-resize") -- resize window
+	use({ "talek/obvious-resize", config = "vim.g.obvious_resize_default = 2" }) -- resize window
 	use({
 		{ "tyru/caw.vim", event = "BufRead", requires = "Shougo/context_filetype.vim" },
 		{ "tpope/vim-surround", event = "BufRead" },
