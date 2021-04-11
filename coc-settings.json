@@ -89,7 +89,7 @@
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnSaveFiletypes": ["rust", "go"],
+  "coc.preferences.formatOnSaveFiletypes": ["rust"],
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
 
   // git

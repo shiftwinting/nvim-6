@@ -66,51 +66,45 @@ packer.startup(function(use)
 	use({
 		-- Vim-cool disables search highlighting when you are done searching
 		-- and re-enables it when you search again.
-		{ "romainl/vim-cool", event = "BufReadPre" },
+		{ "romainl/vim-cool", event = "BufRead" },
 		{ "rhysd/accelerated-jk" },
-		{ "kana/vim-niceblock", event = "BufReadPre" },
-		"rhysd/clever-f.vim",
+		{ "kana/vim-niceblock", event = "BufRead" },
+		{ "rhysd/clever-f.vim", event = "BufRead" },
 		{
 			"psliwka/vim-smoothie",
 			setup = "vim.g.smoothie_no_default_mappings = true",
-			event = "BufReadPre",
+			event = "BufRead",
 		},
-		{ "lfv89/vim-interestingwords", event = "BufReadPre" },
-		{ "itchyny/vim-cursorword", event = "BufReadPre" },
+		{ "lfv89/vim-interestingwords", event = "BufRead" },
+		{ "itchyny/vim-cursorword", event = "BufRead" },
 	})
 
-	use({ "junegunn/vim-easy-align", event = "BufReadPre" })
-	-- use({ "mhartington/formatter.nvim", config = [[require('config.format')]] })
+	use({ "junegunn/vim-easy-align", event = "BufRead" })
 	use({ "farmergreg/vim-lastplace" })
 	use({
 		"camspiers/animate.vim",
 		{
-			"camspiers/lens.vim",
+			"camspiers/lens.vim", -- auto resize window
 			setup = "vim.cmd(\"let g:lens#disabled_filetypes = ['NvimTree', 'dashboard']\")",
 		},
 	})
+	use("talek/obvious-resize") -- resize window
 	use({
-		{ "tyru/caw.vim", event = "BufReadPre", requires = "Shougo/context_filetype.vim" },
-		{ "tpope/vim-surround", event = "BufReadPre" },
+		{ "tyru/caw.vim", event = "BufRead", requires = "Shougo/context_filetype.vim" },
+		{ "tpope/vim-surround", event = "BufRead" },
 	})
-
 	--Movement
 	use({
-		{ "matze/vim-move", event = "BufReadPre" },
-		{ "chaoren/vim-wordmotion", event = "BufReadPre" },
-		{ "easymotion/vim-easymotion", event = "BufReadPre", config = conf("easymotion") },
+		{ "matze/vim-move", event = "BufRead" },
+		{ "chaoren/vim-wordmotion", event = "BufRead" },
+		{ "easymotion/vim-easymotion", event = "BufRead", config = conf("easymotion") },
 	})
 	-- syntax
 	use({ "nvim-treesitter/nvim-treesitter", event = "BufRead", config = conf("nvim-treesitter") })
 	use({
-		{ "cespare/vim-toml", fy = "toml" },
-		{ "neoclide/jsonc.vim", ft = "jsonc" },
-		{ "dart-lang/dart-vim-plugin", ft = "dart" },
 		{ "raimon49/requirements.txt.vim", ft = "requirements" },
 		{ "johejo/gomod.vim", ft = "gomod" },
 		{ "MTDL9/vim-log-highlighting", ft = "log" },
-		{ "fannheyward/go.vim", ft = "go" },
-		{ "rust-lang/rust.vim", ft = "rust" },
 	})
 	use({ "skywind3000/asyncrun.vim", cmd = "AsyncRun" })
 	use({ "liuchengxu/vista.vim", cmd = "Vista", config = conf("vista") })

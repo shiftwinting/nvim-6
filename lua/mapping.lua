@@ -124,3 +124,8 @@ map("n", "<C-f>", ":<C-U>call smoothie#forwards()<CR>", silent)
 map("n", "<C-b>", ":<C-U>call smoothie#backwards()<CR>", silent)
 map("n", "<C-d>", ":<C-U>call smoothie#downwards()<CR>", silent)
 map("n", "<C-u>", ":<C-U>call smoothie#upwards()<CR>", silent)
+-- resize widnow by talek/obvious-resize
+map("n", "<C-Up>", ":<C-U>ObviousResizeUp<CR>", silent)
+map("n", "<C-Down>", ":<C-U>ObviousResizeDown<CR>", silent)
+map("n", "<C-Left>", ":<C-U>ObviousResizeLeft<CR>", silent)
+map("n", "<C-Right>", ":<C-U>ObviousResizeRight<CR>", silent)
