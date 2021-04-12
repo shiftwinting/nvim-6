@@ -81,13 +81,6 @@ packer.startup(function(use)
 
 	use({ "junegunn/vim-easy-align", event = "BufRead" })
 	use({ "farmergreg/vim-lastplace" })
-	use({
-		"camspiers/animate.vim",
-		{
-			"camspiers/lens.vim", -- auto resize window
-			setup = "vim.cmd(\"let g:lens#disabled_filetypes = ['NvimTree', 'dashboard']\")",
-		},
-	})
 	use({ "talek/obvious-resize", config = "vim.g.obvious_resize_default = 2" }) -- resize window
 	use({
 		{ "tyru/caw.vim", event = "BufRead", requires = "Shougo/context_filetype.vim" },
