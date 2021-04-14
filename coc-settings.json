@@ -95,7 +95,7 @@
   // git
   "git.enableGutters": true,
   "git.addGBlameToVirtualText": false,
-  "git.virtualTextPrefix": "     ",
+  "git.addGBlameToBufferVar": true,
   "git.branchCharacter": "",
   "git.addedSign.text": "▊ ",
   "git.changedSign.text": "▊ ",

@@ -100,6 +100,16 @@ left_list:append({
 		highlight = { colors.red, colors.line_bg, "bold" },
 	},
 })
+
+-- FileSize
+left_list:append({
+	FileSize = {
+		provider = "FileSize",
+		condition = buffer_not_empty,
+		highlight = { colors.fg, colors.line_bg, "italic" },
+	},
+})
+-- FileIcon
 left_list:append({
 	FileIcon = {
 		provider = "FileIcon",
@@ -110,72 +120,82 @@ left_list:append({
 		},
 	},
 })
+-- FileName
 left_list:append({
 	FileName = {
-		provider = { function()
-			return vim.fn.expand("%:~:.") .. " "
-		end, "FileSize" },
+		provider = {
+			function()
+				local file = vim.fn.expand("%:~:.")
+				if vim.fn.empty(file) == 1 then
+					return ""
+				end
+				local icon = ""
+				if vim.bo.readonly then
+					icon = ""
+				else
+					if vim.bo.modifiable then
+						if vim.bo.modified then
+							icon = ""
+						else
+							icon = ""
+						end
+					end
+				end
+				return file .. " " .. icon .. " "
+			end,
+		},
 		condition = buffer_not_empty,
-		highlight = { colors.fg, colors.line_bg, "italic" },
-	},
-})
-left_list:append({
-	LineInfo = {
-		provider = function()
-			return string.format(" %3d·%2d ", vim.fn.line("."), vim.fn.col("."))
-		end,
 		highlight = { colors.fg, colors.line_bg },
 	},
 })
-left_list:append({
-	GitIcon = {
-		provider = function()
-			return "   "
-		end,
-		condition = find_git_root,
-		highlight = { colors.orange, colors.line_bg },
-	},
-})
+
+-- GitBranch
 left_list:append({
 	GitBranch = {
 		provider = "GitBranch",
+		icon = "   ",
 		condition = find_git_root,
-		highlight = { colors.fg, colors.line_bg, "bold" },
+		highlight = { colors.orange, colors.line_bg, "bold" },
 	},
 })
-
+-- Git diff = add
 left_list:append({
 	DiffAdd = {
-		provider = "DiffAdd",
-		condition = checkwidth,
-		icon = "   ",
-		highlight = { colors.green, colors.line_bg },
-	},
-})
-left_list:append({
-	DiffAdd = {
-		provider = "DiffAdd",
-		condition = checkwidth,
-		icon = "   ",
-		highlight = { colors.green, colors.line_bg },
-	},
-})
-left_list:append({
-	Spacer = {
 		provider = function()
-			return " "
+			local add = vim.api.nvim_eval("get(b:, 'coc_git_status', '')"):match("+(%d+)")
+			return add or ""
 		end,
-		highlight = { colors.orange, colors.line_bg },
+		condition = checkwidth,
+		icon = "   ",
+		highlight = { colors.green, colors.line_bg },
 	},
 })
+-- Git diff = change
+left_list:append({
+	DiffChange = {
+		provider = function()
+			local change = vim.api.nvim_eval("get(b:, 'coc_git_status', '')"):match("~(%d+)")
+			return change or ""
+		end,
+		condition = checkwidth,
+		icon = "   ",
+		highlight = { colors.blue, colors.line_bg },
+	},
+})
+-- Git diff = remove
 left_list:append({
 	DiffRemove = {
-		provider = "DiffRemove",
+		provider = function()
+			local remove = vim.api.nvim_eval("get(b:, 'coc_git_status', '')"):match("-(%d+)")
+			return remove or ""
+		end,
 		condition = checkwidth,
 		icon = "   ",
 		highlight = { colors.red, colors.line_bg },
 	},
 })
+
+-- lsp diagnostic = error
 left_list:append({
 	DiagnosticError = {
 		provider = "DiagnosticError",
@@ -183,6 +203,7 @@ left_list:append({
 		highlight = { colors.red, colors.bg },
 	},
 })
+-- lsp diagnostic = warn
 left_list:append({
 	DiagnosticWarn = {
 		provider = "DiagnosticWarn",
@@ -190,6 +211,7 @@ left_list:append({
 		highlight = { colors.blue, colors.bg },
 	},
 })
+-- lsp diagnostic = hint
 left_list:append({
 	DiagnosticHint = {
 		provider = "DiagnosticHint",
@@ -197,6 +219,7 @@ left_list:append({
 		highlight = { colors.blue, colors.bg },
 	},
 })
+-- lsp diagnostic = info
 left_list:append({
 	DiagnosticInfo = {
 		provider = "DiagnosticInfo",
@@ -204,30 +227,54 @@ left_list:append({
 		highlight = { colors.orange, colors.bg },
 	},
 })
+-- lsp status
 left_list:append({
 	CocStatus = {
 		provider = function()
 			return vim.api.nvim_eval("get(g:, 'coc_status', '')")
 		end,
-		icon = "  🗱",
+		icon = "   🗱",
 		highlight = { colors.green, colors.bg },
 	},
 })
-left_list:append({
-	CocFunc = {
+-- current function
+-- left_list:append({
+-- 	CocFunc = {
+-- 		provider = function()
+-- 			return "    " .. vim.api.nvim_eval("get(b:, 'coc_current_function', '')")
+-- 		end,
+-- 		highlight = { colors.yellow, colors.bg },
+-- 	},
+-- })
+
+-- git blame
+right_list:append({
+	GitBlame = {
 		provider = function()
-			return "    " .. vim.api.nvim_eval("get(b:, 'coc_current_function', '')")
+			local msg = vim.api.nvim_eval("get(b:, 'coc_git_blame', '')")
+			if msg == "" then
+				return ""
+			end
+			if #msg > 70 then
+				msg = msg:sub(0, 70) .. "... "
+			end
+			return msg .. " "
 		end,
-		highlight = { colors.yellow, colors.bg },
+		icon = " ",
+		highlight = { colors.purple, colors.line_bg },
 	},
 })
 
+-- line/column
 right_list:append({
-	LinePerCent = {
-		provider = "LinePercent",
-		highlight = { colors.fg, "NONE" },
+	LineInfo = {
+		provider = function()
+			return string.format("%3d·%2d", vim.fn.line("."), vim.fn.col("."))
+		end,
+		highlight = { colors.fg, colors.line_bg },
 	},
 })
+-----------------------------------------------------------
 
 short_left_list:append({
 	BufferType = {
