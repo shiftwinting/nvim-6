@@ -37,7 +37,7 @@ packer.startup(function(use)
 	-- File Tree
 	use({
 		"kyazdani42/nvim-tree.lua",
-		cmd = { "NvimTreeToggle", "NvimTreeOpen" },
+		-- cmd = { "NvimTreeToggle", "NvimTreeOpen" },
 		config = conf("nvim-tree"),
 	})
 	-- UI
