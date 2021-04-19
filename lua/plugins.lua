@@ -77,6 +77,13 @@ packer.startup(function(use)
 		},
 		{ "lfv89/vim-interestingwords", event = "BufRead" },
 		{ "itchyny/vim-cursorword", event = "BufRead" },
+		{
+			"sunjon/shade.nvim",
+			event = "WinEnter",
+			config = function()
+				require("shade").setup({ overlay_opacity = 50, opacity_step = 1 })
+			end,
+		},
 	})
 
 	use({ "junegunn/vim-easy-align", event = "BufRead" })
