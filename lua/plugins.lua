@@ -89,8 +89,13 @@ packer.startup(function(use)
 	--Movement
 	use({
 		{ "matze/vim-move", event = "BufRead" },
-		{ "chaoren/vim-wordmotion", event = "BufRead" },
-		{ "easymotion/vim-easymotion", event = "BufRead", config = conf("easymotion") },
+		{
+			"phaazon/hop.nvim",
+			cmd = { "HopWord", "HopLine", "HopPattern", "HopChar1" },
+			config = function()
+				require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+			end,
+		},
 	})
 	-- syntax
 	use({ "nvim-treesitter/nvim-treesitter", event = "BufRead", config = conf("nvim-treesitter") })

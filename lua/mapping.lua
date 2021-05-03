@@ -46,12 +46,11 @@ map({ "n", "x" }, "ga", "<Plug>(EasyAlign)", { noremap = false, silent = true })
 -- acelerated jk (enhanced jk move)
 map("n", "j", "<Plug>(accelerated_jk_gj)", { noremap = false })
 map("n", "k", "<Plug>(accelerated_jk_gk)", { noremap = false })
--- easymotion
-map("n", "ss", "<Plug>(easymotion-overwin-f2)", { noremap = false })
-map("", "<Leader>l", "<Plug>(easymotion-bd-jk)", { noremap = false })
-map("n", "<leader>l", "<Plug>(easymotion-overwin-line)", { noremap = false })
-map("", "<Leader>w", "<Plug>(easymotion-bd-w)", { noremap = false })
-map("n", "<leader>w", "<Plug>(easymotion-overwin-w)", { noremap = false })
+-- hop.nvim  motion
+map("", "<leader>w", "<cmd>HopWord<CR>")
+map("", "<leader>W", "<cmd>HopChar1<CR>")
+map("", "<C-l>", "<cmd>HopLine<CR>")
+map("", "<leader>/", "<cmd>HopPattern<CR>")
 -- vim-niceblock
 map("x", "I", "<Plug>(niceblock-I)", { noremap = false })
 map("x", "A", "<Plug>(niceblock-A)", { noremap = false })
