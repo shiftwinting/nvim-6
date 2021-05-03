@@ -49,7 +49,7 @@ map("n", "k", "<Plug>(accelerated_jk_gk)", { noremap = false })
 -- hop.nvim  motion
 map("", "<leader>w", "<cmd>HopWord<CR>")
 map("", "<leader>W", "<cmd>HopChar1<CR>")
-map("", "<C-l>", "<cmd>HopLine<CR>")
+map("", "<leader>l", "<cmd>HopLine<CR>")
 map("", "<leader>/", "<cmd>HopPattern<CR>")
 -- vim-niceblock
 map("x", "I", "<Plug>(niceblock-I)", { noremap = false })
