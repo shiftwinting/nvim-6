@@ -3,28 +3,28 @@ local utils = require("utils")
 local autocmd = utils.autocmd
 
 autocmd("common", {
-	-- Reload vim config automatically
-	-- FIXME
-	-- string.format([[BufWritePost %s{*.vim,*.yaml,vimrc} nested source $MYVIMRC | redraw]], global.vim_path),
-	-- Reload Vim script automatically if setlocal autoread
-	[[BufWritePost,FileWritePost *.vim nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
-	-- Update filetype on save if empty
-	[[BufWritePost * nested if &l:filetype ==# '' || exists('b:ftdetect') | unlet! b:ftdetect | filetype detect | endif]],
-	-- Highlight current line only on focused window
-	[[WinEnter,InsertLeave * if &ft !~# '^\(denite\|clap_\)' | set cursorline | endif]],
-	[[WinLeave,InsertEnter * if &ft !~# '^\(denite\|clap_\)' | set nocursorline | endif]],
-	-- Automatically set read-only for files being edited elsewhere
-	[[SwapExists * nested let v:swapchoice = 'o']],
-	-- Equalize window dimensions when resizing vim window
-	[[VimResized * tabdo wincmd =]],
-	-- Force write shada on leaving nvim
-	[[VimLeave * if has('nvim') | wshada! | else | wviminfo! | endif]],
-	-- Check if file changed when its window is focus, more eager than 'autoread'
-	[[FocusGained * checktime]],
+  -- Reload vim config automatically
+  -- FIXME
+  -- string.format([[BufWritePost %s{*.vim,*.yaml,vimrc} nested source $MYVIMRC | redraw]], global.vim_path),
+  -- Reload Vim script automatically if setlocal autoread
+  [[BufWritePost,FileWritePost *.vim nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
+  -- Update filetype on save if empty
+  [[BufWritePost * nested if &l:filetype ==# '' || exists('b:ftdetect') | unlet! b:ftdetect | filetype detect | endif]],
+  -- Highlight current line only on focused window
+  [[WinEnter,InsertLeave * if &ft !~# '^\(denite\|clap_\)' | set cursorline | endif]],
+  [[WinLeave,InsertEnter * if &ft !~# '^\(denite\|clap_\)' | set nocursorline | endif]],
+  -- Automatically set read-only for files being edited elsewhere
+  [[SwapExists * nested let v:swapchoice = 'o']],
+  -- Equalize window dimensions when resizing vim window
+  [[VimResized * tabdo wincmd =]],
+  -- Force write shada on leaving nvim
+  [[VimLeave * if has('nvim') | wshada! | else | wviminfo! | endif]],
+  -- Check if file changed when its window is focus, more eager than 'autoread'
+  [[FocusGained * checktime]],
 
-	[[BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif]],
+  [[BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif]],
 
-	[[Syntax * if line('$') > 5000 | syntax sync minlines=200 | endif]],
+  [[Syntax * if line('$') > 5000 | syntax sync minlines=200 | endif]],
 }, true)
 
 -- Automatically set relativenumber

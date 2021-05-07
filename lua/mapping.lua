@@ -75,14 +75,24 @@ map({ "n", "t" }, "<leader>t", ":ToggleTerm<CR>", silent)
 -- Use K for show documentation in float window
 map("n", "K", ":call CocActionAsync('doHover')<CR>", silent)
 -- Applying codeAction to the selected region.
-map({ "x", "n" }, "<leader>a", "<Plug>(coc-codeaction-selected)", { noremap = false, silent = true })
+map(
+  { "x", "n" },
+  "<leader>a",
+  "<Plug>(coc-codeaction-selected)",
+  { noremap = false, silent = true }
+)
 -- " Use <c-q> for trigger completion.
 map("i", "<c-q>", "coc#refresh()", { silent = true, expr = true })
 -- " Jump definition in other window
 -- Remap keys for gotos
 map("n", "gd", [[:vsplit|normal\<Plug>(coc-definition)<CR>]], silent)
 map("n", "gy", "<Plug>(coc-type-definition)", { silent = true, noremap = false })
-map("n", "<Leader>ci", "<Plug>(coc-implementation)", { silent = true, noremap = false })
+map(
+  "n",
+  "<Leader>ci",
+  "<Plug>(coc-implementation)",
+  { silent = true, noremap = false }
+)
 map("n", "gr", "<Plug>(coc-references)", { silent = true, noremap = false })
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -91,7 +101,12 @@ map("n", "]g", "<Plug>(coc-diagnostic-next)", { silent = true, noremap = false }
 -- Symbol renaming.
 map("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true, noremap = false })
 -- Format current buffer
-map({ "n", "x" }, "<leader>f", "<Plug>(coc-format)", { silent = true, noremap = false })
+map(
+  { "n", "x" },
+  "<leader>f",
+  "<Plug>(coc-format)",
+  { silent = true, noremap = false }
+)
 -- Apply AutoFix to problem on the current line.
 map("n", "<leader>qf", "<Plug>(coc-fix-current)", { silent = true, noremap = false })
 -- Map function and class text objects
