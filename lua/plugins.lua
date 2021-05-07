@@ -69,7 +69,6 @@ packer.startup(function(use)
 		{ "romainl/vim-cool", event = "BufRead" },
 		{ "rhysd/accelerated-jk" },
 		{ "kana/vim-niceblock", event = "BufRead" },
-		{ "rhysd/clever-f.vim", event = "BufRead" },
 		{
 			"psliwka/vim-smoothie",
 			setup = "vim.g.smoothie_no_default_mappings = true",
@@ -88,7 +87,7 @@ packer.startup(function(use)
 	})
 	--Movement
 	use({
-		{ "matze/vim-move", event = "BufRead" },
+		{ "rhysd/clever-f.vim", event = "BufRead" },
 		{
 			"phaazon/hop.nvim",
 			cmd = { "HopWord", "HopLine", "HopPattern", "HopChar1" },
@@ -107,10 +106,14 @@ packer.startup(function(use)
 	use({ "skywind3000/asyncrun.vim", cmd = "AsyncRun" })
 	use({ "liuchengxu/vista.vim", cmd = "Vista", config = conf("vista") })
 	use({ "akinsho/nvim-toggleterm.lua", cmd = "ToggleTerm", config = conf("nvim-toggleterm") })
-	-- fuzzy finder
 	use({
-		{ "liuchengxu/vim-clap", run = ":Clap install-binary!", cmd = "Clap", config = conf("vim-clap") },
-		{ "vn-ki/coc-clap", after = { "vim-clap", "coc.nvim" } },
+		{
+			"nvim-telescope/telescope.nvim",
+			cmd = "Telescope",
+			config = conf("telescope"),
+			requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+		},
+		"fannheyward/telescope-coc.nvim",
 	})
 end)
 

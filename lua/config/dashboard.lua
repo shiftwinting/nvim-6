@@ -1,5 +1,7 @@
 local global = require("global")
 
+vim.g.dashboard_default_executive = "telescope"
+vim.g.dashboard_disable_statusline = 1
 -- vim.g.dashboard_footer_icon = '🐬 '
 vim.g.dashboard_preview_command = "cat"
 vim.g.dashboard_preview_pipeline = "lolcat --animate --speed 100 -d 1"
@@ -32,7 +34,7 @@ vim.g.dashboard_custom_section = {
 		command = "DashboardFindHistory",
 	},
 	e_jump_bookmarks = {
-		description = { "  Jump to bookmarks                SPC f b" },
+		description = { "  Jump to bookmarks                SPC f m" },
 		command = "DashboardJumpMarks",
 	},
 	f_last_session = {

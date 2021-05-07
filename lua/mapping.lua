@@ -54,32 +54,17 @@ map("", "<leader>/", "<cmd>HopPattern<CR>")
 -- vim-niceblock
 map("x", "I", "<Plug>(niceblock-I)", { noremap = false })
 map("x", "A", "<Plug>(niceblock-A)", { noremap = false })
--- vim-clap
-map("n", "<space>tc", ":<C-u>Clap colors<CR>", silent)
-map("n", "<space>bb", ":<C-u>Clap buffers<CR>", silent)
-map("n", "<space>fa ", ":<C-u>Clap grep2<CR>", silent)
-map("n", "<space>fb", ":<C-u>Clap marks<CR>", silent)
-map("n", "<C-x><C-f>", ":<C-u>Clap filer<CR>", silent)
-map("n", "<space>ff", ":<C-u>Clap files ++finder=rg --ignore --hidden --files<cr>", silent)
-map("n", "<space>fg", ":<C-u>Clap gfiles<CR>", silent)
-map("n", "<space>fw", ":<C-u>Clap grep ++query=<cword><cr>", silent)
-map("n", "<space>fh", ":<C-u>Clap history<CR>", silent)
-map("n", "<space>fW", ":<C-u>Clap windows<CR>", silent)
-map("n", "<space>fl", ":<C-u>Clap loclist<CR>", silent)
-map("n", "<space>fu", ":<C-u>Clap git_diff_files<CR>", silent)
-map("n", "<space>fv", ":<C-u>Clap grep ++query=@visual<CR>", silent)
-map("n", "<space>oc", ":<C-u>Clap personalconf<CR>", silent)
--- coc-clap
--- Show all diagnostics
-map("n", "<space>a", ":Clap coc_diagnostics<CR>", silent)
--- Manage extensions
-map("n", "<space>e", ":Clap coc_extensions<CR>", silent)
--- Show commands
-map("n", "<space>c", ":Clap coc_commands<CR>", silent)
--- Search workspace symbols
-map("n", "<space>s", ":Clap coc_symbols<CR>", silent)
-map("n", "<space>S", ":Clap coc_services<CR>", silent)
-map("n", "<space>o", ":Clap coc_outline<CR>", silent)
+-- telescope
+map("n", "<space>tc", ":Telescope colorscheme<CR>", silent)
+map("n", "<space>ff", ":Telescope find_files<CR>", silent)
+map("n", "<space>fh", ":Telescope oldfiles<CR>", silent)
+map("n", "<space>fb", ":Telescope buffers<CR>", silent)
+map("n", "<space>fw", ":Telescope live_grep<CR>", silent)
+map("n", "<space>fm", ":Telescope marks<CR>", silent)
+-- telescope-coc
+map("n", "<space>a", ":Telescope coc diagnostics<CR>", silent)
+map("n", "<space>c", ":Telescope coc commands<CR>", silent)
+map("n", "<space>d", ":Telescope coc definitions<CR>", silent)
 ----- Nvim Bufferline
 map("n", "<leader>b", ":BufferLinePick<CR>", silent)
 map("n", "]b", ":BufferLineCycleNext<CR>", silent)
