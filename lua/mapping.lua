@@ -85,7 +85,7 @@ map(
 map("i", "<c-q>", "coc#refresh()", { silent = true, expr = true })
 -- " Jump definition in other window
 -- Remap keys for gotos
-map("n", "gd", [[:vsplit|normal\<Plug>(coc-definition)<CR>]], silent)
+map("n", "gd", "<Plug>(coc-definition)", { silent = true, noremap = false })
 map("n", "gy", "<Plug>(coc-type-definition)", { silent = true, noremap = false })
 map(
   "n",

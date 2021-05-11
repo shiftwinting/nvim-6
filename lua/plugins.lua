@@ -58,7 +58,7 @@ packer.startup(function(use)
     {
       "luochen1990/rainbow",
       event = "BufReadPre",
-      setup = "vim.g.rainbow_active = 1", 
+      setup = "vim.g.rainbow_active = 1",
     },
   })
   -- lsp, completion
@@ -104,7 +104,7 @@ packer.startup(function(use)
   use({
     "nvim-treesitter/nvim-treesitter",
     event = "BufRead",
-    config = conf("nvim-treesitter"), 
+    config = conf("nvim-treesitter"),
   })
   use({
     { "raimon49/requirements.txt.vim", ft = "requirements" },
@@ -116,7 +116,7 @@ packer.startup(function(use)
   use({
     "akinsho/nvim-toggleterm.lua",
     cmd = "ToggleTerm",
-    config = conf("nvim-toggleterm"), 
+    config = conf("nvim-toggleterm"),
   })
   use({
     {
