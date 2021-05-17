@@ -102,11 +102,11 @@
   "git.removedSign.text": "▊ ",
   "git.topRemovedSign.text": "‾",
   "git.changeRemovedSign.text": "▊ ",
-  "git.addedSign.hlGroup": "GitAddHi",
-  "git.changedSign.hlGroup": "GitModifyHi",
-  "git.removedSign.hlGroup": "GitDeleteHi",
-  "git.topRemovedSign.hlGroup": "GitDeleteHi",
-  "git.changeRemovedSign.hlGroup": "GitDeleteHi",
+  "git.addedSign.hlGroup": "GitSignsAdd",
+  "git.changedSign.hlGroup": "GitSignsChange",
+  "git.removedSign.hlGroup": "GitSignsDelete",
+  "git.topRemovedSign.hlGroup": "GitSignsDelete",
+  "git.changeRemovedSign.hlGroup": "GitSignsDelete",
 
   // go
   "go.goplsArgs": ["-remote", "auto"],
