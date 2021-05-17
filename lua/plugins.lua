@@ -30,8 +30,8 @@ packer.startup(function(use)
     { "rakr/vim-one" },
     { "sainnhe/sonokai" },
     { "sainnhe/edge" },
-    { "arcticicestudio/nord-vim" },
     { "ChristianChiarulli/nvcode-color-schemes.vim" },
+    { "shaunsingh/nord.nvim" },
     { "xiyaowong/nvim-transparent", config = conf("transparent") },
   })
   -- File Tree
