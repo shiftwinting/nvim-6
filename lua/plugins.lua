@@ -74,9 +74,13 @@ packer.startup(function(use)
     { "rhysd/accelerated-jk" },
     { "kana/vim-niceblock", event = "BufRead" },
     {
-      "psliwka/vim-smoothie",
-      setup = "vim.g.smoothie_no_default_mappings = true",
+      "karb94/neoscroll.nvim",
       event = "BufRead",
+      config = function()
+        require("neoscroll").setup({
+          mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "zt", "zz", "zb" },
+        })
+      end,
     },
     { "lfv89/vim-interestingwords", event = "BufRead" },
     { "itchyny/vim-cursorword", event = "BufRead" },

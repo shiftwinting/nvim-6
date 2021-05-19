@@ -118,11 +118,6 @@ map({ "x", "o" }, "ac", "<Plug>(coc-classobj-a)", { silent = true, noremap = fal
 map("n", "tt", "<Plug>(coc-translator-p)", { silent = true, noremap = false })
 map("v", "tt", "<Plug>(coc-translator-pv)", { silent = true, noremap = false })
 
---- vim-smoothie
-map("n", "<C-f>", ":<C-U>call smoothie#forwards()<CR>", silent)
-map("n", "<C-b>", ":<C-U>call smoothie#backwards()<CR>", silent)
-map("n", "<C-d>", ":<C-U>call smoothie#downwards()<CR>", silent)
-map("n", "<C-u>", ":<C-U>call smoothie#upwards()<CR>", silent)
 -- resize widnow by talek/obvious-resize
 map("n", "<C-Up>", ":<C-U>ObviousResizeUp<CR>", silent)
 map("n", "<C-Down>", ":<C-U>ObviousResizeDown<CR>", silent)
