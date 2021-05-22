@@ -74,6 +74,13 @@ packer.startup(function(use)
     { "rhysd/accelerated-jk" },
     { "kana/vim-niceblock", event = "BufRead" },
     {
+      "nacro90/numb.nvim",
+      event = "CmdlineEnter",
+      config = function()
+        require("numb").setup()
+      end,
+    },
+    {
       "karb94/neoscroll.nvim",
       event = "BufRead",
       config = function()
