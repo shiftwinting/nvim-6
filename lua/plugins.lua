@@ -27,7 +27,6 @@ packer.startup(function(use)
 
   -- colorscheme
   use({
-    { "rakr/vim-one" },
     { "sainnhe/sonokai" },
     { "sainnhe/edge" },
     { "ChristianChiarulli/nvcode-color-schemes.vim" },
