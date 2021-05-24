@@ -29,6 +29,7 @@ packer.startup(function(use)
   use({
     { "Mofiqul/codedark.nvim" },
     { "sainnhe/sonokai" },
+    { "monsonjeremy/onedark.nvim" },
     { "sainnhe/edge" },
     { "shaunsingh/nord.nvim" },
     { "xiyaowong/nvim-transparent", config = conf("transparent") },
