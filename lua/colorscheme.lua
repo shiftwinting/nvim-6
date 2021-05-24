@@ -1,7 +1,7 @@
 local fn, cmd = vim.fn, vim.cmd
 
 local cache_theme_path = require("global").cache_dir .. "theme"
-local default_theme = "one"
+local default_theme = "onedark"
 
 -- Must be set before loading the theme, otherwise, it won't have any effect.
 local theme_configs = {
