@@ -38,14 +38,12 @@
   },
 
   // diagnostic
-  "diagnostic.enable": true,
-  "diagnostic.displayByAle": false,
   "diagnostic.infoSign": "»",
   "diagnostic.hintSign": "»",
   "diagnostic.warningSign": "≈",
   "diagnostic.errorSign": "✗",
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextPrefix": "  ❄ ",
+  "diagnostic.virtualTextPrefix": "  ※ ",
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.checkCurrentLine": true,
