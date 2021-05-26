@@ -45,7 +45,7 @@ packer.startup(function(use)
     -- Bufferline
     { "akinsho/nvim-bufferline.lua", config = conf("nvim-bufferline") },
     -- dashboard
-    { "glepnir/dashboard-nvim", config = conf("dashboard") },
+    -- { "glepnir/dashboard-nvim", config = conf("dashboard") },
     -- statusline
     { "glepnir/galaxyline.nvim", config = "require('statusline')" },
     {
@@ -94,7 +94,6 @@ packer.startup(function(use)
   })
 
   use({ "junegunn/vim-easy-align", event = "BufRead" })
-  use({ "farmergreg/vim-lastplace" })
   use({ "talek/obvious-resize", config = "vim.g.obvious_resize_default = 2" }) -- resize window
   use({
     { "tyru/caw.vim", event = "BufRead", requires = "Shougo/context_filetype.vim" },
@@ -110,6 +109,15 @@ packer.startup(function(use)
         require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
       end,
     },
+  })
+  use({
+    "rmagatti/auto-session",
+    config = function()
+      require("auto-session").setup({
+        log_level = "error",
+        auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/auto/",
+      })
+    end,
   })
   use({
     "TimUntersberger/neogit",
