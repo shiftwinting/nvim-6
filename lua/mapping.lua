@@ -34,6 +34,13 @@ map("i", "<C-h>", "<BS>")
 map("i", "<C-w>", "<C-o>ciw")
 -- yank
 map("n", "Y", "y$")
+-- zero movement
+map(
+  "n",
+  "0",
+  "getline('.')[0 : col('.') - 2] =~# '^\\s\\+$' ? '0' : '^'",
+  { silent = true, expr = true }
+)
 
 ------------------------- Plugins Mappings ------------------------
 -- nvim tree
