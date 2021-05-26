@@ -123,3 +123,9 @@ map("n", "<C-Up>", ":<C-U>ObviousResizeUp<CR>", silent)
 map("n", "<C-Down>", ":<C-U>ObviousResizeDown<CR>", silent)
 map("n", "<C-Left>", ":<C-U>ObviousResizeLeft<CR>", silent)
 map("n", "<C-Right>", ":<C-U>ObviousResizeRight<CR>", silent)
+
+--- neogit ---
+map("n", "<space>gs", ":Neogit kind=split<CR>", silent)
+map("n", "<space>gc", ":Neogit commit<CR>", silent)
+map("n", "<space>gl", ":Neogit pull<CR>", silent)
+map("n", "<space>gp", ":Neogit push<CR>", silent)
