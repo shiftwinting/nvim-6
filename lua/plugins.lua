@@ -96,9 +96,13 @@ packer.startup(function(use)
   use({ "junegunn/vim-easy-align", event = "BufRead" })
   use({ "talek/obvious-resize", config = "vim.g.obvious_resize_default = 2" }) -- resize window
   use({
-    { "tyru/caw.vim", event = "BufRead", requires = "Shougo/context_filetype.vim" },
-    { "tpope/vim-surround", event = "BufRead" },
+    "b3nj5m1n/kommentary",
+    event = "BufRead",
+    config = function()
+      require("kommentary.config").configure_language("lua", { prefer_single_line_comments = true })
+    end,
   })
+  use({ "tpope/vim-surround", event = "BufRead" })
   --Movement
   use({
     { "rhysd/clever-f.vim", event = "BufRead" },
