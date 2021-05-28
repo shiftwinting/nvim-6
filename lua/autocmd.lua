@@ -1,11 +1,7 @@
-local global = require("global")
 local utils = require("utils")
 local autocmd = utils.autocmd
 
 autocmd("common", {
-  -- Reload vim config automatically
-  -- FIXME
-  -- string.format([[BufWritePost %s{*.vim,*.yaml,vimrc} nested source $MYVIMRC | redraw]], global.vim_path),
   -- Reload Vim script automatically if setlocal autoread
   [[BufWritePost,FileWritePost *.vim nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
   -- Update filetype on save if empty
