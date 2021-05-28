@@ -44,7 +44,7 @@ g.mapleader = ","
 
 require("plugins")
 require("options")
-require("mapping")
+require("keymap")
 require("autocmd")
 require("colorscheme").init()
 

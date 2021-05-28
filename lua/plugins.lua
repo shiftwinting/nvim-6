@@ -148,12 +148,7 @@ packer.startup(function(use)
     event = "BufRead",
     config = conf("nvim-treesitter"),
   })
-  use({
-    { "raimon49/requirements.txt.vim", ft = "requirements" },
-    { "johejo/gomod.vim", ft = "gomod" },
-    { "MTDL9/vim-log-highlighting", ft = "log" },
-  })
-  use({ "skywind3000/asyncrun.vim", cmd = "AsyncRun" })
+
   use({ "liuchengxu/vista.vim", cmd = "Vista", config = conf("vista") })
   use({
     "akinsho/nvim-toggleterm.lua",
