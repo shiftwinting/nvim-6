@@ -54,12 +54,6 @@ packer.startup(function(use)
       branch = "lua",
       config = conf("indent-blakline"),
     },
-    -- rainbow pairs
-    {
-      "luochen1990/rainbow",
-      event = "BufReadPre",
-      setup = "vim.g.rainbow_active = 1",
-    },
   })
   -- lsp, completion
   use({
@@ -146,11 +140,15 @@ packer.startup(function(use)
       vim.g.db_ui_winwidth = 40
     end,
   })
-  -- syntax
+  -- treesitter
   use({
-    "nvim-treesitter/nvim-treesitter",
-    event = "BufRead",
-    config = conf("nvim-treesitter"),
+    {
+      "nvim-treesitter/nvim-treesitter",
+      event = "BufRead",
+      config = conf("nvim-treesitter"),
+    },
+    { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
+    { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
   })
 
   use({ "liuchengxu/vista.vim", cmd = "Vista", config = conf("vista") })

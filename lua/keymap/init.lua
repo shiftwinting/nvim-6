@@ -118,11 +118,6 @@ load_maps({
   ["nx|<leader>f"] = cmd("<Plug>(coc-format)"):silent(),
   -- Apply AutoFix to problem on the current line.
   ["n|<leader>qf"] = cmd("<Plug>(coc-fix-current)"):silent(),
-  -- Map function and class text objects
-  ["xo|if"] = cmd("<Plug>(coc-funcobj-i)"):silent(),
-  ["xo|if"] = cmd("<Plug>(coc-funcobj-a)"):silent(),
-  ["xo|if"] = cmd("<Plug>(coc-classobj-i)"):silent(),
-  ["xo|if"] = cmd("<Plug>(coc-classobj-a)"):silent(),
 })
 -- coc-translator --
 load_maps({
