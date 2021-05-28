@@ -41,6 +41,8 @@ map(
   "getline('.')[0 : col('.') - 2] =~# '^\\s\\+$' ? '0' : '^'",
   { silent = true, expr = true }
 )
+-- quit
+map("n", "<space>q", "ZZ", silent)
 
 ------------------------- Plugins Mappings ------------------------
 -- nvim tree
@@ -136,3 +138,6 @@ map("n", "<space>gs", ":Neogit kind=split<CR>", silent)
 map("n", "<space>gc", ":Neogit commit<CR>", silent)
 map("n", "<space>gl", ":Neogit pull<CR>", silent)
 map("n", "<space>gp", ":Neogit push<CR>", silent)
+
+--- vim-dadbod-ui ---
+map("n", "<leader>od", ":DBUIToggle<CR>", silent)

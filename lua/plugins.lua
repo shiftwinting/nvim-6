@@ -125,6 +125,23 @@ packer.startup(function(use)
     cmd = "Neogit",
     config = conf("neogit"),
   })
+  use({
+    "kristijanhusak/vim-dadbod-ui",
+    cmd = {
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUI",
+      "DBUIFindBuffer",
+      "DBUIRenameBuffer",
+    },
+    requires = { "tpope/vim-dadbod" },
+    config = function()
+      vim.g.db_ui_show_help = 0
+      vim.g.db_ui_win_position = "right"
+      vim.g.db_ui_use_nerd_fonts = 1
+      vim.g.db_ui_winwidth = 40
+    end,
+  })
   -- syntax
   use({
     "nvim-treesitter/nvim-treesitter",
