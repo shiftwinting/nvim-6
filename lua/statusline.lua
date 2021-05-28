@@ -1,56 +1,46 @@
-local gl = require("galaxyline")
-local condition = require("galaxyline.condition")
-local gls = gl.section
-gl.short_line_list = { "NvimTree", "vista", "dbui", "packer" }
-
-local left_list = {}
-local right_list = {}
-local short_left_list = {}
-local short_right_list = {}
-function left_list:append(t)
-  table.insert(self, t)
-end
-function right_list:append(t)
-  table.insert(self, t)
-end
-function short_left_list:append(t)
-  table.insert(self, t)
-end
-function short_right_list:append(t)
-  table.insert(self, t)
-end
--------------------------------------
+local lualine = require("lualine")
 
 local colors = {
-  bg = "NONE",
-  line_bg = "NONE",
-  fg = "#c0c0c0",
-
-  yellow = "#fabd2f",
+  bg = "NONE", --"#202328",
+  fg = "#bbc2cf",
+  yellow = "#ECBE7B",
   cyan = "#008080",
   darkblue = "#081633",
-  green = "#afd700",
+  green = "#98be65",
   orange = "#FF8800",
-  purple = "#5d4d7a",
+  violet = "#a9a1e1",
   magenta = "#c678dd",
   blue = "#51afef",
   red = "#ec5f67",
 }
 
+local conditions = {
+  buffer_not_empty = function()
+    return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
+  end,
+  hide_in_width = function()
+    return vim.fn.winwidth(0) > 80
+  end,
+  check_git_workspace = function()
+    local filepath = vim.fn.expand("%:p:h")
+    local gitdir = vim.fn.finddir(".git", filepath .. ";")
+    return gitdir and #gitdir > 0 and #gitdir < #filepath
+  end,
+}
 local mode_color = {
-  n = colors.magenta,
+  n = colors.red,
   i = colors.green,
   v = colors.blue,
   [""] = colors.blue,
   V = colors.blue,
-  c = colors.red,
-  no = colors.magenta,
+  c = colors.magenta,
+  no = colors.red,
   s = colors.orange,
   S = colors.orange,
   [""] = colors.orange,
   ic = colors.yellow,
-  R = colors.purple,
-  Rv = colors.purple,
+  R = colors.violet,
+  Rv = colors.violet,
   cv = colors.red,
   ce = colors.red,
   r = colors.cyan,
@@ -59,257 +49,187 @@ local mode_color = {
   ["!"] = colors.red,
   t = colors.red,
 }
+local mode_symbol = {
+  n = " ",
+  i = "",
+  v = " ",
+  [""] = " ",
+  V = " ",
+  c = "↪ ",
+  no = "",
+  s = " ",
+  S = " ",
+  [""] = " ",
+  ic = " ",
+  R = "",
+  Rv = "",
+  cv = "↪ ",
+  ce = "↪ ",
+  r = "",
+  rm = "",
+  ["r?"] = "",
+  ["!"] = "SE",
+  t = "ﭨ ",
+}
 
-local buffer_not_empty = function()
-  if vim.fn.empty(vim.fn.expand("%:t")) ~= 1 then
-    return true
-  end
-  return false
-end
-
-local find_git_root = function()
-  local path = vim.fn.expand("%:p:h")
-  local get_git_dir = require("galaxyline.provider_vcs").get_git_dir
-  return get_git_dir(path)
-end
-
-local checkwidth = function()
-  local squeeze_width = vim.fn.winwidth(0) / 2
-  if squeeze_width > 40 then
-    return true
-  end
-  return false
-end
-
-left_list:append({
-  FirstElement = {
-    provider = function()
-      vim.api.nvim_command("hi GalaxyFirstElement guifg=" .. mode_color[vim.fn.mode()])
-      return "▊ "
-    end,
-    highlight = { colors.blue, colors.line_bg },
-  },
-})
-left_list:append({
-  ViMode = {
-    provider = function()
-      -- auto change color according the vim mode
-      vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
-      return "  "
-    end,
-    highlight = { colors.red, colors.line_bg, "bold" },
-  },
-})
-
--- FileSize
-left_list:append({
-  FileSize = {
-    provider = "FileSize",
-    condition = buffer_not_empty,
-    highlight = { colors.fg, colors.line_bg, "italic" },
-  },
-})
--- FileIcon
-left_list:append({
-  FileIcon = {
-    provider = "FileIcon",
-    condition = buffer_not_empty,
-    highlight = {
-      require("galaxyline.provider_fileinfo").get_file_icon_color,
-      colors.line_bg,
+-- Config
+local config = {
+  options = {
+    -- Disable sections and component separators
+    component_separators = "",
+    section_separators = "",
+    theme = {
+      normal = { c = { fg = colors.fg, bg = colors.bg } },
+      inactive = { c = { fg = colors.fg, bg = colors.bg } },
     },
   },
-})
--- FileName
-left_list:append({
-  FileName = {
-    provider = {
-      function()
-        local file = vim.fn.expand("%:~:.")
-        if vim.fn.empty(file) == 1 then
-          return ""
-        end
-        local icon = ""
-        if vim.bo.readonly then
-          icon = ""
-        else
-          if vim.bo.modifiable then
-            if vim.bo.modified then
-              icon = ""
-            else
-              icon = ""
-            end
-          end
-        end
-        return file .. " " .. icon .. " "
-      end,
-    },
-    condition = buffer_not_empty,
-    highlight = { colors.fg, colors.line_bg },
+  extensions = { "nvim-tree", "quickfix" },
+  sections = {
+    -- these are to remove the defaults
+    lualine_a = {},
+    lualine_b = {},
+    lualine_y = {},
+    lualine_z = {},
+    -- These will be filled later
+    lualine_c = {},
+    lualine_x = {},
   },
+  inactive_sections = {
+    -- these are to remove the defaults
+    lualine_a = {},
+    lualine_v = {},
+    lualine_y = {},
+    lualine_z = {},
+    lualine_c = {},
+    lualine_x = {},
+  },
+}
+
+-- Inserts a component in lualine_c at left section
+local function ins_left(component)
+  table.insert(config.sections.lualine_c, component)
+end
+
+-- Inserts a component in lualine_x ot right section
+local function ins_right(component)
+  table.insert(config.sections.lualine_x, component)
+end
+
+ins_left({
+  function()
+    return "▊"
+  end,
+  color = { fg = colors.blue }, -- Sets highlighting of component
+  left_padding = 0, -- We don't need space before this
 })
 
--- GitBranch
-left_list:append({
-  GitBranch = {
-    provider = "GitBranch",
-    icon = "   ",
-    condition = find_git_root,
-    highlight = { colors.orange, colors.line_bg, "bold" },
-  },
-})
--- Git diff = add
-left_list:append({
-  DiffAdd = {
-    provider = function()
-      local add = vim.api.nvim_eval("get(b:, 'coc_git_status', '')"):match("+(%d+)")
-      return add or ""
-    end,
-    condition = checkwidth,
-    icon = "   ",
-    highlight = { colors.green, colors.line_bg },
-  },
-})
--- Git diff = change
-left_list:append({
-  DiffChange = {
-    provider = function()
-      local change = vim.api.nvim_eval("get(b:, 'coc_git_status', '')"):match("~(%d+)")
-      return change or ""
-    end,
-    condition = checkwidth,
-    icon = "   ",
-    highlight = { colors.blue, colors.line_bg },
-  },
-})
--- Git diff = remove
-left_list:append({
-  DiffRemove = {
-    provider = function()
-      local remove = vim.api.nvim_eval("get(b:, 'coc_git_status', '')"):match("-(%d+)")
-      return remove or ""
-    end,
-    condition = checkwidth,
-    icon = "   ",
-    highlight = { colors.red, colors.line_bg },
-  },
+ins_left({
+  -- Vim Mode
+  function()
+    local mode = vim.fn.mode()
+    vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[mode] .. " guibg=" .. colors.bg)
+    return mode_symbol[mode]
+  end,
+  color = "LualineMode",
 })
 
--- lsp diagnostic = error
-left_list:append({
-  DiagnosticError = {
-    provider = "DiagnosticError",
-    icon = "   ",
-    highlight = { colors.red, colors.bg },
-  },
-})
--- lsp diagnostic = warn
-left_list:append({
-  DiagnosticWarn = {
-    provider = "DiagnosticWarn",
-    icon = "   ",
-    highlight = { colors.blue, colors.bg },
-  },
-})
--- lsp diagnostic = hint
-left_list:append({
-  DiagnosticHint = {
-    provider = "DiagnosticHint",
-    icon = "   ",
-    highlight = { colors.blue, colors.bg },
-  },
-})
--- lsp diagnostic = info
-left_list:append({
-  DiagnosticInfo = {
-    provider = "DiagnosticInfo",
-    icon = "   ",
-    highlight = { colors.orange, colors.bg },
-  },
-})
--- lsp status
-left_list:append({
-  CocStatus = {
-    provider = function()
-      return vim.api.nvim_eval("get(g:, 'coc_status', '')")
-    end,
-    icon = "   🗱",
-    highlight = { colors.green, colors.bg },
-  },
-})
--- current function
--- left_list:append({
--- 	CocFunc = {
--- 		provider = function()
--- 			return "    " .. vim.api.nvim_eval("get(b:, 'coc_current_function', '')")
--- 		end,
--- 		highlight = { colors.yellow, colors.bg },
--- 	},
--- })
+ins_left({ "mode", left_padding = 0 })
 
--- git blame
-right_list:append({
-  GitBlame = {
-    provider = function()
-      local msg = vim.api.nvim_eval("get(b:, 'coc_git_blame', '')")
-      if msg == "" then
+ins_left({
+  -- filesize component
+  function()
+    local function format_file_size(file)
+      local size = vim.fn.getfsize(file)
+      if size <= 0 then
         return ""
       end
-      if #msg > 70 then
-        msg = msg:sub(0, 70) .. "... "
+      local sufixes = { "b", "k", "m", "g" }
+      local i = 1
+      while size > 1024 do
+        size = size / 1024
+        i = i + 1
       end
-      return msg .. " "
-    end,
-    icon = " ",
-    highlight = { colors.purple, colors.line_bg },
-  },
+      return string.format("%.1f%s", size, sufixes[i])
+    end
+    local file = vim.fn.expand("%:p")
+    if string.len(file) == 0 then
+      return ""
+    end
+    return format_file_size(file)
+  end,
+  condition = conditions.buffer_not_empty,
 })
 
--- line/column
-right_list:append({
-  LineInfo = {
-    provider = function()
-      return string.format("%3d·%2d", vim.fn.line("."), vim.fn.col("."))
-    end,
-    highlight = { colors.fg, colors.line_bg },
-  },
-})
------------------------------------------------------------
-
-short_left_list:append({
-  BufferType = {
-    provider = "FileTypeName",
-    separator = " ",
-    separator_highlight = { "NONE", colors.bg },
-    highlight = { colors.magenta, colors.bg, "bold" },
-  },
-})
-
-short_left_list:append({
-  SFileName = {
-    provider = "SFileName",
-    condition = condition.buffer_not_empty,
-    highlight = { colors.fg, colors.bg, "bold" },
-  },
+ins_left({
+  function()
+    local file = vim.fn.expand("%:~:.")
+    if vim.fn.empty(file) == 1 then
+      return ""
+    end
+    local icon = ""
+    if vim.bo.readonly then
+      icon = ""
+    else
+      if vim.bo.modifiable then
+        if vim.bo.modified then
+          icon = ""
+        else
+          icon = ""
+        end
+      end
+    end
+    return file .. " " .. icon .. " "
+  end,
+  condition = conditions.buffer_not_empty,
+  color = { fg = colors.magenta, gui = "bold" },
 })
 
-short_right_list:append({
-  BufferIcon = {
-    provider = "BufferIcon",
-    highlight = { colors.fg, colors.bg },
-  },
+ins_left({ "location" })
+
+ins_left({
+  "diagnostics",
+  sources = { "coc" },
+  symbols = { error = " ", warn = " ", info = " ", hint = "" },
+  color_error = colors.red,
+  color_warn = colors.yellow,
+  color_info = colors.cyan,
+  color_info = colors.blue,
 })
 
-------------------------------------
-for idx, item in ipairs(left_list) do
-  gls.left[idx] = item
-end
-for idx, item in ipairs(right_list) do
-  gls.right[idx] = item
-end
-for idx, item in ipairs(short_left_list) do
-  gls.short_line_left[idx] = item
-end
-for idx, item in ipairs(short_right_list) do
-  gls.short_line_right[idx] = item
-end
+-- Insert mid section. You can make any number of sections in neovim :)
+-- for lualine it's any number greater then 2
+ins_left({ function()
+  return "%="
+end })
+
+ins_left({
+  "g:coc_status",
+  icon = "🗱",
+  color = { fg = colors.green, gui = "bold" },
+})
+
+ins_right({
+  "branch",
+  icon = "",
+  condition = conditions.check_git_workspace,
+  color = { fg = colors.violet, gui = "bold" },
+})
+
+ins_right({
+  "diff",
+  symbols = { added = " ", modified = " ", removed = " " },
+  color_added = colors.green,
+  color_modified = colors.orange,
+  color_removed = colors.red,
+  condition = conditions.hide_in_width,
+})
+
+ins_right({
+  function()
+    return "▊"
+  end,
+  color = { fg = colors.blue },
+  right_padding = 0,
+})
+
+lualine.setup(config)

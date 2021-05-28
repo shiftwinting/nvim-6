@@ -42,12 +42,8 @@ packer.startup(function(use)
   })
   -- UI
   use({
-    -- Bufferline
     { "akinsho/nvim-bufferline.lua", config = conf("nvim-bufferline") },
-    -- dashboard
-    -- { "glepnir/dashboard-nvim", config = conf("dashboard") },
-    -- statusline
-    { "glepnir/galaxyline.nvim", config = "require('statusline')" },
+    { "hoob3rt/lualine.nvim", config = "require('statusline')" },
     {
       "lukas-reineke/indent-blankline.nvim",
       event = "BufRead",
