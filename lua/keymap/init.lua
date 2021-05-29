@@ -144,5 +144,5 @@ load_maps({
 })
 --- markdown-preview
 load_maps({
-  ["n|<leader>om"] = cr("MarkdownPreview"),
+  ["n|<leader>om"] = cr("MarkdownPreviewToggle"),
 })
