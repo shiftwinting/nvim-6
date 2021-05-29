@@ -142,3 +142,7 @@ load_maps({
 load_maps({
   ["n|<leader>od"] = cr("DBUIToggle"),
 })
+--- markdown-preview
+load_maps({
+  ["n|<leader>om"] = cr("MarkdownPreview"),
+})

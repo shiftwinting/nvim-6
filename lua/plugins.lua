@@ -136,6 +136,15 @@ packer.startup(function(use)
       vim.g.db_ui_winwidth = 40
     end,
   })
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = ":call mkdp#util#install()",
+    ft = { "markdown" },
+    config = function()
+      vim.g.mkdp_auto_start = 0
+      vim.g.mkdp_auto_close = 1
+    end,
+  })
   -- treesitter
   use({
     {
