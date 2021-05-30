@@ -185,7 +185,7 @@ ins_left({ "location" })
 ins_left({
   "diagnostics",
   sources = { "coc" },
-  symbols = { error = " ", warn = " ", info = " ", hint = "" },
+  symbols = { error = " ", warn = " ", info = " ", hint = " " },
   color_error = colors.red,
   color_warn = colors.yellow,
   color_info = colors.cyan,
