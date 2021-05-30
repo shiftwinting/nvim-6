@@ -53,7 +53,12 @@ packer.startup(function(use)
   })
   -- lsp, completion
   use({
-    { "neoclide/coc.nvim", branch = "release", config = conf("coc") },
+    {
+      "neoclide/coc.nvim",
+      branch = "release",
+      event = "BufRead",
+      config = conf("coc"),
+    },
     "honza/vim-snippets",
   })
   -- Enhance
