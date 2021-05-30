@@ -2,7 +2,7 @@ local lualine = require("lualine")
 
 local colors = {
   bg = "NONE", --"#202328",
-  fg = "#bbc2cf",
+  fg = "#f1f2f6",
   yellow = "#ECBE7B",
   cyan = "#008080",
   darkblue = "#081633",
@@ -162,10 +162,6 @@ ins_left({
 
 ins_left({
   function()
-    local file = vim.fn.expand("%:~:.")
-    if vim.fn.empty(file) == 1 then
-      return ""
-    end
     local icon = ""
     if vim.bo.readonly then
       icon = ""
@@ -178,7 +174,7 @@ ins_left({
         end
       end
     end
-    return file .. " " .. icon .. " "
+    return vim.fn.expand("%:~:.") .. " " .. icon
   end,
   condition = conditions.buffer_not_empty,
   color = { fg = colors.magenta, gui = "bold" },
@@ -202,11 +198,9 @@ ins_left({
 --   return "%="
 -- end })
 
-ins_left({
-  "g:coc_status",
-  icon = "🗱",
-  color = { fg = colors.green, gui = "bold" },
-})
+ins_left({ "g:coc_status", icon = "🗱", color = { fg = colors.green, gui = "bold" } })
+
+ins_right({ "b:coc_current_function", color = { fg = colors.yellow, gui = "bold" } })
 
 ins_right({
   "branch",
@@ -222,6 +216,13 @@ ins_right({
   color_modified = colors.orange,
   color_removed = colors.red,
   condition = conditions.hide_in_width,
+})
+
+ins_right({
+  function()
+    return os.date("%H:%M")
+  end,
+  icon = "",
 })
 
 ins_right({
