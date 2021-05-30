@@ -43,7 +43,6 @@
   "diagnostic.warningSign": "≈",
   "diagnostic.errorSign": "✗",
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextPrefix": "  ※ ",
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.checkCurrentLine": true,
