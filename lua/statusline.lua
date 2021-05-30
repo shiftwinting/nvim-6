@@ -51,23 +51,23 @@ local mode_color = {
 }
 local mode_symbol = {
   n = " ",
-  i = "",
+  i = " ",
   v = " ",
   [""] = " ",
   V = " ",
   c = "↪ ",
-  no = "",
+  no = " ",
   s = " ",
   S = " ",
   [""] = " ",
   ic = " ",
-  R = "",
-  Rv = "",
+  R = " ",
+  Rv = " ",
   cv = "↪ ",
   ce = "↪ ",
-  r = "",
-  rm = "",
-  ["r?"] = "",
+  r = " ",
+  rm = " ",
+  ["r?"] = " ",
   ["!"] = "SE",
   t = "ﭨ ",
 }
@@ -117,7 +117,7 @@ end
 
 ins_left({
   function()
-    return "▊"
+    return "▌"
   end,
   color = { fg = colors.blue }, -- Sets highlighting of component
   left_padding = 0, -- We don't need space before this
@@ -226,7 +226,7 @@ ins_right({
 
 ins_right({
   function()
-    return "▊"
+    return "▌"
   end,
   color = { fg = colors.blue },
   right_padding = 0,
