@@ -84,7 +84,6 @@ packer.startup(function(use)
         })
       end,
     },
-    { "lfv89/vim-interestingwords", event = "BufRead" },
     { "itchyny/vim-cursorword", event = "BufRead" },
   })
 
@@ -167,6 +166,8 @@ packer.startup(function(use)
     cmd = "ToggleTerm",
     config = conf("nvim-toggleterm"),
   })
+  use({ "sindrets/diffview.nvim", cmd = "DiffviewOpen", config = conf("diffview") })
+
   use({
     {
       "nvim-telescope/telescope.nvim",
