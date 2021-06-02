@@ -118,6 +118,16 @@ packer.startup(function(use)
     end,
   })
   use({
+    "norcalli/nvim-colorizer.lua",
+    event = "BufRead",
+    config = function()
+      require("colorizer").setup({ "*" }, {
+        names = false,
+        mode = "background",
+      })
+    end,
+  })
+  use({
     "TimUntersberger/neogit",
     requires = "nvim-lua/plenary.nvim",
     cmd = "Neogit",
