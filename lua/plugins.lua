@@ -128,6 +128,16 @@ packer.startup(function(use)
     end,
   })
   use({
+    "windwp/nvim-autopairs",
+    event = "BufRead",
+    config = function()
+      require("nvim-autopairs").setup({
+        close_triple_quotes = true,
+        check_ts = false,
+      })
+    end,
+  })
+  use({
     "TimUntersberger/neogit",
     requires = "nvim-lua/plenary.nvim",
     cmd = "Neogit",
