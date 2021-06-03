@@ -2,7 +2,7 @@
   // suggest
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
-  "suggest.snippetIndicator": "🌟",
+  "suggest.snippetIndicator": " ",
   "suggest.timeout": 5000,
   "suggest.detailField": "preview",
   "suggest.maxCompleteItemCount": 50,
@@ -38,8 +38,8 @@
   },
 
   // diagnostic
-  "diagnostic.infoSign": "",
-  "diagnostic.hintSign": "",
+  "diagnostic.hintSign": "",
+  "diagnostic.infoSign": "",
   "diagnostic.warningSign": "",
   "diagnostic.errorSign": "",
   "diagnostic.virtualText": true,
