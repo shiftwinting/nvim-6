@@ -56,7 +56,7 @@ packer.startup(function(use)
     {
       "neoclide/coc.nvim",
       branch = "release",
-      event = "BufRead",
+      event = "InsertEnter",
       config = conf("coc"),
     },
     "honza/vim-snippets",
@@ -129,7 +129,7 @@ packer.startup(function(use)
   })
   use({
     "windwp/nvim-autopairs",
-    event = "BufRead",
+    event = "InsertEnter",
     config = function()
       require("nvim-autopairs").setup({
         close_triple_quotes = true,

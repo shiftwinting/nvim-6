@@ -24,7 +24,7 @@
     "interface": "",
     "text": "",
     "enum": "",
-    "enumMember": "",
+    "enumMember": "",
     "module": "",
     "color": "",
     "property": "",
@@ -40,10 +40,11 @@
 
   // diagnostic
   "diagnostic.hintSign": "",
-  "diagnostic.infoSign": "",
-  "diagnostic.warningSign": "",
-  "diagnostic.errorSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.errorSign": "",
   "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": "﯑ ",
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.checkCurrentLine": true,

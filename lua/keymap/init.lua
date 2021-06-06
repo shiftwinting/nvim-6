@@ -7,14 +7,16 @@ local load_maps = bind.load_maps
 -- Basic --
 load_maps({
   ["n|s"] = cmd(""),
+  ["n|;"] = cmd(":"),
   ["i|jj"] = cmd("<esc>`^"),
+  ["i|jk"] = cmd("<esc>`^"),
   -- Save buffer
   ["n|<leader>s"] = cr("w"),
   -- Switch window
-  ["n|<c-h>"] = cmd("<c-w>h"),
-  ["s|<c-j>"] = cmd("<c-w>j"),
-  ["n|<c-k>"] = cmd("<c-w>k"),
-  ["n|<c-l>"] = cmd("<c-w>l"),
+  ["n|<c-h>"] = cr("wincmd h"):silent(),
+  ["s|<c-j>"] = cr("wincmd j"):silent(),
+  ["n|<c-k>"] = cr("wincmd k"):silent(),
+  ["n|<c-l>"] = cr("wincmd l"):silent(),
   -- delete inline words
   ["n|dl"] = cmd("D"),
   ["n|dh"] = cmd("d0x"),
