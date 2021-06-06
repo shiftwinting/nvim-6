@@ -58,7 +58,6 @@ packer.startup(function(use)
   use({
     {
       "neovim/nvim-lspconfig",
-      event = "BufRead",
       config = conf("lsp.lspconfig"),
     },
     { "glepnir/lspsaga.nvim", cmd = "Lspsaga", config = conf("lsp.lspsaga") },
