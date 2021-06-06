@@ -144,6 +144,12 @@ packer.startup(function(use)
     config = conf("neogit"),
   })
   use({
+    "lewis6991/gitsigns.nvim",
+    event = { "BufRead", "BufNewFile" },
+    requires = "nvim-lua/plenary.nvim",
+    config = conf("gitsigns"),
+  })
+  use({
     "kristijanhusak/vim-dadbod-ui",
     cmd = {
       "DBUIToggle",

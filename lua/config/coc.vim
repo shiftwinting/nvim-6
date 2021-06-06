@@ -13,7 +13,6 @@ let g:coc_global_extensions = [
             \'coc-eslint',
             \'coc-flutter-tools',
             \'coc-go',
-            \'coc-git',
             \'coc-html',
             \'coc-json',
             \'coc-marketplace',
