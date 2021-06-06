@@ -54,5 +54,3 @@ local profile = VIM_PATH .. "/profile.vim"
 if vim.fn.filereadable(profile) > 0 then
   vim.cmd("source " .. profile)
 end
-
-print(HOME)
