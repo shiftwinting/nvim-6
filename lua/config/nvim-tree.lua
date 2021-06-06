@@ -17,4 +17,10 @@ vim.g.nvim_tree_icons = {
     untracked = "★",
   },
   folder = { default = "", open = "" },
+  lsp = {
+    error = "",
+    warning = "",
+    info = "",
+    hint = "",
+  },
 }

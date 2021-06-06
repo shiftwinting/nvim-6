@@ -4,5 +4,6 @@ require("bufferline").setup({
     buffer_close_icon = "",
     mappings = true,
     always_show_bufferline = false,
+    diagnostics = "nvim_lsp",
   },
 })

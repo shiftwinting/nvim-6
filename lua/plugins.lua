@@ -52,15 +52,22 @@ packer.startup(function(use)
     },
   })
   -- lsp, completion
+  use({ "rafamadriz/friendly-snippets" })
+  use("kabouzeid/nvim-lspinstall")
+  use("ray-x/lsp_signature.nvim")
   use({
     {
-      "neoclide/coc.nvim",
-      branch = "release",
+      "neovim/nvim-lspconfig",
       event = "BufRead",
-      config = conf("coc"),
+      config = conf("lsp.lspconfig"),
     },
-    "honza/vim-snippets",
+    { "glepnir/lspsaga.nvim", cmd = "Lspsaga", config = conf("lsp.lspsaga") },
+    { "onsails/lspkind-nvim", event = "BufRead", config = conf("lsp.lspkind") },
+    { "hrsh7th/vim-vsnip", event = "InsertEnter" },
+    { "hrsh7th/nvim-compe", event = "InsertEnter", config = conf("lsp.nvim-compe") },
   })
+  use({ "folke/lsp-trouble.nvim", cmd = "Trouble", config = conf("lsp.trouble") })
+  use("ahmedkhalf/lsp-rooter.nvim")
   -- Enhance
   use({
     -- Vim-cool disables search highlighting when you are done searching
@@ -195,13 +202,10 @@ packer.startup(function(use)
   use({ "sindrets/diffview.nvim", cmd = "DiffviewOpen", config = conf("diffview") })
 
   use({
-    {
-      "nvim-telescope/telescope.nvim",
-      cmd = "Telescope",
-      config = conf("telescope"),
-      requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-    },
-    "fannheyward/telescope-coc.nvim",
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    config = conf("telescope"),
+    requires = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
   })
 end)
 

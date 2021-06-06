@@ -7,6 +7,7 @@ local load_maps = bind.load_maps
 -- Basic --
 load_maps({
   ["n|s"] = cmd(""),
+  ["n|;"] = cmd(":"),
   ["i|jj"] = cmd("<esc>`^"),
   -- Save buffer
   ["n|<leader>s"] = cr("w"),
@@ -78,12 +79,6 @@ load_maps({
   ["n|<space>fw"] = cr("Telescope live_grep"):silent(),
   ["n|<space>fm"] = cr("Telescope marks"):silent(),
 })
--- telescope-coc
-load_maps({
-  ["n|<space>a"] = cr("Telescope coc diagnostics"):silent(),
-  ["n|<space>c"] = cr("Telescope coc commands"):silent(),
-  ["n|<space>d"] = cr("Telescope coc definitions"):silent(),
-})
 -- Nvim Bufferline
 load_maps({
   ["n|<leader>b"] = cr("BufferLinePick"):silent(),
@@ -93,36 +88,6 @@ load_maps({
 -- Nvim toggleterm --
 load_maps({
   ["nt|<leader>t"] = cr("ToggleTerm"):silent(),
-})
------ COC ------
-load_maps({
-  -- Use K for show documentation in float window
-  ["n|K"] = cr("call CocActionAsync('doHover')"):silent(),
-  -- Applying codeAction to the selected region.
-  ["xn|<leader>a"] = cmd("<Plug>(coc-codeaction-selected)"):silent(),
-  -- " Use <c-q> for trigger completion.
-  ["i|<c-q>"] = cmd("coc#refresh()"):silent():expr(),
-  -- " Jump definition in other window
-  -- Remap keys for gotos
-  ["n|gd"] = cmd("<Plug>(coc-definition)"):silent(),
-  ["n|gy"] = cmd("<Plug>(coc-type-definition)"):silent(),
-  ["n|<Leader>ci"] = cmd("<Plug>(coc-implementation)"):silent(),
-  ["n|gr"] = cmd("<Plug>(coc-references)"):silent(),
-  -- Use `[g` and `]g` to navigate diagnostics
-  -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-  ["n|[g"] = cmd("<Plug>(coc-diagnostic-prev)"):silent(),
-  ["n|]g"] = cmd("<Plug>(coc-diagnostic-next)"):silent(),
-  -- Symbol renaming.
-  ["n|<leader>rn"] = cmd("<Plug>(coc-rename)"):silent(),
-  -- Format current buffer
-  ["nx|<leader>f"] = cmd("<Plug>(coc-format)"):silent(),
-  -- Apply AutoFix to problem on the current line.
-  ["n|<leader>qf"] = cmd("<Plug>(coc-fix-current)"):silent(),
-})
--- coc-translator --
-load_maps({
-  ["n|tt"] = cmd("<Plug>(coc-translator-p)"):silent(),
-  ["v|tt"] = cmd("<Plug>(coc-translator-pv)"):silent(),
 })
 -- resize widnow by talek/obvious-resize --
 load_maps({
@@ -145,4 +110,19 @@ load_maps({
 --- markdown-preview
 load_maps({
   ["n|<leader>om"] = cr("MarkdownPreviewToggle"),
+})
+--- lspsaga
+load_maps({
+  ["n|K"] = cr("Lspsaga hover_doc"):noremap():silent(),
+  ["n|<leader>a"] = cr("Lspsaga code_action"):noremap():silent(),
+  ["v|<leader>a"] = cu("Lspsaga range_code_action"):noremap():silent(),
+  ["n|gy"] = cr("Lspsaga lsp_finder"):noremap():silent(),
+  ["n|gs"] = cr("Lspsaga signature_help"):noremap():silent(),
+  ["n|gd"] = cr("Lspsaga preview_definition"):noremap():silent(),
+})
+--- lsp-trouble
+load_maps({
+  ["n|<leader>gw"] = cr("Trouble lsp_workspace_diagnostics"):noremap():silent(),
+  ["n|<leader>gd"] = cr("Trouble lsp_document_diagnostics"):noremap():silent(),
+  ["n|<leader>gr"] = cr("Trouble lsp_references"):noremap():silent(),
 })

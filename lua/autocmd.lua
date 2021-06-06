@@ -31,12 +31,6 @@ vim.cmd([[autocmd InsertLeave * :set relativenumber]])
 vim.cmd([[autocmd InsertLeave,WinEnter * set cursorline]])
 vim.cmd([[autocmd InsertEnter,WinLeave * set nocursorline]])
 
--- Detect filetype
-vim.cmd([[autocmd BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc]])
-vim.cmd([[autocmd BufNewFile,BufRead go.mod            setlocal filetype=gomod]])
-
-vim.cmd([[autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')]])
-
 -- using golines to format go code
 vim.cmd([[autocmd BufWritePre *.go :lua require('golines').golines_format()]])
 
