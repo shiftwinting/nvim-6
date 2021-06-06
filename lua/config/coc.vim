@@ -4,7 +4,6 @@ let g:coc_snippet_prev = '<C-k>'
 let g:coc_disable_transparent_cursor = 1
 
 let g:coc_global_extensions = [
-            \'coc-calc',
             \'coc-clangd',
             \'coc-css',
             \'coc-emmet',
@@ -19,7 +18,6 @@ let g:coc_global_extensions = [
             \'coc-rust-analyzer',
             \'coc-sh',
             \'coc-snippets',
-            \'coc-syntax',
             \'coc-translator',
             \'coc-tsserver',
             \'coc-vetur',

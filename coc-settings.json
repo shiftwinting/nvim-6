@@ -51,9 +51,6 @@
   "diagnostic.format": "%message [%source]",
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
 
-  // calc
-  "calc.replaceOriginalExpression": false,
-
   // yank
   "yank.priority": 10,
   "yank.highlight.enable": true,
@@ -90,7 +87,6 @@
 
   // go
   "go.goplsOptions": {
-    "experimentalPostfixCompletions": true,
     "semanticTokens": true,
     "linksInHover": false,
     "usePlaceholders": true,
