@@ -1,3 +1,1 @@
-local global = require("global")
-
-vim.cmd("source " .. global.config_dir .. "coc.vim")
+vim.cmd("source " .. CONFIG_PATH .. "coc.vim")

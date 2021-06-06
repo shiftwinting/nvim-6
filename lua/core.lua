@@ -1,23 +1,24 @@
-local global = require("global")
-local vim = vim
-local g = vim.g
+-- Initialize global variables
+require("global")
 
 -- Create cache dir and subs dir
 local data_dir = {
-  global.cache_dir .. "backup",
-  global.cache_dir .. "session",
-  global.cache_dir .. "swap",
-  global.cache_dir .. "tags",
-  global.cache_dir .. "undo",
+  CACHE_PATH .. "backup",
+  CACHE_PATH .. "session",
+  CACHE_PATH .. "swap",
+  CACHE_PATH .. "tags",
+  CACHE_PATH .. "undo",
 }
-if vim.fn.isdirectory(global.cache_dir) == 0 then
-  os.execute("mkdir -p " .. global.cache_dir)
+if vim.fn.isdirectory(CACHE_PATH) == 0 then
+  os.execute("mkdir -p " .. CACHE_PATH)
   for _, v in pairs(data_dir) do
     if vim.fn.isdirectory(v) == 0 then
       os.execute("mkdir -p " .. v)
     end
   end
 end
+
+local g = vim.g
 
 -- Disable vim distribution plugins
 g.loaded_gzip = 1
@@ -49,7 +50,9 @@ require("autocmd")
 require("colorscheme").init()
 
 -- load profile.vim if existed
-local profile = global.vim_path .. "profile.vim"
+local profile = VIM_PATH .. "/profile.vim"
 if vim.fn.filereadable(profile) > 0 then
   vim.cmd("source " .. profile)
 end
+
+print(HOME)

@@ -1,4 +1,3 @@
-local global = require("global")
 local utils = require("utils")
 local opt = utils.opt
 
@@ -21,11 +20,11 @@ local global_options = {
   writebackup = false,
   undofile = true,
   swapfile = false,
-  directory = global.cache_dir .. "swag/",
-  undodir = global.cache_dir .. "undo/",
-  backupdir = global.cache_dir .. "backup/",
-  viewdir = global.cache_dir .. "view/",
-  spellfile = global.cache_dir .. "spell/en.uft-8.add",
+  directory = CACHE_PATH .. "swag/",
+  undodir = CACHE_PATH .. "undo/",
+  backupdir = CACHE_PATH .. "backup/",
+  viewdir = CACHE_PATH .. "view/",
+  spellfile = CACHE_PATH .. "spell/en.uft-8.add",
   history = 2000,
   shada = "!,'300,<50,@100,s10,h",
   backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim",
