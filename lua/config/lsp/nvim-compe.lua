@@ -60,7 +60,20 @@ _G.s_tab_complete = function()
   end
 end
 
-vim.api.nvim_set_keymap("i", "<cr>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true })
+-- vim.api.nvim_set_keymap("i", "<c-j>", "vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<c-j>'", { expr = true })
+-- vim.api.nvim_set_keymap("s", "<c-j>", "vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<c-j>'", { expr = true })
+vim.api.nvim_set_keymap(
+  "i",
+  "<c-j>",
+  "vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>'",
+  { expr = true }
+)
+vim.api.nvim_set_keymap(
+  "s",
+  "<c-j>",
+  "vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-j>'",
+  { expr = true }
+)
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
