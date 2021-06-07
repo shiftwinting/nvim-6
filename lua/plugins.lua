@@ -149,6 +149,7 @@ packer.startup(function(use)
     requires = "nvim-lua/plenary.nvim",
     config = conf("gitsigns"),
   })
+  use({ "folke/zen-mode.nvim", cmd = "ZenMode" })
   use({
     "kristijanhusak/vim-dadbod-ui",
     cmd = {
