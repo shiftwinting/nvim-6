@@ -27,10 +27,9 @@ packer.startup(function(use)
 
   -- colorscheme
   use({
-    { "Mofiqul/codedark.nvim" },
     { "sainnhe/sonokai" },
-    { "monsonjeremy/onedark.nvim" },
     { "sainnhe/edge" },
+    { "monsonjeremy/onedark.nvim" },
     { "shaunsingh/nord.nvim" },
     { "xiyaowong/nvim-transparent", config = conf("transparent") },
   })
