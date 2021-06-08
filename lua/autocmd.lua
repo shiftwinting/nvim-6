@@ -35,11 +35,6 @@ vim.cmd([[autocmd InsertEnter,WinLeave * set nocursorline]])
 vim.cmd([[autocmd BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc]])
 vim.cmd([[autocmd BufNewFile,BufRead go.mod            setlocal filetype=gomod]])
 
-vim.cmd([[autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')]])
-
--- using golines to format go code
-vim.cmd([[autocmd BufWritePre *.go :lua require('golines').golines_format()]])
-
 -- Auto cache/clean colorscheme/highlight
 vim.cmd([[autocmd ColorScheme * lua require('colorscheme').cache_theme()]])
 vim.cmd([[autocmd ColorSchemePre * lua require('colorscheme').clean()]])
