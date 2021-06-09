@@ -62,6 +62,7 @@ packer.startup(function(use)
   })
   -- Enhance
   use({
+    "antoinemadec/FixCursorHold.nvim",
     -- Vim-cool disables search highlighting when you are done searching
     -- and re-enables it when you search again.
     { "romainl/vim-cool", event = "BufRead" },
