@@ -1,7 +1,8 @@
 local utils = require("utils")
+local augroup = utils.augroup
 local autocmd = utils.autocmd
 
-autocmd("common", {
+augroup("common", {
   -- Reload Vim script automatically if setlocal autoread
   [[BufWritePost,FileWritePost *.vim nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
   -- Update filetype on save if empty
@@ -23,18 +24,17 @@ autocmd("common", {
   [[Syntax * if line('$') > 5000 | syntax sync minlines=200 | endif]],
 }, true)
 
--- Automatically set relativenumber
-vim.cmd([[autocmd InsertEnter * :set norelativenumber]])
-vim.cmd([[autocmd InsertLeave * :set relativenumber]])
-
--- Automatically set cursorline
-vim.cmd([[autocmd InsertLeave,WinEnter * set cursorline]])
-vim.cmd([[autocmd InsertEnter,WinLeave * set nocursorline]])
-
--- Detect filetype
-vim.cmd([[autocmd BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc]])
-vim.cmd([[autocmd BufNewFile,BufRead go.mod            setlocal filetype=gomod]])
-
--- Auto cache/clean colorscheme/highlight
-vim.cmd([[autocmd ColorScheme * lua require('colorscheme').cache_theme()]])
-vim.cmd([[autocmd ColorSchemePre * lua require('colorscheme').clean()]])
+autocmd({
+  -- Automatically set relativenumber
+  "InsertEnter * :set norelativenumber",
+  "InsertLeave * :set relativenumber",
+  -- Automatically set cursorline
+  "InsertLeave,WinEnter * set cursorline",
+  "InsertEnter,WinLeave * set nocursorline",
+  -- Detect filetype
+  "BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc",
+  "BufNewFile,BufRead go.mod            setlocal filetype=gomod",
+  -- Auto cache/clean colorscheme/highlight
+  "ColorScheme * lua require('colorscheme').cache_theme()",
+  "ColorSchemePre * lua require('colorscheme').clean()",
+})
