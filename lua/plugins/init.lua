@@ -204,6 +204,8 @@ packer.startup(function(use)
 		},
 		"fannheyward/telescope-coc.nvim",
 	})
+
+	use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
 end)
 
 cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
