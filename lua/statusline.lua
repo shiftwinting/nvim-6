@@ -75,7 +75,6 @@ local mode_symbol = {
 -- Config
 local config = {
   options = {
-    -- Disable sections and component separators
     component_separators = "",
     section_separators = "",
     theme = {
@@ -127,13 +126,30 @@ ins_left({
   -- Vim Mode
   function()
     local mode = vim.fn.mode()
-    vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[mode] .. " guibg=" .. colors.bg)
+    vim.cmd("hi! LualineMode guifg=" .. mode_color[mode] .. " guibg=" .. colors.bg)
     return mode_symbol[mode]
   end,
   color = "LualineMode",
 })
 
 ins_left({ "mode", left_padding = 0 })
+
+ins_left({
+  function()
+    if #vim.bo.filetype > 0 then
+      local ok, devicons = pcall(require, "nvim-web-devicons")
+      if ok then
+        local icon, icon_hi =
+          devicons.get_icon(vim.fn.expand("%:t"), vim.fn.expand("%:e"), { default = true })
+        vim.cmd("hi! link LualineFileIcon " .. icon_hi)
+        return icon
+      end
+    end
+    vim.cmd("hi! LualineFileIcon guifg=#c2ccd0")
+    return ""
+  end,
+  color = "LualineFileIcon",
+})
 
 ins_left({
   function()
@@ -153,6 +169,7 @@ ins_left({
   end,
   condition = conditions.buffer_not_empty,
   color = { fg = colors.magenta, gui = "bold" },
+  left_padding = 0,
 })
 
 ins_left({ "location" })
