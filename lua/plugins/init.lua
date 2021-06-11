@@ -78,6 +78,7 @@ packer.startup(function(use)
     {
       "karb94/neoscroll.nvim",
       event = "BufRead",
+      keys = { "<C-f>", "<C-b>" },
       config = function()
         require("neoscroll").setup({
           mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "zt", "zz", "zb" },
