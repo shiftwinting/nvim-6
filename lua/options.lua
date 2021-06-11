@@ -1,6 +1,6 @@
 local global_options = {
   termguicolors = true,
-  mouse = "nv",
+  mouse = "a",
   errorbells = true,
   visualbell = true,
   hidden = true,
@@ -99,14 +99,19 @@ local window_options = {
   concealcursor = "niv",
 }
 
-for name, value in pairs(global_options) do
-  wxy.opt(name, value)
+local opt = function(name, value, scopes)
+  scopes = scopes or { vim.o }
+  for _, scope in ipairs(scopes) do
+    scope[name] = value
+  end
 end
 
-for name, value in pairs(buffer_options) do
-  wxy.opt(name, value, { vim.o, vim.bo })
+local load_opt = function(options, scopes)
+  for name, value in pairs(options) do
+    opt(name, value, scopes)
+  end
 end
 
-for name, value in pairs(window_options) do
-  wxy.opt(name, value, { vim.o, vim.wo })
-end
+load_opt(global_options)
+load_opt(buffer_options, { vim.o, vim.bo })
+load_opt(window_options, { vim.o, vim.wo })
