@@ -11,3 +11,4 @@ _G.DATA_PATH = vim.fn.stdpath("data") .. "/site/"
 
 require("globals.keybind")
 require("globals.utils")
+require("globals.autocmd")
