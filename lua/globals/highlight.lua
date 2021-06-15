@@ -15,3 +15,9 @@ wxy.highlight = function(name, opts, clear)
     vim.notify(fmt("Failed to set %s because: %s", name, msg))
   end
 end
+
+wxy.highlight_all = function(hls)
+  for _, hl in ipairs(hls) do
+    wxy.highlight(unpack(hl))
+  end
+end
