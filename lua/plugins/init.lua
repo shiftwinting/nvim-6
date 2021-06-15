@@ -45,7 +45,7 @@ packer.startup(function(use)
     { "hoob3rt/lualine.nvim", config = "require('statusline')" },
     {
       "lukas-reineke/indent-blankline.nvim",
-      event = "BufRead",
+      event = { "BufRead", "InsertEnter" },
       branch = "lua",
       config = conf("indent-blakline"),
     },
@@ -55,7 +55,7 @@ packer.startup(function(use)
     {
       "neoclide/coc.nvim",
       branch = "release",
-      event = "InsertEnter",
+      event = { "InsertEnter", "BufRead" },
       config = conf("coc"),
     },
     "honza/vim-snippets",
@@ -92,12 +92,12 @@ packer.startup(function(use)
   use({ "talek/obvious-resize", config = "vim.g.obvious_resize_default = 2" }) -- resize window
   use({
     "b3nj5m1n/kommentary",
-    event = "BufRead",
+    event = { "BufRead", "InsertEnter" },
     config = function()
       require("kommentary.config").configure_language("lua", { prefer_single_line_comments = true })
     end,
   })
-  use({ "tpope/vim-surround", event = "BufRead" })
+  use({ "tpope/vim-surround", event = { "BufRead", "InsertEnter" } })
   --Movement
   use({
     { "rhysd/clever-f.vim", event = "BufRead" },
