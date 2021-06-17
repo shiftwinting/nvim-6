@@ -1,8 +1,9 @@
 {
-  // suggest
+  "codeLens.enable": true,
+
   "suggest.enablePreview": true,
   "suggest.floatEnable": true,
-  "suggest.snippetIndicator": "🌟",
+  "suggest.snippetIndicator": " ",
   "suggest.timeout": 5000,
   "suggest.detailField": "preview",
   "suggest.maxCompleteItemCount": 50,
@@ -23,7 +24,7 @@
     "interface": "",
     "text": "",
     "enum": "",
-    "enumMember": "",
+    "enumMember": "",
     "module": "",
     "color": "",
     "property": "",
@@ -38,23 +39,17 @@
   },
 
   // diagnostic
-  "diagnostic.enable": true,
-  "diagnostic.displayByAle": false,
-  "diagnostic.infoSign": "»",
-  "diagnostic.hintSign": "»",
-  "diagnostic.warningSign": "≈",
-  "diagnostic.errorSign": "✗",
+  "diagnostic.hintSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.errorSign": "",
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextPrefix": "  ❄ ",
+  "diagnostic.virtualTextPrefix": " ﯑ ",
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.checkCurrentLine": true,
-
-  // calc
-  "calc.replaceOriginalExpression": false,
-
-  // pairs
-  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+  "diagnostic.format": "%message [%source]",
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
 
   // yank
   "yank.priority": 10,
@@ -65,9 +60,10 @@
   "yank.enableCompletion": false,
 
   // python
+  "python.linting.enabled": false,
+  "python.analysis.diagnosticMode": "workspace",
   "python.sortImports.args": ["-m3"],
   "python.formatting.provider": "black",
-  "python.formatting.autopep8Args": ["--ignore=E402, E501"],
   "python.formatting.blackArgs": ["--skip-string-normalization"],
 
   // javascript
@@ -81,41 +77,20 @@
   // eslint
   "eslint.autoFixOnSave": true,
 
-  // highlight
-  "highlight.disableLanguages": ["python", "go", "rust", "dart", "c", "cpp"],
-
   // coc.preferences
   "coc.preferences.previewMaxHeight": 20,
   "coc.preferences.enableFloatHighlight": true,
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnSaveFiletypes": ["rust", "go"],
+  "coc.preferences.formatOnSaveFiletypes": ["rust"],
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
 
-  // git
-  "git.enableGutters": true,
-  "git.addGBlameToVirtualText": false,
-  "git.virtualTextPrefix": "     ",
-  "git.branchCharacter": "",
-  "git.addedSign.text": "▊ ",
-  "git.changedSign.text": "▊ ",
-  "git.removedSign.text": "▊ ",
-  "git.topRemovedSign.text": "‾",
-  "git.changeRemovedSign.text": "▊ ",
-  "git.addedSign.hlGroup": "GitAddHi",
-  "git.changedSign.hlGroup": "GitModifyHi",
-  "git.removedSign.hlGroup": "GitDeleteHi",
-  "git.topRemovedSign.hlGroup": "GitDeleteHi",
-  "git.changeRemovedSign.hlGroup": "GitDeleteHi",
-
   // go
-  "go.goplsArgs": ["-remote", "auto"],
-  "go.goplsEnv": { "TMPDIR": "/tmp" },
-  "go.disable": { "workspaceFolders": true },
   "go.goplsOptions": {
+    "semanticTokens": true,
+    "linksInHover": false,
     "usePlaceholders": true,
-    "staticcheck": true,
-    "completeUnimported": true
+    "staticcheck": true
   },
 
   // languageservers
