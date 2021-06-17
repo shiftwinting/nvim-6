@@ -17,7 +17,7 @@ local packer = require("packer")
 
 packer.init({
   git = { clone_timeout = 120 },
-    -- disable_commands = true
+  -- disable_commands = true
 })
 packer.startup(function(use)
   -- packer

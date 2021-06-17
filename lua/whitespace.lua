@@ -33,7 +33,11 @@ wxy.augroup("WhitespaceMatch", {
     end,
     "*",
   },
-  { "InsertEnter", function()
-    toggle_trailing("i")
-  end, "*" },
+  {
+    "InsertEnter",
+    function()
+      toggle_trailing("i")
+    end,
+    "*",
+  },
 })

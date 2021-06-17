@@ -72,11 +72,26 @@ keybind.load_maps({
   ["is|<Tab>"] = cmd([[v:lua.tab_complete()]]):silent():expr():noremap(),
   ["is|<S-Tab>"] = cmd([[v:lua.s_tab_complete()]]):silent():expr():noremap(),
   -- C-f/b
-  ["nv|<C-f>"] = cmd([[coc#float#has_scroll() ? coc#float#scroll(1) : ":lua require('neoscroll').scroll( vim.api.nvim_win_get_height(0), true, 550)<CR>"]]):silent():expr():noremap(),
-  ["nv|<C-b>"] = cmd([[coc#float#has_scroll() ? coc#float#scroll(0) : ":lua require('neoscroll').scroll( -vim.api.nvim_win_get_height(0), true, 550)<CR>"]]):silent():expr():noremap(),
-  ["i|<C-f>"] = cmd([[coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"]]):silent():expr():noremap(),
-  ["i|<C-b>"] = cmd([[coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"]]):silent():expr():noremap(),
+  ["nv|<C-f>"] = cmd(
+    [[coc#float#has_scroll() ? coc#float#scroll(1) : ":lua require('neoscroll').scroll( vim.api.nvim_win_get_height(0), true, 550)<CR>"]]
+  ):silent():expr():noremap(),
+  ["nv|<C-b>"] = cmd(
+    [[coc#float#has_scroll() ? coc#float#scroll(0) : ":lua require('neoscroll').scroll( -vim.api.nvim_win_get_height(0), true, 550)<CR>"]]
+  ):silent():expr():noremap(),
+  ["i|<C-f>"] = cmd([[coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"]])
+    :silent()
+    :expr()
+    :noremap(),
+  ["i|<C-b>"] = cmd([[coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"]])
+    :silent()
+    :expr()
+    :noremap(),
   -- Use <cr> to confirm completion
-  ["i|<cr>"] = cmd([[pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]]):silent():expr():noremap(),
+  ["i|<cr>"] = cmd(
+    [[pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]]
+  )
+    :silent()
+    :expr()
+    :noremap(),
 })
 -- inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"

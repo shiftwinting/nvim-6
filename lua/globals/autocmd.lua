@@ -47,13 +47,15 @@ wxy.autocmd = function(commands)
         local fn_id = wxy._create(command)
         command = fmt("lua wxy._execute(%s)", fn_id)
       end
-      cmd(fmt(
-        "autocmd %s %s %s %s",
-        table.concat(events, ","),
-        table.concat(targets, ","),
-        table.concat(modifiers, " "),
-        command
-      ))
+      cmd(
+        fmt(
+          "autocmd %s %s %s %s",
+          table.concat(events, ","),
+          table.concat(targets, ","),
+          table.concat(modifiers, " "),
+          command
+        )
+      )
     end
   end
 end

@@ -73,8 +73,9 @@ local global_options = {
   display = "lastline",
   showbreak = "↳  ",
   listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
-  pumblend = 10,
-  winblend = 10,
+  pumblend = 20,
+  winblend = 20,
+  guifont = "OperatorMono Nerd Font:h15",
 }
 local buffer_options = {
   synmaxcol = 2500,

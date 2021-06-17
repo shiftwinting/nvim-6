@@ -15,8 +15,7 @@ local format = function()
   local handle, pid = uv.spawn("golines", {
     stdio = { stdin, stdout, stderr },
     args = { "--max-len=80", file_path },
-  }, function(code, signal)
-  end)
+  }, function(code, signal) end)
 
   stdout:read_start(vim.schedule_wrap(function(err, data)
     assert(not err, err)
@@ -34,8 +33,7 @@ local format = function()
   end)
 
   stdin:shutdown(function()
-    handle:close(function()
-    end)
+    handle:close(function() end)
   end)
 end
 

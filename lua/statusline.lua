@@ -139,8 +139,11 @@ ins_left({
     if #vim.bo.filetype > 0 then
       local ok, devicons = pcall(require, "nvim-web-devicons")
       if ok then
-        local icon, icon_hi =
-          devicons.get_icon(vim.fn.expand("%:t"), vim.fn.expand("%:e"), { default = true })
+        local icon, icon_hi = devicons.get_icon(
+          vim.fn.expand("%:t"),
+          vim.fn.expand("%:e"),
+          { default = true }
+        )
         vim.cmd("hi! link LualineFileIcon " .. icon_hi)
         return icon
       end
