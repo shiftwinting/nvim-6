@@ -24,7 +24,6 @@ packer.startup(function(use)
   use({ "wbthomason/packer.nvim" })
 
   use("kyazdani42/nvim-web-devicons")
-
   -- colorscheme
   use({
     { "sainnhe/sonokai" },
@@ -42,7 +41,6 @@ packer.startup(function(use)
   -- UI
   use({
     { "akinsho/nvim-bufferline.lua", config = conf("nvim-bufferline") },
-    { "hoob3rt/lualine.nvim", config = "require('statusline')" },
     {
       "lukas-reineke/indent-blankline.nvim",
       event = { "BufRead", "InsertEnter" },

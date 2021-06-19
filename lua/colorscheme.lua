@@ -43,4 +43,21 @@ local function clean()
   end
 end
 
-return { init = init, cache_theme = cache_theme, clean = clean }
+wxy.autocmd({
+  {
+    "ColorScheme",
+    function()
+      cache_theme()
+    end,
+    "*",
+  },
+  {
+    "ColorSchemePre",
+    function()
+      clean()
+    end,
+    "*",
+  },
+})
+
+init()

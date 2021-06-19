@@ -4,7 +4,8 @@ require("plugins")
 require("mappings")
 require("autocmd")
 require("whitespace")
-require("colorscheme").init()
+require("colorscheme")
+require("statusline")
 
 -- Create cache dir and subs dir
 local data_dir = {

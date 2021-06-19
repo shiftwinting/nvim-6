@@ -12,7 +12,7 @@ wxy.highlight = function(name, opts, clear)
 
   local ok, msg = pcall(vim.cmd, table.concat(cmd, " "))
   if not ok then
-    vim.notify(fmt("Failed to set %s because: %s", name, msg))
+    vim.notify(string.format("Failed to set %s because: %s", name, msg))
   end
 end
 

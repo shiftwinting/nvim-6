@@ -28,7 +28,4 @@ wxy.autocmd({
   -- Detect filetype
   "BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc",
   "BufNewFile,BufRead go.mod            setlocal filetype=gomod",
-  -- Auto cache/clean colorscheme/highlight
-  "ColorScheme * lua require('colorscheme').cache_theme()",
-  "ColorSchemePre * lua require('colorscheme').clean()",
 })
