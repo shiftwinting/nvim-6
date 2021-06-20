@@ -7,5 +7,5 @@ require("transparent").setup({
     "BufferLineSeparator",
     "BufferLineIndicatorSelected",
     "StatusLine",
-  }
+  },
 })
