@@ -28,8 +28,8 @@ packer.startup(function(use)
   use({
     { "sainnhe/sonokai" },
     { "sainnhe/edge" },
+    { "sainnhe/gruvbox-material" },
     { "monsonjeremy/onedark.nvim" },
-    { "shaunsingh/nord.nvim" },
     { "xiyaowong/nvim-transparent", config = conf("transparent") },
   })
   -- File Tree

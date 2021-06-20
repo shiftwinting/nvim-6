@@ -13,6 +13,9 @@ local theme_configs = {
     vim.g.edge_better_performance = 1
     vim.g.edge_style = "aura"
   end,
+  ["gruvbox-material"] = function()
+    vim.g.gruvbox_material_background = "hard"
+  end,
 }
 
 local function init()
