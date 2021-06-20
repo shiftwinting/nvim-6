@@ -36,18 +36,12 @@ local function mode_name()
 end
 
 local function file_icon()
-  local icon = ""
-  if #vim.bo.filetype > 0 then
-    local ok, devicons = pcall(require, "nvim-web-devicons")
-    if ok then
-      local icon_hi
-      icon, icon_hi = devicons.get_icon(
-        vim.fn.expand("%:t"),
-        vim.fn.expand("%:e"),
-        { default = true }
-      )
-      vim.cmd("hi! link StatusLineFileIcon " .. icon_hi)
-    end
+  local name, icon = fn.bufname(), ""
+  local ok, devicons = pcall(require, "nvim-web-devicons")
+  if ok then
+    local icon_hi
+    icon, icon_hi = devicons.get_icon(name, fn.fnamemodify(name, ":e"), { default = true })
+    vim.cmd("hi! link StatusLineFileIcon " .. icon_hi)
   end
   return "%#StatusLineFileIcon#" .. icon
 end
