@@ -9,13 +9,13 @@ local api = vim.api
 
 local function set_highlight()
   wxy.highlight_all({
-    { "StatusLine", { guifg = colors.fg, guibg = colors.bg } },
+    { "StatusLine", { guifg = wxy.hi_value('Normal', 'fg'), guibg = wxy.hi_value('Normal', 'bg') } },
     { "StatusLineIndicator", { guifg = colors.blue } },
     -- StatusLineModeSymbol
-    { "StatusLineModeName", { guifg = colors.fg } },
+    -- { "StatusLineModeName", { guifg = colors.fg } },
     { "StatusLineFileIcon", { guifg = "#c2ccd0" } },
     { "StatusLineFileName", { guifg = colors.magenta, gui = "bold" } },
-    { "StatusLineLocation", { guifg = colors.fg } },
+    -- { "StatusLineLocation", { guifg = colors.fg } },
     { "StatusLineCocStatus", { guifg = colors.green, gui = "bold" } },
     { "StatusLineCocDiagnosticHint", { guifg = colors.blue } },
     { "StatusLineCocDiagnosticInfo", { guifg = colors.cyan } },

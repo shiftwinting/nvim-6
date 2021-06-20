@@ -21,3 +21,36 @@ wxy.highlight_all = function(hls)
     wxy.highlight(unpack(hl))
   end
 end
+
+wxy.hi_value = (function()
+  local gui_attr = { "underline", "bold", "undercurl", "italic" }
+  local attrs = { fg = "foreground", bg = "background" }
+  ---get the color value of part of a highlight group
+  ---@param grp string
+  ---@param attr string
+  ---@param fallback string
+  ---@return string
+  return function(grp, attr, fallback)
+    if not grp then
+      return vim.notify("Cannot get a highlight without specifying a group")
+    end
+    attr = attrs[attr] or attr
+    local hl = vim.api.nvim_get_hl_by_name(grp, true)
+    if attr == "gui" then
+      local gui = {}
+      for name, value in pairs(hl) do
+        if value and vim.tbl_contains(gui_attr, name) then
+          table.insert(gui, name)
+        end
+      end
+      return table.concat(gui, ",")
+    end
+    local color = hl[attr] or fallback
+    -- convert the decimal rgba value from the hl by name to a 6 character hex + padding if needed
+    if not color then
+      vim.notify(string.format("%s %s does not exist", grp, attr))
+      return "NONE"
+    end
+    return "#" .. bit.tohex(color, 6)
+  end
+end)()
