@@ -114,9 +114,11 @@ _G.statusline = function()
   local filetype = vim.bo[curbuf].filetype
 
   if exceptions.filetypes[filetype] then
+    ins("%#StatusLine#")
     ins(exceptions.filetypes[filetype] .. " " .. bufname)
   elseif api.nvim_get_current_win() == curwin then
     secs = {
+      "%#StatusLine#",
       "%#StatusLineIndicator#▌",
       -- left
       mode_symbol(),
@@ -135,6 +137,7 @@ _G.statusline = function()
       "%#StatusLineIndicator#▌",
     }
   else
+    ins("%#StatusLine#")
     ins(bufname)
   end
 
