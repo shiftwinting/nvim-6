@@ -7,20 +7,22 @@ local exceptions = _tables.exceptions
 local fn = vim.fn
 local api = vim.api
 
-wxy.highlight_all({
-  { "StatusLine", { guifg = colors.fg, guibg = colors.bg } },
-  { "StatusLineIndicator", { guifg = colors.blue } },
-  -- StatusLineModeSymbol
-  { "StatusLineModeName", { guifg = colors.fg } },
-  { "StatusLineFileIcon", { guifg = "#c2ccd0" } },
-  { "StatusLineFileName", { guifg = colors.magenta, gui = "bold" } },
-  { "StatusLineLocation", { guifg = colors.fg } },
-  { "StatusLineCocStatus", { guifg = colors.green, gui = "bold" } },
-  { "StatusLineCocDiagnosticHint", { guifg = colors.blue } },
-  { "StatusLineCocDiagnosticInfo", { guifg = colors.cyan } },
-  { "StatusLineCocDiagnosticWarn", { guifg = colors.yellow } },
-  { "StatusLineCocDiagnosticError", { guifg = colors.red } },
-})
+local function set_highlight()
+  wxy.highlight_all({
+    { "StatusLine", { guifg = colors.fg, guibg = colors.bg } },
+    { "StatusLineIndicator", { guifg = colors.blue } },
+    -- StatusLineModeSymbol
+    { "StatusLineModeName", { guifg = colors.fg } },
+    { "StatusLineFileIcon", { guifg = "#c2ccd0" } },
+    { "StatusLineFileName", { guifg = colors.magenta, gui = "bold" } },
+    { "StatusLineLocation", { guifg = colors.fg } },
+    { "StatusLineCocStatus", { guifg = colors.green, gui = "bold" } },
+    { "StatusLineCocDiagnosticHint", { guifg = colors.blue } },
+    { "StatusLineCocDiagnosticInfo", { guifg = colors.cyan } },
+    { "StatusLineCocDiagnosticWarn", { guifg = colors.yellow } },
+    { "StatusLineCocDiagnosticError", { guifg = colors.red } },
+  })
+end
 
 local function mode_symbol()
   local mode = fn.mode()
@@ -149,4 +151,13 @@ local function setup()
   vim.o.statusline = "%!v:lua.statusline()"
 end
 
+set_highlight()
 setup()
+
+wxy.autocmd({ {
+  "ColorScheme",
+  function()
+    set_highlight()
+  end,
+  "*",
+} })
