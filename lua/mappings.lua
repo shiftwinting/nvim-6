@@ -16,7 +16,7 @@ load_maps({
   ["n|<leader>s"] = cr("w"),
   -- Switch window
   ["n|<c-h>"] = cr("wincmd h"):silent(),
-  ["s|<c-j>"] = cr("wincmd j"):silent(),
+  ["n|<c-j>"] = cr("wincmd j"):silent(),
   ["n|<c-k>"] = cr("wincmd k"):silent(),
   ["n|<c-l>"] = cr("wincmd l"):silent(),
   -- delete inline words
