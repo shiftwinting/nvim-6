@@ -20,10 +20,11 @@ local theme_configs = {
 
 local function init()
   if not vim.g.colors_name then
+    local theme
     if fn.empty(fn.glob(cache_theme_path)) > 0 then
       theme = default_theme
     else
-      file = io.open(cache_theme_path, "r")
+      local file = io.open(cache_theme_path, "r")
       theme = file:read()
       file:close()
     end
