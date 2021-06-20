@@ -12,8 +12,7 @@ wxy.highlight_all({
   { "StatusLineIndicator", { guifg = colors.blue } },
   -- StatusLineModeSymbol
   { "StatusLineModeName", { guifg = colors.fg } },
-  { "StatusLineModeName", { guifg = colors.fg } },
-  -- StatusLineFileIcon
+  { "StatusLineFileIcon", { guifg = "#c2ccd0" } },
   { "StatusLineFileName", { guifg = colors.magenta, gui = "bold" } },
   { "StatusLineLocation", { guifg = colors.fg } },
   { "StatusLineCocStatus", { guifg = colors.green, gui = "bold" } },
@@ -36,7 +35,6 @@ end
 
 local function file_icon()
   local icon = ""
-  vim.cmd("hi! StatusLineFileIcon guifg=#c2ccd0")
   if #vim.bo.filetype > 0 then
     local ok, devicons = pcall(require, "nvim-web-devicons")
     if ok then
@@ -99,15 +97,14 @@ local function coc_status()
   return status == "" and "" or "%#StatusLineCocStatus# " .. status
 end
 
--- local function fileformat(bufnr)
---   local icon
---   if vim.bo[bufnr].fileformat == "unix" then
---     icon = jit.os == "OSX" and "" or "ﱦ"
---   else
---     icon = ""
---   end
---   return "%#StatusLine#" .. icon
--- end
+local os_name = ""
+if IS_LINUX then
+  os_name = "ﱦ"
+elseif IS_WINDOWS then
+  os_name = ""
+elseif IS_MAC then
+  os_name = ""
+end
 
 _G.statusline = function()
   local secs = {}
@@ -123,31 +120,24 @@ _G.statusline = function()
   if exceptions.filetypes[filetype] then
     ins(exceptions.filetypes[filetype] .. " " .. bufname)
   elseif api.nvim_get_current_win() == curwin then
-    ins("%#StatusLineIndicator#▌")
-    -- left
-    ins(mode_symbol())
-    ins(mode_name())
-    ins(" ")
-    ins(file_icon())
-    ins(file_name())
-    ins("%#StatusLineLocation#%3l:%-3L")
-    ins(coc_diagnostic())
-    ins(" ")
-    ins(coc_status())
-    -- right
-    ins("%=")
-    -- ins(fileformat(0))
-    local os_name = ""
-    if IS_LINUX then
-      os_name = "ﱦ"
-    elseif IS_WINDOWS then
-      os_name = ""
-    elseif IS_MAC then
-      os_name = ""
-    end
-    ins("%#StatusLine#" .. os_name)
-    ins("%#StatusLine# " .. os.date("%H:%M"))
-    ins("%#StatusLineIndicator#▌")
+    secs = {
+      "%#StatusLineIndicator#▌",
+      -- left
+      mode_symbol(),
+      mode_name(),
+      " ",
+      file_icon(),
+      file_name(),
+      "%#StatusLineLocation#%3l:%-3L",
+      coc_diagnostic(),
+      " ",
+      coc_status(),
+      -- right
+      "%=",
+      "%#StatusLine#" .. os_name,
+      "%#StatusLine# " .. os.date("%H:%M"),
+      "%#StatusLineIndicator#▌",
+    }
   else
     ins(bufname)
   end

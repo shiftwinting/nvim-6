@@ -129,6 +129,7 @@ local exceptions = {
     calendar = "",
     octo = "",
     ["dap-repl"] = "",
+    packer = "",
   },
 }
 
