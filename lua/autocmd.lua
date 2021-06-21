@@ -16,9 +16,6 @@ wxy.augroup("common", {
 
   [[Syntax * if line('$') > 5000 | syntax sync minlines=200 | endif]],
 
-  -- Automatically set relativenumber
-  "InsertEnter * :set norelativenumber",
-  "InsertLeave * :set relativenumber",
   -- Automatically set cursorline
   "InsertLeave,WinEnter * set cursorline",
   "InsertEnter,WinLeave * set nocursorline",

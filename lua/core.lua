@@ -4,6 +4,7 @@ require("plugins")
 require("mappings")
 require("autocmd")
 require("whitespace")
+require('numbers')
 require("colorscheme")
 require("statusline")
 

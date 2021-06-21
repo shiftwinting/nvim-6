@@ -50,16 +50,12 @@ end
 wxy.autocmd({
   {
     "ColorScheme",
-    function()
-      cache_theme()
-    end,
+    cache_theme,
     "*",
   },
   {
     "ColorSchemePre",
-    function()
-      clean()
-    end,
+    clean,
     "*",
   },
 })
