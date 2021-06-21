@@ -153,8 +153,6 @@ setup()
 
 wxy.autocmd({ {
   "ColorScheme",
-  function()
-    set_highlight()
-  end,
+  set_highlight,
   "*",
 } })
