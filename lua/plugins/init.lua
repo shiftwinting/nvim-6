@@ -148,24 +148,6 @@ packer.startup(function(use)
     requires = "nvim-lua/plenary.nvim",
     config = conf("gitsigns"),
   })
-  use({ "folke/zen-mode.nvim", cmd = "ZenMode" })
-  use({
-    "kristijanhusak/vim-dadbod-ui",
-    cmd = {
-      "DBUIToggle",
-      "DBUIAddConnection",
-      "DBUI",
-      "DBUIFindBuffer",
-      "DBUIRenameBuffer",
-    },
-    requires = { "tpope/vim-dadbod" },
-    config = function()
-      vim.g.db_ui_show_help = 0
-      vim.g.db_ui_win_position = "right"
-      vim.g.db_ui_use_nerd_fonts = 1
-      vim.g.db_ui_winwidth = 40
-    end,
-  })
   use({
     "iamcco/markdown-preview.nvim",
     run = ":call mkdp#util#install()",

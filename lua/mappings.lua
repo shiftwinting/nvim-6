@@ -140,10 +140,6 @@ load_maps({
   ["n|<space>gl"] = cr("Neogit pull"):silent(),
   ["n|<space>gp"] = cr("Neogit push"):silent(),
 })
---- vim-dadbod-ui ---
-load_maps({
-  ["n|<leader>od"] = cr("DBUIToggle"),
-})
 --- markdown-preview
 load_maps({
   ["n|<leader>om"] = cr("MarkdownPreviewToggle"),
