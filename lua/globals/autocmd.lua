@@ -1,9 +1,7 @@
-local fn = vim.fn
-local api = vim.api
 local cmd = vim.cmd
 local fmt = string.format
 
-wxy._store = _WxyGlobalCallbacks or {}
+wxy._store = {}
 
 wxy._create = function(f)
   table.insert(wxy._store, f)
@@ -30,10 +28,10 @@ wxy.autocmd = function(commands)
     if type(c) == "string" then
       cmd("autocmd " .. c)
     else
-      events = c[1]
-      command = c[2]
-      targets = c[3] or {}
-      modifiers = c[4] or {}
+      local events = c[1]
+      local command = c[2]
+      local targets = c[3] or {}
+      local modifiers = c[4] or {}
       if type(events) == "string" then
         events = { events }
       end

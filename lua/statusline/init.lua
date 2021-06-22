@@ -21,6 +21,9 @@ local function set_highlight()
     { "StatusLineCocDiagnosticInfo", { guifg = colors.cyan } },
     { "StatusLineCocDiagnosticWarn", { guifg = colors.yellow } },
     { "StatusLineCocDiagnosticError", { guifg = colors.red } },
+    { "StatusLineDiffAdded", { guifg = colors.green } },
+    { "StatusLineDiffModified", { guifg = colors.orange } },
+    { "StatusLineDiffRemoved", { guifg = colors.red } },
   })
 end
 
@@ -47,7 +50,7 @@ local function file_icon()
 end
 
 local function file_name()
-  local path = vim.fn.expand("%:~:.")
+  local path = fn.expand("%:~:.")
   if path == "" then
     return ""
   end
@@ -93,20 +96,104 @@ local function coc_status()
   return status == "" and "" or "%#StatusLineCocStatus# " .. status
 end
 
-local os_name = ""
-if IS_LINUX then
-  os_name = "ﱦ"
-elseif IS_WINDOWS then
-  os_name = ""
-elseif IS_MAC then
-  os_name = ""
+local git_diff = (function()
+  wxy.autocmd({
+    {
+      { "BufEnter", "BufWritePost", "BufRead" },
+      function()
+        if #fn.expand("%") == 0 then
+          return
+        end
+        fn.jobstart(
+          string.format(
+            [[git -C %s --no-pager diff --no-color --no-ext-diff -U0 -- %s]],
+            fn.expand("%:h"),
+            fn.expand("%:t")
+          ),
+          {
+            stdout_buffered = true,
+            on_stdout = function(_, data, _)
+              if data then
+                -- process diff data
+                -- from lualine.nvim
+                local added, modified, removed = 0, 0, 0
+                for _, line in ipairs(data) do
+                  if string.find(line, [[^@@ ]]) then
+                    local tokens = vim.fn.matchlist(line, [[^@@ -\v(\d+),?(\d*) \+(\d+),?(\d*)]])
+                    local line_stats = {
+                      mod_count = tokens[3] == "" and 1 or tonumber(tokens[3]),
+                      new_count = tokens[5] == "" and 1 or tonumber(tokens[5]),
+                    }
+
+                    if line_stats.mod_count == 0 and line_stats.new_count > 0 then
+                      added = added + line_stats.new_count
+                    elseif line_stats.mod_count > 0 and line_stats.new_count == 0 then
+                      removed = removed + line_stats.mod_count
+                    else
+                      local min = math.min(line_stats.mod_count, line_stats.new_count)
+                      modified = modified + min
+                      added = added + line_stats.new_count - min
+                      removed = removed + line_stats.mod_count - min
+                    end
+                  end
+                end
+                vim.g.git_diff = { added, modified, removed }
+              end
+            end,
+          }
+        )
+      end,
+      "*",
+    },
+  })
+  return function()
+    local signs = {}
+    local added, modified, removed = unpack(vim.g.git_diff or { 0, 0, 0 })
+    if added > 0 then
+      table.insert(signs, "%#StatusLineDiffAdded# " .. added)
+    end
+    if modified > 0 then
+      table.insert(signs, "%#StatusLineDiffModified# " .. modified)
+    end
+    if removed > 0 then
+      table.insert(signs, "%#StatusLineDiffRemoved# " .. removed)
+    end
+    if #signs > 0 then
+      return table.concat(signs, " ")
+    end
+    return ""
+  end
+end)()
+
+local os_name = (function()
+  local name = ""
+  if IS_LINUX then
+    name = "ﱦ"
+  elseif IS_WINDOWS then
+    name = ""
+  elseif IS_MAC then
+    name = ""
+  end
+  return name
+end)()
+
+local spacer = " "
+
+---@return string
+local function build_status(...)
+  local secs = {}
+  for _, item in ipairs({ ... }) do
+    if type(item) == "function" then
+      table.insert(secs, item())
+    else
+      table.insert(secs, item)
+    end
+  end
+  return table.concat(secs, " ")
 end
 
 _G.statusline = function()
-  local secs = {}
-  local function ins(sec)
-    table.insert(secs, sec)
-  end
+  local status = ""
 
   local curwin = vim.g.statusline_winid or 0
   local curbuf = vim.api.nvim_win_get_buf(curwin)
@@ -114,34 +201,33 @@ _G.statusline = function()
   local filetype = vim.bo[curbuf].filetype
 
   if exceptions.filetypes[filetype] then
-    ins("%#StatusLine#")
-    ins(exceptions.filetypes[filetype] .. " " .. bufname)
+    status = build_status("%#StatusLine#", exceptions.filetypes[filetype] .. " " .. bufname)
   elseif api.nvim_get_current_win() == curwin then
-    secs = {
+    status = build_status(
       "%#StatusLine#",
       "%#StatusLineIndicator#▌",
       -- left
-      mode_symbol(),
-      mode_name(),
-      " ",
-      file_icon(),
-      file_name(),
-      "%#StatusLineLocation#%3l:%-3L",
-      coc_diagnostic(),
-      " ",
-      coc_status(),
+      mode_symbol,
+      mode_name,
+      spacer,
+      file_icon,
+      file_name,
+      "%#StatusLineLocation#%3l:%-2c",
+      coc_diagnostic,
+      spacer,
+      coc_status,
       -- right
       "%=",
+      git_diff,
       "%#StatusLine#" .. os_name,
       "%#StatusLine# " .. os.date("%H:%M"),
-      "%#StatusLineIndicator#▌",
-    }
+      "%#StatusLineIndicator#▌"
+    )
   else
-    ins("%#StatusLine#")
-    ins(bufname)
+    status = build_status("%#StatusLine#", bufname)
   end
 
-  return table.concat(secs, " ")
+  return status
 end
 
 local function setup()
