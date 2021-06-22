@@ -21,7 +21,6 @@ vim.g.coc_global_extensions = {
   "coc-tsserver",
   "coc-vetur",
   "coc-yaml",
-  "coc-yank",
 }
 
 wxy.autocmd({

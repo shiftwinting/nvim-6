@@ -51,14 +51,6 @@
   "diagnostic.format": "%message [%source]",
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
 
-  // yank
-  "yank.priority": 10,
-  "yank.highlight.enable": true,
-  "yank.highlight.duration": 100,
-  "yank.limit": 2,
-  "yank.list.maxsize": 100,
-  "yank.enableCompletion": false,
-
   // python
   "python.linting.enabled": false,
   "python.analysis.diagnosticMode": "workspace",

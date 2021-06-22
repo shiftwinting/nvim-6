@@ -19,6 +19,9 @@ wxy.augroup("common", {
   -- Automatically set cursorline
   "InsertLeave,WinEnter * set cursorline",
   "InsertEnter,WinLeave * set nocursorline",
+
+  -- highlight yanked region
+  "TextYankPost * lua vim.highlight.on_yank({higroup='Visual'})"
 }, true)
 
 wxy.autocmd({
