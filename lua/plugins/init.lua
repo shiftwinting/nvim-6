@@ -108,15 +108,6 @@ packer.startup(function(use)
     },
   })
   use({
-    "rmagatti/auto-session",
-    config = function()
-      require("auto-session").setup({
-        log_level = "error",
-        auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/auto/",
-      })
-    end,
-  })
-  use({
     "norcalli/nvim-colorizer.lua",
     event = "BufRead",
     config = function()
