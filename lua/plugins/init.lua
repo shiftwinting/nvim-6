@@ -23,7 +23,7 @@ packer.startup(function(use)
   -- packer
   use({ "wbthomason/packer.nvim" })
 
-  use("kyazdani42/nvim-web-devicons")
+  use({ "xiyaowong/nvim-web-devicons", setup = 'vim.g.nvim_web_devicons_theme = "nonicons"' })
   -- colorscheme
   use({
     { "sainnhe/sonokai" },
