@@ -13,7 +13,7 @@ load_maps({
   ["i|jj"] = cmd("<esc>`^"),
   ["i|jk"] = cmd("<esc>`^"),
   -- Save buffer
-  ["n|<leader>s"] = cr("w"),
+  ["n|<leader>s"] = cr("w!"),
   -- Switch window
   ["n|<c-h>"] = cr("wincmd h"):silent(),
   ["n|<c-j>"] = cr("wincmd j"):silent(),
