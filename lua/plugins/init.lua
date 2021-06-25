@@ -76,7 +76,7 @@ packer.startup(function(use)
     {
       "karb94/neoscroll.nvim",
       event = "BufRead",
-      keys = { "<C-f>", "<C-b>" },
+      keys = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "zt", "zz", "zb" },
       config = function()
         require("neoscroll").setup({
           mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "zt", "zz", "zb" },
@@ -86,7 +86,7 @@ packer.startup(function(use)
     { "itchyny/vim-cursorword", event = "BufRead" },
   })
 
-  use({ "junegunn/vim-easy-align", event = "BufRead" })
+  use({ "junegunn/vim-easy-align", event = { "BufRead", "BufEnter" } })
   use({ "talek/obvious-resize", config = "vim.g.obvious_resize_default = 2" }) -- resize window
   use({
     "b3nj5m1n/kommentary",
@@ -109,7 +109,7 @@ packer.startup(function(use)
   })
   use({
     "norcalli/nvim-colorizer.lua",
-    event = "BufRead",
+    event = { "BufRead", "BufEnter" },
     config = function()
       require("colorizer").setup({ "*" }, {
         names = false,
