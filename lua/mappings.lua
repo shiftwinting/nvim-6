@@ -48,7 +48,7 @@ load_maps({
 })
 -- vista
 load_maps({
-  ["n|<leader>v"] = cr("Vista!!"),
+  ["n|<leader>v"] = cr("Vista!!"):silent(),
 })
 -- easy align
 load_maps({
@@ -61,10 +61,10 @@ load_maps({
 })
 -- hop.nvim  motion
 load_maps({
-  ["n|<leader>w"] = cr("HopWord"),
-  ["n|<leader>W"] = cr("HopChar1"),
-  ["n|<leader>l"] = cr("HopLine"),
-  ["n|<leader>/"] = cr("HopPattern"),
+  ["n|<leader>w"] = cr("HopWord"):silent(),
+  ["n|<leader>W"] = cr("HopChar1"):silent(),
+  ["n|<leader>l"] = cr("HopLine"):silent(),
+  ["n|<leader>/"] = cr("HopPattern"):silent(),
 })
 -- vim-niceblock
 load_maps({
@@ -142,5 +142,5 @@ load_maps({
 })
 --- markdown-preview
 load_maps({
-  ["n|<leader>om"] = cr("MarkdownPreviewToggle"),
+  ["n|<leader>om"] = cr("MarkdownPreviewToggle"):silent(),
 })
