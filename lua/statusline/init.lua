@@ -72,7 +72,7 @@ end
 local function coc_diagnostic()
   local ret = ""
   local info = vim.b.coc_diagnostic_info
-  if info then
+  if type(info) =="table" then
     local signs = {}
     if info.error > 0 then
       table.insert(signs, "%#StatusLineCocDiagnosticError# " .. info.error)
