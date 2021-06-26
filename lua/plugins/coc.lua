@@ -94,3 +94,5 @@ keybind.load_maps({
     :noremap(),
 })
 -- inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+
+wxy.highlight("CocRustTypeHint", "Comment")
