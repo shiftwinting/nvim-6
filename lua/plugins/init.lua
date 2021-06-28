@@ -83,7 +83,6 @@ packer.startup(function(use)
         })
       end,
     },
-    { "itchyny/vim-cursorword", event = "BufRead" },
   })
 
   use({ "junegunn/vim-easy-align", event = { "BufRead", "BufEnter" } })
