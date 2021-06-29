@@ -51,6 +51,10 @@
   "diagnostic.format": "%message [%source]",
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
 
+  // lua
+  "Lua.diagnostics.globals": ["vim"],
+  "Lua.runtime.version": "Lua 5.1",
+
   // python
   "python.linting.enabled": false,
   "python.analysis.diagnosticMode": "workspace",
