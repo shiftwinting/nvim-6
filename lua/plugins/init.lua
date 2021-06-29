@@ -60,6 +60,10 @@ packer.startup(function(use)
   })
   -- Enhance
   use({
+    "xiyaowong/nvim-cursorword",
+    "xiyaowong/OldfilesStartupScreen.nvim",
+  })
+  use({
     "antoinemadec/FixCursorHold.nvim",
     -- Vim-cool disables search highlighting when you are done searching
     -- and re-enables it when you search again.
