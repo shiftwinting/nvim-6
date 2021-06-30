@@ -6,6 +6,7 @@ require("autocmd")
 require("whitespace")
 require("numbers")
 require("colorscheme")
+require("highlights")
 require("statusline")
 
 -- Create cache dir and subs dir
