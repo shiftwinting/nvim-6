@@ -9,7 +9,10 @@ local api = vim.api
 
 local function set_highlight()
   wxy.highlight_all({
-    { "StatusLine", { guifg = wxy.hi_value("Normal", "fg"), guibg = wxy.hi_value("Normal", "bg") } },
+    {
+      "StatusLine",
+      { guifg = wxy.hi_value("Normal", "fg"), guibg = wxy.hi_value("Normal", "bg") },
+    },
     { "StatusLineIndicator", { guifg = colors.blue } },
     -- StatusLineModeSymbol
     -- { "StatusLineModeName", { guifg = colors.fg } },
