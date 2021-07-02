@@ -9,6 +9,17 @@ _G.CONFIG_PATH = vim.fn.stdpath("config") .. "/"
 _G.CACHE_PATH = HOME .. "/.cache/nvim/"
 _G.DATA_PATH = vim.fn.stdpath("data") .. "/site/"
 
+wxy._callbacks = {}
+
+wxy._create = function(f)
+  table.insert(wxy._callbacks, f)
+  return #wxy._callbacks
+end
+
+wxy._execute = function(id, args)
+  wxy._callbacks[id](args)
+end
+
 require("globals.keybind")
 require("globals.autocmd")
 require("globals.highlight")

@@ -15,6 +15,8 @@ function Map:new()
   return instance
 end
 
+--- build rhs
+
 function Map:cmd(cmd_string)
   self.rhs = cmd_string
   return self
@@ -34,6 +36,14 @@ function Map:cu(cmd_string)
   self.rhs = (":<C-u>%s<CR>"):format(cmd_string)
   return self
 end
+
+--@param callback function
+function Map:fn(callback)
+  self.rhs = string.format("<cmd>lua wxy._execute(%s)<CR>", wxy._create(callback))
+  return self
+end
+
+--- set options
 
 function Map:silent()
   self.opts.silent = not self.opts.silent
@@ -72,6 +82,10 @@ wxy.keybind = {
 
   args = function(s)
     return Map:new():args(s)
+  end,
+
+  fn = function(c)
+    return Map:new():fn(c)
   end,
 
   load_maps = function(mapping)

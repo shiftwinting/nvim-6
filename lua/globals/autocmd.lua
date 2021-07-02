@@ -1,17 +1,6 @@
 local cmd = vim.cmd
 local fmt = string.format
 
-wxy._store = {}
-
-wxy._create = function(f)
-  table.insert(wxy._store, f)
-  return #wxy._store
-end
-
-wxy._execute = function(id, args)
-  wxy._store[id](args)
-end
-
 -- viml: autocmd BufWritePre *.go echo 'go'
 -- autocmd("BufWritePre *.go echo 'go'")
 -- autocmd({'BufWritePre', "echo 'go'", '*.go'})
