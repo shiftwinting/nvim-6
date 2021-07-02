@@ -1,12 +1,7 @@
 require("globals")
 require("options")
 require("plugins")
-require("mappings")
-require("autocmd")
-require("whitespace")
-require("numbers")
 require("colorscheme")
-require("highlights")
 require("statusline")
 
 -- Create cache dir and subs dir
