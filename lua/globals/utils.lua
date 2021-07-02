@@ -1,4 +1,7 @@
 local api = vim.api
+local fn = vim.fn
+
+------------ notification -------------
 
 local function get_last_notification()
   for _, win in ipairs(api.nvim_list_wins()) do
@@ -72,3 +75,16 @@ function wxy.notify(lines, opts)
     end, timeout)
   end
 end
+
+if vim.notify then
+  ---Override of vim.notify to open floating window
+  --@param message of the notification to show to the user
+  --@param log_level Optional log level
+  --@param opts Dictionary with optional options (timeout, etc)
+  vim.notify = function(message, log_level, _)
+    assert(message, "The message key of vim.notify should be a string")
+    wxy.notify(message, { timeout = 5000, log_level = log_level })
+  end
+end
+
+------------------------------------------
