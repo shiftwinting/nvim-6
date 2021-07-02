@@ -30,14 +30,20 @@ load_maps({
   ["x|<"] = cmd("<gv"),
   ["x|>"] = cmd(">gv"),
   -- Backspace
-  ["i|<C-d>"] = cmd("<Del>"),
-  ["i|<C-h>"] = cmd("<BS>"),
+  ["ic|<C-d>"] = cmd("<Del>"),
+  ["ic|<C-h>"] = cmd("<BS>"),
   -- quickly change word
   ["i|<C-w>"] = cmd("<C-o>ciw"),
   -- yank
   ["n|Y"] = cmd("y$"),
-  -- zero movement
+  -- movement
   ["n|0"] = cmd("getline('.')[0 : col('.') - 2] =~# '^\\s\\+$' ? '0' : '^'"):silent():expr(),
+  ["i|<A-h>"] = cmd("<Left>"),
+  ["i|<A-j>"] = cmd("<Down>"),
+  ["i|<A-l>"] = cmd("<Right>"),
+  ["i|<A-k>"] = cmd("<Up>"),
+  ["ic|<C-a>"] = cmd("<Home>"),
+  ["ic|<C-e>"] = cmd("<End>"),
   -- quit
   ["n|<space>q"] = cmd("ZZ"),
 })
