@@ -88,3 +88,32 @@ if vim.notify then
 end
 
 ------------------------------------------
+
+---Check if a cmd is executable
+---@param e string
+---@return boolean
+function wxy.executable(e)
+  return fn.executable(e) > 0
+end
+
+---Check if directory exists using vim's isdirectory function
+---@param path string
+---@return boolean
+function wxy.is_dir(path)
+  return fn.isdirectory(path) > 0
+end
+
+---Determine if a value of any type is empty
+---@param item any
+---@return boolean
+function wxy.empty(item)
+  if not item then
+    return true
+  end
+  local item_type = type(item)
+  if item_type == "string" then
+    return item == ""
+  elseif item_type == "table" then
+    return vim.tbl_isempty(item)
+  end
+end
