@@ -17,6 +17,10 @@ local packer = require("packer")
 
 packer.init({
   git = { clone_timeout = 120 },
+  display = {
+    open_fn = require("packer.util").float,
+  },
+  compile_path = CONFIG_PATH .. "/plugin/packer_compiled.lua",
   -- disable_commands = true
 })
 packer.startup(function(use)
