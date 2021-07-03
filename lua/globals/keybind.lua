@@ -39,7 +39,7 @@ end
 
 --@param callback function
 function Map:fn(callback)
-  self.rhs = string.format("<cmd>lua wxy._execute(%s)<CR>", wxy._create(callback))
+  self.rhs = string.format(":<C-u>lua wxy._execute(%s)<CR>", wxy._create(callback))
   return self
 end
 
