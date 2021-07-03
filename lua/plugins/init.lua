@@ -48,7 +48,6 @@ packer.startup(function(use)
     {
       "lukas-reineke/indent-blankline.nvim",
       event = { "BufRead", "InsertEnter" },
-      branch = "lua",
       config = conf("indent-blakline"),
     },
   })
