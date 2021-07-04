@@ -2,7 +2,7 @@ local cmd = vim.cmd
 local fn = vim.fn
 
 local function conf(name)
-  return string.format("require('plugins.%s')", name)
+  return string.format("require('wongxy.plugins.%s')", name)
 end
 
 -- automaticlly install packer.nvim

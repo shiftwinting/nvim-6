@@ -1,4 +1,4 @@
-local _tables = require("statusline.tables")
+local _tables = require("wongxy.statusline.tables")
 local colors = _tables.colors
 local mode_names = _tables.mode_names
 local mode_colors = _tables.mode_colors

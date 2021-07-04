@@ -1,8 +1,8 @@
-require("globals")
-require("options")
-require("plugins")
-require("colorscheme")
-require("statusline")
+require("wongxy.globals")
+require("wongxy.options")
+require("wongxy.plugins")
+require("wongxy.colorscheme")
+require("wongxy.statusline")
 
 -- Create cache dir and subs dir
 local data_dir = {

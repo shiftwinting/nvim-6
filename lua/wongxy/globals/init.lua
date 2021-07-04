@@ -20,7 +20,7 @@ wxy._execute = function(id, args)
   wxy._callbacks[id](args)
 end
 
-require("globals.keybind")
-require("globals.autocmd")
-require("globals.highlight")
-require("globals.utils")
+require("wongxy.globals.keybind")
+require("wongxy.globals.autocmd")
+require("wongxy.globals.highlight")
+require("wongxy.globals.utils")
