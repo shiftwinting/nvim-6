@@ -101,7 +101,15 @@ packer.startup(function(use)
       require("kommentary.config").configure_language("lua", { prefer_single_line_comments = true })
     end,
   })
-  use({ "tpope/vim-surround", event = { "BufRead", "InsertEnter" } })
+  use({
+    "blackCauldron7/surround.nvim",
+    event = { "BufRead", "InsertEnter" },
+    config = function()
+      require("surround").setup({
+        mappings_style = "surround",
+      })
+    end,
+  })
   --Movement
   use({
     { "rhysd/clever-f.vim", event = "BufRead" },
