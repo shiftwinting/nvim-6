@@ -22,8 +22,6 @@ if vim.fn.isdirectory(CACHE_PATH) == 0 then
   end
 end
 
--- load profile.vim if existed
-local profile = CONFIG_PATH .. "/profile.vim"
-if vim.fn.filereadable(profile) > 0 then
-  vim.cmd("source " .. profile)
-end
+-- load local profile
+pcall(vim.cmd, "source " .. CONFIG_PATH .. "/profile.vim")
+pcall(vim.cmd, "luafile " .. CONFIG_PATH .. "/profile.lua")
