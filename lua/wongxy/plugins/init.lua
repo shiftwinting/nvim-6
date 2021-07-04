@@ -193,5 +193,3 @@ packer.startup(function(use)
 
   use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
 end)
-
-cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
