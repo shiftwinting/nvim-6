@@ -1,4 +1,5 @@
 profile.vim
+profile.lua
 time
 .nvimlog
 packer_compiled.vim
