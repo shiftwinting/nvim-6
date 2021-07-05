@@ -6,8 +6,8 @@ require("bufferline").setup({
     mappings = true,
     always_show_bufferline = true,
     offsets = {
-      { filetype = "NvimTree", text = "FILE EXPLORER", text_align = "center" },
-      { filetype = "vista", text = "SYMBOLS AND TAGS", text_align = "center" },
+      { filetype = "NvimTree", text = "FILE EXPLORER", padding = 1, highlight = "Directory" },
+      { filetype = "vista", text = "SYMBOLS AND TAGS", padding = 1 },
     },
   },
 })
