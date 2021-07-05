@@ -48,7 +48,7 @@ wxy.hi_value = (function()
     local color = hl[attr] or fallback
     -- convert the decimal rgba value from the hl by name to a 6 character hex + padding if needed
     if not color then
-      vim.notify(string.format("%s %s does not exist", grp, attr))
+      -- vim.notify(string.format("%s %s does not exist", grp, attr))
       return "NONE"
     end
     return "#" .. bit.tohex(color, 6)
