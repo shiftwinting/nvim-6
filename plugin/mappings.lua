@@ -37,6 +37,8 @@ load_maps({
   -- yank
   ["n|Y"] = cmd("y$"),
   -- movement
+  ["n|j"] = cmd("gj"),
+  ["n|k"] = cmd("gk"),
   ["n|0"] = cmd("getline('.')[0 : col('.') - 2] =~# '^\\s\\+$' ? '0' : '^'"):silent():expr(),
   ["i|<A-h>"] = cmd("<Left>"),
   ["i|<A-j>"] = cmd("<Down>"),
@@ -46,6 +48,7 @@ load_maps({
   ["ic|<C-e>"] = cmd("<End>"),
   -- quit
   ["n|<space>q"] = cmd("ZZ"),
+  ["c|<C-o>"] = cmd("<CR>"),
 })
 -- Nvim Tree
 load_maps({
