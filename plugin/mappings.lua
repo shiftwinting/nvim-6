@@ -103,7 +103,8 @@ load_maps({
 })
 -- Nvim toggleterm --
 load_maps({
-  ["nt|<leader>t"] = cr("ToggleTerm"):silent(),
+  ["n|<leader>t"] = cr("ToggleTerm"):silent(),
+  ["t|<leader>t"] = cmd("<C-\\><C-n><CMD>ToggleTerm<CR>"):silent(),
 })
 ----- COC ------
 load_maps({
