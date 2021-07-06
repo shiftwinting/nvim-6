@@ -61,10 +61,7 @@ local function load()
       "honza/vim-snippets",
     })
     -- Enhance
-    use({
-      "xiyaowong/nvim-cursorword",
-      "xiyaowong/OldfilesStartupScreen.nvim",
-    })
+    use("xiyaowong/nvim-cursorword")
     use({
       "antoinemadec/FixCursorHold.nvim",
       -- Vim-cool disables search highlighting when you are done searching
