@@ -1,3 +1,5 @@
+local nvim_set_keymap = vim.api.nvim_set_keymap
+
 local Map = {}
 
 function Map:new()
@@ -65,6 +67,15 @@ function Map:nowait()
   return self
 end
 
+--- must be called last
+---@param key string: such as "n|j"
+function Map:bind(key)
+  local modes, lhs = key:match("([^|]*)|?(.*)")
+  for idx = 1, #modes do
+    nvim_set_keymap(modes:sub(idx, idx), lhs, self.rhs, self.opts)
+  end
+end
+
 ---------------------------------------------
 
 wxy.keybind = {
@@ -90,10 +101,7 @@ wxy.keybind = {
 
   load_maps = function(mapping)
     for key, map in pairs(mapping) do
-      local modes, lhs = key:match("([^|]*)|?(.*)")
-      for idx = 1, #modes do
-        vim.api.nvim_set_keymap(modes:sub(idx, idx), lhs, map.rhs, map.opts)
-      end
+      map:bind(key)
     end
   end,
 }
