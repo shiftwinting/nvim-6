@@ -11,7 +11,7 @@
   "suggest.triggerAfterInsertEnter": false,
   "suggest.detailMaxLength": 50,
   "suggest.completionItemKindLabels": {
-    "keyword": "",
+    "keyword": "",
     "variable": "",
     "value": "",
     "operator": "Ψ",
@@ -30,7 +30,7 @@
     "property": "",
     "field": "料",
     "unit": "",
-    "event": "鬒",
+    "event": "",
     "file": "",
     "folder": "",
     "snippet": "",
@@ -95,5 +95,6 @@
       "command": "kotlin-language-server",
       "filetypes": ["kotlin"]
     }
-  }
+  },
+  "clangd.path": "/home/wongxy/.config/coc/extensions/coc-clangd-data/install/12.0.0/clangd_12.0.0/bin/clangd"
 }
