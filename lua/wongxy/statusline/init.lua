@@ -92,8 +92,10 @@ local diagnostic = (function()
     if type(info) == "table" then
       result = info
     else
-      for key, level in pairs(levels) do
-        result[key] = vim.lsp.diagnostic.get_count(api.nvim_get_current_buf(), level)
+      if #vim.lsp.get_active_clients() > 0 then
+        for key, level in pairs(levels) do
+          result[key] = vim.lsp.diagnostic.get_count(api.nvim_get_current_buf(), level)
+        end
       end
     end
 
