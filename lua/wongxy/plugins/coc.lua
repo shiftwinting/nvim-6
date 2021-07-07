@@ -66,6 +66,7 @@ end
 
 local keybind = wxy.keybind
 local cmd = keybind.cmd
+local cr = keybind.cr
 
 keybind.load_maps({
   -- (s-)tab
@@ -93,6 +94,31 @@ keybind.load_maps({
     :silent()
     :expr()
     :noremap(),
+  -- Use K for show documentation in float window
+  ["n|K"] = cr("call CocActionAsync('doHover')"):silent(),
+  -- Applying codeAction to the selected region.
+  ["xn|<leader>a"] = cmd("<Plug>(coc-codeaction-selected)"):silent(),
+  -- " Use <c-q> for trigger completion.
+  ["i|<c-q>"] = cmd("coc#refresh()"):silent():expr(),
+  -- " Jump definition in other window
+  -- Remap keys for gotos
+  ["n|gd"] = cmd("<Plug>(coc-definition)"):silent(),
+  ["n|gy"] = cmd("<Plug>(coc-type-definition)"):silent(),
+  ["n|gi"] = cmd("<Plug>(coc-implementation)"):silent(),
+  ["n|gr"] = cmd("<Plug>(coc-references)"):silent(),
+  -- Use `[g` and `]g` to navigate diagnostics
+  -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+  ["n|[g"] = cmd("<Plug>(coc-diagnostic-prev)"):silent(),
+  ["n|]g"] = cmd("<Plug>(coc-diagnostic-next)"):silent(),
+  -- Symbol renaming.
+  ["n|<leader>rn"] = cmd("<Plug>(coc-rename)"):silent(),
+  -- Format current buffer
+  ["nx|<leader>f"] = cmd("<Plug>(coc-format)"):silent(),
+  -- Apply AutoFix to problem on the current line.
+  ["n|<leader>qf"] = cmd("<Plug>(coc-fix-current)"):silent(),
+  -- coc-translator --
+  ["n|tt"] = cmd("<Plug>(coc-translator-p)"):silent(),
+  ["v|tt"] = cmd("<Plug>(coc-translator-pv)"):silent(),
 })
 -- inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
