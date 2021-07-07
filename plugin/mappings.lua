@@ -1,3 +1,5 @@
+-- This module should define mappings only those have no other dependencies
+-- or are used for lazy loading
 local bind = wxy.keybind
 local cmd = bind.cmd
 local cu = bind.cu
@@ -108,36 +110,6 @@ load_maps({
 load_maps({
   ["n|<leader>t"] = cr("ToggleTerm"):silent(),
   ["t|<leader>t"] = cmd("<C-\\><C-n><CMD>ToggleTerm<CR>"):silent(),
-})
------ COC ------
-load_maps({
-  -- Use K for show documentation in float window
-  ["n|K"] = cr("call CocActionAsync('doHover')"):silent(),
-  -- Applying codeAction to the selected region.
-  ["xn|<leader>a"] = cmd("<Plug>(coc-codeaction-selected)"):silent(),
-  -- " Use <c-q> for trigger completion.
-  ["i|<c-q>"] = cmd("coc#refresh()"):silent():expr(),
-  -- " Jump definition in other window
-  -- Remap keys for gotos
-  ["n|gd"] = cmd("<Plug>(coc-definition)"):silent(),
-  ["n|gy"] = cmd("<Plug>(coc-type-definition)"):silent(),
-  ["n|<Leader>ci"] = cmd("<Plug>(coc-implementation)"):silent(),
-  ["n|gr"] = cmd("<Plug>(coc-references)"):silent(),
-  -- Use `[g` and `]g` to navigate diagnostics
-  -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-  ["n|[g"] = cmd("<Plug>(coc-diagnostic-prev)"):silent(),
-  ["n|]g"] = cmd("<Plug>(coc-diagnostic-next)"):silent(),
-  -- Symbol renaming.
-  ["n|<leader>rn"] = cmd("<Plug>(coc-rename)"):silent(),
-  -- Format current buffer
-  ["nx|<leader>f"] = cmd("<Plug>(coc-format)"):silent(),
-  -- Apply AutoFix to problem on the current line.
-  ["n|<leader>qf"] = cmd("<Plug>(coc-fix-current)"):silent(),
-})
--- coc-translator --
-load_maps({
-  ["n|tt"] = cmd("<Plug>(coc-translator-p)"):silent(),
-  ["v|tt"] = cmd("<Plug>(coc-translator-pv)"):silent(),
 })
 -- resize widnow by talek/obvious-resize --
 load_maps({
