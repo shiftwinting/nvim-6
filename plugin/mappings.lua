@@ -92,6 +92,9 @@ load_maps({
 -- telescope-coc
 load_maps({
   ["n|<space>a"] = cr("Telescope coc diagnostics"):silent(),
+  ["n|<space>A"] = cr("Telescope coc workspace_diagnostics"):silent(),
+  ["n|<space>s"] = cr("Telescope coc document_symbols"):silent(),
+  ["n|<space>S"] = cr("Telescope coc workspace_symbols"):silent(),
   ["n|<space>c"] = cr("Telescope coc commands"):silent(),
   ["n|<space>d"] = cr("Telescope coc definitions"):silent(),
 })
