@@ -25,11 +25,11 @@ local function set_highlight()
     { "StatusLineFileIcon", { guifg = "#c2ccd0", guibg = bg_color } },
     { "StatusLineFileName", { guifg = colors.magenta, guibg = bg_color, gui = "bold" } },
     -- { "StatusLineLocation", { guifg = colors.fg } },
-    { "StatusLineCocStatus", { guifg = colors.green, guibg = bg_color, gui = "bold" } },
-    { "StatusLineCocDiagnosticHint", { guifg = colors.blue, guibg = bg_color } },
-    { "StatusLineCocDiagnosticInfo", { guifg = colors.cyan, guibg = bg_color } },
-    { "StatusLineCocDiagnosticWarn", { guifg = colors.yellow, guibg = bg_color } },
-    { "StatusLineCocDiagnosticError", { guifg = colors.red, guibg = bg_color } },
+    { "StatusLineLspStatus", { guifg = colors.green, guibg = bg_color, gui = "bold" } },
+    { "StatusLineDiagnosticHint", { guifg = colors.blue, guibg = bg_color } },
+    { "StatusLineDiagnosticInfo", { guifg = colors.cyan, guibg = bg_color } },
+    { "StatusLineDiagnosticWarn", { guifg = colors.yellow, guibg = bg_color } },
+    { "StatusLineDiagnosticError", { guifg = colors.red, guibg = bg_color } },
     { "StatusLineDiffAdded", { guifg = colors.green, guibg = bg_color } },
     { "StatusLineDiffModified", { guifg = colors.orange, guibg = bg_color } },
     { "StatusLineDiffRemoved", { guifg = colors.red, guibg = bg_color } },
@@ -78,31 +78,45 @@ local function file_name()
   return "%#StatusLineFileName#" .. path .. " " .. icon
 end
 
-local function coc_diagnostic()
-  local ret = ""
-  local info = vim.b.coc_diagnostic_info
-  if type(info) == "table" then
-    local signs = {}
-    if info.error > 0 then
-      table.insert(signs, "%#StatusLineCocDiagnosticError# " .. info.error)
-    end
-    if info.warning > 0 then
-      table.insert(signs, "%#StatusLineCocDiagnosticWarn# " .. info.warning)
-    end
-    if info.information > 0 then
-      table.insert(signs, "%#StatusLineCocDiagnosticInfo# " .. info.information)
-    end
-    if info.hint > 0 then
-      table.insert(signs, "%#StatusLineCocDiagnosticHint# " .. info.hint)
-    end
-    ret = " " .. table.concat(signs, " ")
-  end
-  return ret
-end
+local diagnostic = (function()
+  local levels = {
+    error = "Error",
+    warning = "Warning",
+    information = "Information",
+    hint = "Hint",
+  }
+  return function()
+    local result = { error = 0, warning = 0, information = 0, hint = 0 }
 
-local function coc_status()
+    local info = vim.b.coc_diagnostic_info
+    if type(info) == "table" then
+      result = info
+    else
+      for key, level in pairs(levels) do
+        result[key] = vim.lsp.diagnostic.get_count(api.nvim_get_current_buf(), level)
+      end
+    end
+
+    local signs = {}
+    if result.error > 0 then
+      table.insert(signs, "%#StatusLineDiagnosticError# " .. result.error)
+    end
+    if result.warning > 0 then
+      table.insert(signs, "%#StatusLineDiagnosticWarn# " .. result.warning)
+    end
+    if result.information > 0 then
+      table.insert(signs, "%#StatusLineDiagnosticInfo# " .. result.information)
+    end
+    if result.hint > 0 then
+      table.insert(signs, "%#StatusLineDiagnosticHint# " .. result.hint)
+    end
+    return table.concat(signs, " ")
+  end
+end)()
+
+local function lsp_status()
   local status = vim.trim(vim.g.coc_status or "")
-  return status == "" and "" or "%#StatusLineCocStatus# " .. status
+  return status == "" and "" or "%#StatusLineLspStatus# " .. status
 end
 
 local git_diff = (function()
@@ -222,9 +236,9 @@ _G.statusline = function()
       file_icon,
       file_name,
       "%#StatusLineLocation#%3l:%-2c",
-      coc_diagnostic,
+      diagnostic,
       spacer,
-      coc_status,
+      lsp_status,
       -- right
       "%=",
       git_diff,
