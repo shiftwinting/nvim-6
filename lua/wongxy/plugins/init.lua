@@ -188,6 +188,7 @@ local function load()
         requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
       },
       "fannheyward/telescope-coc.nvim",
+      "xiyaowong/telescope-emoji.nvim",
     })
 
     use({ "tweekmonster/startuptime.vim", cmd = "StartupTime" })
