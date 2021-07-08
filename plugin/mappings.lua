@@ -61,10 +61,6 @@ load_maps({
 load_maps({
   ["n|<leader>v"] = cr("Vista!!"):silent(),
 })
--- easy align
-load_maps({
-  ["nx|ga"] = cmd("<Plug>(EasyAlign)"):silent(),
-})
 -- acelerated jk (enhanced jk move)
 load_maps({
   ["n|j"] = cmd("<Plug>(accelerated_jk_gj)"),

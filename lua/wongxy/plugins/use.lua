@@ -49,7 +49,6 @@ return {
       })
     end,
   },
-  ["junegunn/vim-easy-align"] = { event = { "BufRead", "BufEnter" } },
   ["talek/obvious-resize"] = { config = "vim.g.obvious_resize_default = 2" },
   ["b3nj5m1n/kommentary"] = {
     event = { "BufRead", "InsertEnter" },
