@@ -1,42 +1,40 @@
 {
   "codeLens.enable": true,
 
-  "suggest.enablePreview": true,
-  "suggest.floatEnable": true,
+  "suggest.noselect": false,
   "suggest.snippetIndicator": " ",
-  "suggest.timeout": 5000,
-  "suggest.detailField": "preview",
-  "suggest.maxCompleteItemCount": 50,
-  "suggest.maxPreviewWidth": 80,
-  "suggest.triggerAfterInsertEnter": false,
-  "suggest.detailMaxLength": 50,
   "suggest.completionItemKindLabels": {
-    "keyword": "",
-    "variable": "",
-    "value": "",
-    "operator": "Ψ",
-    "function": "ƒ",
-    "reference": "渚",
-    "constant": "",
-    "method": "",
-    "struct": "פּ",
-    "class": "",
-    "interface": "",
-    "text": "",
-    "enum": "",
-    "enumMember": "",
-    "module": "",
-    "color": "",
-    "property": "",
-    "field": "料",
-    "unit": "",
-    "event": "",
-    "file": "",
-    "folder": "",
-    "snippet": "",
-    "typeParameter": "",
-    "default": ""
+    "keyword": " (keyword)",
+    "variable": " (variable)",
+    "value": " (value)",
+    "operator": "Ψ (operator)",
+    "function": "ƒ (function)",
+    "reference": "渚 (reference)",
+    "constant": " (constant)",
+    "method": " (method)",
+    "struct": "פּ (struct)",
+    "class": " (class)",
+    "interface": " (interface)",
+    "text": " (text)",
+    "enum": " (enum)",
+    "enumMember": " (enumMember)",
+    "module": " (module)",
+    "color": " (color)",
+    "property": " (property)",
+    "field": "料(field)",
+    "unit": " (unit)",
+    "event": " (event)",
+    "file": " (file)",
+    "folder": " (folder)",
+    "snippet": " (snippet)",
+    "typeParameter": " (typeParameter)",
+    "default": " (default)"
   },
+
+  // preferences
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": ["rust"],
 
   // diagnostic
   "diagnostic.hintSign": "",
@@ -48,7 +46,7 @@
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.format": "%message [%source]",
+  "diagnostic.format": "%message [%source%code]",
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
 
   // lua
@@ -72,13 +70,6 @@
 
   // eslint
   "eslint.autoFixOnSave": true,
-
-  // coc.preferences
-  "coc.preferences.enableFloatHighlight": true,
-  "coc.preferences.extensionUpdateCheck": "daily",
-  "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnSaveFiletypes": ["rust"],
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
 
   // go
   "go.goplsOptions": {
