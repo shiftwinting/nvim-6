@@ -20,15 +20,17 @@ local function load()
     disable_commands = true,
   })
   packer.startup(function(use)
+    local all = {}
+
     local plugins = require("wongxy.plugins.use")
     for name, plugin in pairs(plugins) do
       if type(plugin) == "table" then
         table.insert(plugin, name)
-        use(plugin)
-      else
-        use(plugin)
       end
+      table.insert(all, plugin)
     end
+
+    use(all)
   end)
 end
 
