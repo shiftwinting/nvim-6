@@ -11,14 +11,15 @@ vim.g.nvim_tree_bindings = {
 }
 
 vim.g.nvim_tree_icons = {
-  default = "",
+  default = "",
   symlink = "",
   git = {
-    unstaged = "✚",
-    staged = "✚",
-    unmerged = "≠",
-    renamed = "≫",
-    untracked = "★",
+    unstaged = "",
+    staged = "",
+    deleted = "",
+    renamed = "",
+    unmerged = "",
+    untracked = "",
   },
   folder = { default = "", open = "" },
 }
