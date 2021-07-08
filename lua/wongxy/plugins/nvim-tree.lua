@@ -5,7 +5,8 @@ vim.g.nvim_tree_hide_dotfiles = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache", "__pycache__" }
 vim.g.nvim_tree_bindings = {
-  { key = { "<CR>", "o", "<2-LeftMouse>" }, cb = tree_cb("edit") },
+  { key = "h", cb = tree_cb("close_node") },
+  { key = { "<CR>", "o", "<2-LeftMouse>", "l" }, cb = tree_cb("edit") },
   { key = "s", cb = tree_cb("vsplit") },
   { key = "i", cb = tree_cb("split") },
 }
