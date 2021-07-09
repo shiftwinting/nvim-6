@@ -1,7 +1,10 @@
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
+vim.g.nvim_tree_width_allow_resize = 1
 vim.g.nvim_tree_follow = 1
-vim.g.nvim_tree_hide_dotfiles = 1
+vim.g.nvim_tree_highlight_opened_files = 1
+vim.g.nvim_tree_auto_resize = 1
+vim.g.nvim_tree_hide_dotfiles = 0
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache", "__pycache__" }
 vim.g.nvim_tree_bindings = {
