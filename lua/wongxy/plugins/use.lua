@@ -136,6 +136,7 @@ return {
   ["neoclide/coc.nvim"] = {
     branch = "release",
     event = { "InsertEnter", "BufRead" },
+    cmd = { "CocStart", "CocConfig", "CocInstall", "CocUninstall" },
     config = conf("coc"),
   },
   "honza/vim-snippets",
