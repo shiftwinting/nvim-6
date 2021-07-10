@@ -51,6 +51,7 @@
 
   // lua
   "Lua.diagnostics.globals": ["vim"],
+  "Lua.diagnostics.disable": ["trailing-space"],
   "Lua.runtime.version": "Lua 5.1",
 
   // python
