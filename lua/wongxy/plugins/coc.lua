@@ -112,8 +112,9 @@ keybind.load_maps({
   ["n|]g"] = cmd("<Plug>(coc-diagnostic-next)"):silent(),
   -- Symbol renaming.
   ["n|<leader>rn"] = cmd("<Plug>(coc-rename)"):silent(),
-  -- Format current buffer
-  ["nx|<leader>f"] = cmd("<Plug>(coc-format)"):silent(),
+  -- Formating
+  ["n|<leader>f"] = cmd("<Plug>(coc-format)"):silent(),
+  ["x|<leader>f"] = cmd("<Plug>(coc-format-selected)"):silent(),
   -- Apply AutoFix to problem on the current line.
   ["n|<leader>qf"] = cmd("<Plug>(coc-fix-current)"):silent(),
   -- coc-translator --
