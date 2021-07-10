@@ -104,8 +104,10 @@ load_maps({
 })
 -- Nvim toggleterm --
 load_maps({
-  ["n|<leader>t"] = cr("ToggleTerm"):silent(),
-  ["t|<leader>t"] = cmd("<C-\\><C-n><CMD>ToggleTerm<CR>"):silent(),
+  ["n|<leader>ot"] = cr("ToggleTerm"):silent(),
+  ["t|<leader>ot"] = cmd("<C-\\><C-n><CMD>ToggleTerm<CR>"):silent(),
+  ["n|<leader>og"] = cr("LazyGit"):silent(),
+  ["t|<leader>og"] = cmd("<C-\\><C-n><CMD>LazyGit<CR>"):silent(),
 })
 -- resize widnow by talek/obvious-resize --
 load_maps({

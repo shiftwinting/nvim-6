@@ -102,7 +102,10 @@ return {
 
   -- tools
   ["liuchengxu/vista.vim"] = { cmd = "Vista", config = conf("vista") },
-  ["akinsho/nvim-toggleterm.lua"] = { cmd = "ToggleTerm", config = conf("nvim-toggleterm") },
+  ["akinsho/nvim-toggleterm.lua"] = {
+    cmd = { "ToggleTerm", "LazyGit" },
+    config = conf("nvim-toggleterm"),
+  },
   ["sindrets/diffview.nvim"] = { cmd = "DiffviewOpen", config = conf("diffview") },
   ["TimUntersberger/neogit"] = {
     requires = "nvim-lua/plenary.nvim",

@@ -6,5 +6,21 @@ require("toggleterm").setup({
   shading_factor = 1,
   start_in_insert = true,
   persist_size = true,
-  direction = "horizontal",
+  direction = "float",
+})
+
+local Terminal = require("toggleterm.terminal").Terminal
+
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  dir = "git_dir",
+  hidden = true,
+  direction = "float",
+})
+
+wxy.command({
+  "LazyGit",
+  function()
+    lazygit:toggle()
+  end,
 })
