@@ -23,9 +23,3 @@ wxy.augroup("common", {
   -- highlight yanked region
   "TextYankPost * lua vim.highlight.on_yank({higroup='Visual'})",
 }, true)
-
-wxy.autocmd({
-  -- Detect filetype
-  "BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc",
-  "BufNewFile,BufRead go.mod            setlocal filetype=gomod",
-})
