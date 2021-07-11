@@ -80,4 +80,4 @@ local function github_notifications()
   end
 end
 
-github_notifications()
+vim.defer_fn(github_notifications, 1)
