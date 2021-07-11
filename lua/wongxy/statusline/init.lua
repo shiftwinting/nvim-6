@@ -193,7 +193,7 @@ end)()
 local os_name = (function()
   local name = ""
   if IS_LINUX then
-    name = "ﱦ"
+    name = ""
   elseif IS_WINDOWS then
     name = ""
   elseif IS_MAC then
@@ -244,8 +244,10 @@ _G.statusline = function()
       -- right
       "%=",
       git_diff,
-      "%#StatusLine#" .. os_name,
-      "%#StatusLine# " .. os.date("%H:%M"),
+      "%#StartsLine#",
+      filetype == "" and "PlainText" or filetype:upper(),
+      os_name,
+      os.date("%H:%M"),
       "%#StatusLineIndicator#▌"
     )
   else
