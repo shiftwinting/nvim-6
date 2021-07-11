@@ -29,6 +29,7 @@ return {
   },
 
   -- Enhance
+  "tversteeg/registers.nvim",
   "rhysd/accelerated-jk",
   "antoinemadec/FixCursorHold.nvim",
   "xiyaowong/nvim-cursorword",
