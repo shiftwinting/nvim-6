@@ -229,7 +229,6 @@ _G.statusline = function()
     status = build_status("%#StatusLine#", exceptions.filetypes[filetype] .. " " .. bufname)
   elseif api.nvim_get_current_win() == curwin then
     status = build_status(
-      "%#StatusLine#",
       "%#StatusLineIndicator#▌",
       -- left
       mode_symbol,
@@ -244,8 +243,7 @@ _G.statusline = function()
       -- right
       "%=",
       git_diff,
-      "%#StartsLine#",
-      filetype == "" and "PlainText" or filetype:upper(),
+      "%#StartsLine#" .. (filetype == "" and "PlainText" or filetype:upper()),
       os_name,
       os.date("%H:%M"),
       "%#StatusLineIndicator#▌"
