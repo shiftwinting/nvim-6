@@ -29,6 +29,10 @@ local theme_configs = {
     -- vim.g.gruvbox_material_diagnostic_line_highlight = 1
     vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
   end,
+  onedark = function()
+    -- vim.g.onedark_transparent = true
+    vim.g.onedark_sidebars = { "qf", "vista", "terminal", "packer" }
+  end,
 }
 
 local function init()
