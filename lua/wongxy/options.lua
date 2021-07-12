@@ -1,118 +1,182 @@
-local global_options = {
-  termguicolors = true,
-  mouse = "a",
-  errorbells = true,
-  visualbell = true,
-  hidden = true,
-  fileformats = "unix,mac,dos",
-  magic = true,
-  virtualedit = "block",
-  encoding = "utf-8",
-  viewoptions = "folds,cursor,curdir,slash,unix",
-  sessionoptions = "curdir,help,tabpages,winsize",
-  clipboard = "unnamedplus",
-  wildignorecase = true,
-  wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
-  backup = false,
-  writebackup = false,
-  undofile = true,
-  swapfile = false,
-  directory = CACHE_PATH .. "swag/",
-  undodir = CACHE_PATH .. "undo/",
-  backupdir = CACHE_PATH .. "backup/",
-  viewdir = CACHE_PATH .. "view/",
-  spellfile = CACHE_PATH .. "spell/en.uft-8.add",
-  history = 2000,
-  shada = "!,'300,<50,@100,s10,h",
-  backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim",
-  smarttab = true,
-  shiftround = true,
-  timeout = true,
-  ttimeout = true,
-  timeoutlen = 500,
-  ttimeoutlen = 10,
-  updatetime = 100,
-  redrawtime = 1500,
-  ignorecase = true,
-  smartcase = true,
-  infercase = true,
-  incsearch = true,
-  wrapscan = true,
-  complete = ".,w,b,k",
-  inccommand = "nosplit",
-  grepformat = "%f:%l:%c:%m",
-  grepprg = "rg --hidden --vimgrep --smart-case --",
-  breakat = [[\ \	;:,!?]],
-  startofline = false,
-  whichwrap = "h,l,<,>,[,],~",
-  splitbelow = true,
-  splitright = true,
-  switchbuf = "useopen",
-  backspace = "indent,eol,start",
-  diffopt = "filler,iwhite,internal,algorithm:patience",
-  completeopt = "menuone,noselect",
-  jumpoptions = "stack",
-  showmode = false,
-  shortmess = "aoOTIcF",
-  scrolloff = 2,
-  sidescrolloff = 5,
-  foldlevelstart = 99,
-  ruler = false,
-  list = true,
-  showtabline = 2,
-  winwidth = 30,
-  winminwidth = 10,
-  pumheight = 15,
-  helpheight = 12,
-  previewheight = 12,
-  showcmd = false,
-  cmdheight = 2,
-  cmdwinheight = 5,
-  equalalways = false,
-  laststatus = 2,
-  display = "lastline",
-  showbreak = "↳  ",
-  listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
-  pumblend = 20,
-  winblend = 20,
-  guifont = "OperatorMono Nerd Font:h15",
-}
-local buffer_options = {
-  synmaxcol = 2500,
-  formatoptions = "1jcroql",
-  textwidth = 80,
-  expandtab = true,
-  autoindent = true,
-  tabstop = 2,
-  shiftwidth = 2,
-  softtabstop = -1,
-}
-local window_options = {
-  number = true,
-  relativenumber = true,
-  colorcolumn = "80",
-  signcolumn = "yes",
-  wrap = false,
-  linebreak = true,
-  breakindentopt = "shift:2,min:20",
-  foldenable = true,
-  conceallevel = 2,
-  concealcursor = "niv",
+local opt = vim.opt
+local fn = vim.fn
+
+opt.shortmess = {
+  t = true,
+  A = true,
+  o = true,
+  O = true,
+  T = true,
+  f = true,
+  F = true,
+  s = true,
+  c = true,
+  W = true,
 }
 
-local opt = function(name, value, scopes)
-  scopes = scopes or { vim.o }
-  for _, scope in ipairs(scopes) do
-    scope[name] = value
-  end
+-- timings
+opt.timeout = true
+opt.ttimeout = true
+opt.timeoutlen = 500
+opt.ttimeoutlen = 10
+opt.updatetime = 100
+
+-- splitting
+opt.hidden = true
+opt.splitbelow = true
+opt.splitright = true
+opt.eadirection = "hor"
+opt.switchbuf = { "useopen", "uselast" }
+opt.fillchars = {
+  vert = "▕",
+  fold = " ",
+  eob = " ",
+  diff = "╱",
+  msgsep = "‾",
+  foldopen = "▾",
+  foldsep = "│",
+  foldclose = "▸",
+}
+
+-- diff
+opt.diffopt:append({
+  "vertical",
+  "iwhite",
+  "hiddenoff",
+  "foldcolumn:0",
+  "context:4",
+  "algorithm:histogram",
+  "indent-heuristic",
+})
+
+-- format options
+opt.formatoptions = {
+  ["1"] = true,
+  ["2"] = true,
+  q = true,
+  c = true,
+  r = true,
+  n = true,
+  t = false,
+  j = true,
+  l = true,
+  v = true,
+}
+
+opt.foldlevelstart = 3
+
+opt.wildmode = "full"
+opt.wildignorecase = true
+opt.wildignore = {
+  "*.aux",
+  "*.out",
+  "*.toc",
+  "*.o",
+  "*.obj",
+  "*.dll",
+  "*.jar",
+  "*.pyc",
+  "*.rbc",
+  "*.class",
+  "*.gif",
+  "*.ico",
+  "*.jpg",
+  "*.jpeg",
+  "*.png",
+  "*.avi",
+  "*.wav",
+  "*.webm",
+  "*.eot",
+  "*.otf",
+  "*.ttf",
+  "*.woff",
+  "*.doc",
+  "*.pdf",
+  "*.zip",
+  "*.tar.gz",
+  "*.tar.bz2",
+  "*.rar",
+  "*.tar.xz",
+  -- Temp/System
+  "*.*~",
+  "*~ ",
+  "*.swp",
+  ".lock",
+  ".DS_Store",
+  "._*",
+  "tags.lock",
+}
+opt.wildoptions = "pum"
+
+-- display
+opt.colorcolumn = "80"
+opt.showbreak = "↳ "
+opt.signcolumn = "yes:2"
+opt.synmaxcol = 1024
+opt.linebreak = true
+opt.breakindentopt = "sbr"
+opt.conceallevel = 2
+
+opt.list = true
+opt.listchars = {
+  eol = " ",
+  tab = "»·",
+  extends = "›",
+  precedes = "‹",
+  trail = "•",
+}
+
+-- Indentation
+opt.wrap = true
+opt.textwidth = 80
+opt.expandtab = true
+opt.autoindent = true
+opt.smarttab = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.shiftround = true
+
+opt.termguicolors = true
+opt.mouse = "a"
+opt.fileformats = { "unix", "mac", "dos" }
+opt.virtualedit = "block"
+opt.viewoptions = { "cursor", "folds" }
+opt.sessionoptions = {
+  "globals",
+  "buffers",
+  "curdir",
+  "help",
+  "winpos",
+  -- "tabpages",
+}
+opt.clipboard = { "unnamedplus" }
+
+opt.backup = false
+opt.writebackup = false
+opt.undofile = true
+opt.swapfile = false
+
+opt.ignorecase = true
+opt.smartcase = true
+opt.incsearch = true
+opt.wrapscan = true
+opt.inccommand = "nosplit"
+
+opt.grepformat = "%f:%l:%c:%m"
+if fn.executable("rg") > 0 then
+  opt.grepprg = [[rg --glob "!.git" --no-heading --vimgrep --follow $*]]
+elseif fn.executable("ag") > 0 then
+  opt.grepprg = [[ag --nogroup --nocolor --vimgrep]]
 end
 
-local load_opt = function(options, scopes)
-  for name, value in pairs(options) do
-    opt(name, value, scopes)
-  end
-end
+opt.completeopt = { "menuone", "noselect" }
+opt.showmode = false
+opt.scrolloff = 4
+opt.sidescrolloff = 5
+opt.ruler = false
+opt.pumheight = 15
+opt.cmdheight = 2
+opt.pumblend = 15
+opt.winblend = 15
 
-load_opt(global_options)
-load_opt(buffer_options, { vim.o, vim.bo })
-load_opt(window_options, { vim.o, vim.wo })
+opt.guifont = "OperatorMono Nerd Font:h15"

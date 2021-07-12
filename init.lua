@@ -2,6 +2,12 @@ _G.vim = vim
 
 vim.cmd("syntax enable")
 
-vim.cmd("augroup vimrc | autocmd! | augroup END")
+require("wongxy.globals")
+require("wongxy.options")
+require("wongxy.plugins")
+require("wongxy.colorscheme")
+require("wongxy.statusline")
 
-require("wongxy")
+-- load local profile
+pcall(vim.cmd, "source  profile.vim")
+pcall(vim.cmd, "luafile profile.lua")

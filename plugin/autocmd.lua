@@ -1,3 +1,5 @@
+vim.cmd("augroup vimrc | autocmd! | augroup END")
+
 wxy.augroup("common", {
   -- Reload Vim script automatically if setlocal autoread
   [[BufWritePost,FileWritePost *.vim nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
