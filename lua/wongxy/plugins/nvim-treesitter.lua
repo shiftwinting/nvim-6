@@ -1,4 +1,4 @@
-require("nvim-treesitter.configs").setup({
+require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
   },
@@ -6,17 +6,17 @@ require("nvim-treesitter.configs").setup({
     select = {
       enable = true,
       keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["aC"] = "@conditional.outer",
-        ["iC"] = "@conditional.inner",
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+        ['aC'] = '@conditional.outer',
+        ['iC'] = '@conditional.inner',
       },
     },
   },
-  ensure_installed = "maintained",
+  ensure_installed = 'maintained',
   rainbow = {
     enable = true,
   },
-})
+}

@@ -1,4 +1,4 @@
-require("toggleterm").setup({
+require('toggleterm').setup {
   size = 20,
   insert_mappings = false,
   shade_filetypes = {},
@@ -6,21 +6,21 @@ require("toggleterm").setup({
   shading_factor = 1,
   start_in_insert = true,
   persist_size = true,
-  direction = "float",
-})
+  direction = 'float',
+}
 
-local Terminal = require("toggleterm.terminal").Terminal
+local Terminal = require('toggleterm.terminal').Terminal
 
-local lazygit = Terminal:new({
-  cmd = "lazygit",
-  dir = "git_dir",
+local lazygit = Terminal:new {
+  cmd = 'lazygit',
+  dir = 'git_dir',
   hidden = true,
-  direction = "float",
-})
+  direction = 'float',
+}
 
-wxy.command({
-  "LazyGit",
+wxy.command {
+  'LazyGit',
   function()
     lazygit:toggle()
   end,
-})
+}

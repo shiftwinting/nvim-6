@@ -1,6 +1,6 @@
-vim.cmd("augroup vimrc | autocmd! | augroup END")
+vim.cmd 'augroup vimrc | autocmd! | augroup END'
 
-wxy.augroup("common", {
+wxy.augroup('common', {
   -- Reload Vim script automatically if setlocal autoread
   [[BufWritePost,FileWritePost *.vim nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
   -- Update filetype on save if empty
@@ -19,8 +19,8 @@ wxy.augroup("common", {
   [[Syntax * if line('$') > 5000 | syntax sync minlines=200 | endif]],
 
   -- Automatically set cursorline
-  "InsertLeave,WinEnter * set cursorline",
-  "InsertEnter,WinLeave * set nocursorline",
+  'InsertLeave,WinEnter * set cursorline',
+  'InsertEnter,WinLeave * set nocursorline',
 
   -- highlight yanked region
   "TextYankPost * lua vim.highlight.on_yank({higroup='Visual'})",

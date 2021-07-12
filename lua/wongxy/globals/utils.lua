@@ -6,15 +6,15 @@ local fn = vim.fn
 local function get_last_notification()
   for _, win in ipairs(api.nvim_list_wins()) do
     local buf = api.nvim_win_get_buf(win)
-    if vim.bo[buf].filetype == "vim-notify" and api.nvim_win_is_valid(win) then
+    if vim.bo[buf].filetype == 'vim-notify' and api.nvim_win_is_valid(win) then
       return api.nvim_win_get_config(win)
     end
   end
 end
 
 local notification_hl = setmetatable({
-  [2] = { "FloatBorder:NvimNotificationError", "NormalFloat:NvimNotificationError" },
-  [1] = { "FloatBorder:NvimNotificationInfo", "NormalFloat:NvimNotificationInfo" },
+  [2] = { 'FloatBorder:NvimNotificationError', 'NormalFloat:NvimNotificationError' },
+  [1] = { 'FloatBorder:NvimNotificationInfo', 'NormalFloat:NvimNotificationInfo' },
 }, {
   __index = function(t, k)
     return k > 1 and t[2] or t[1]
@@ -25,18 +25,18 @@ local notification_hl = setmetatable({
 ---@param lines string[] | string
 ---@param opts table
 function wxy.notify(lines, opts)
-  lines = type(lines) == "string" and { lines } or lines
+  lines = type(lines) == 'string' and { lines } or lines
   lines = vim.tbl_flatten(vim.tbl_map(function(line)
-    return vim.split(line, "\n")
+    return vim.split(line, '\n')
   end, lines))
   opts = opts or {}
-  local highlights = { "NormalFloat:Normal" }
+  local highlights = { 'NormalFloat:Normal' }
   local level = opts.log_level or 1
   local timeout = opts.timeout or 5000
 
   local width
   for i, line in ipairs(lines) do
-    line = "  " .. line .. "  "
+    line = '  ' .. line .. '  '
     lines[i] = line
     local length = #line
     if not width or width < length then
@@ -49,23 +49,23 @@ function wxy.notify(lines, opts)
   local prev = get_last_notification()
   local row = prev and prev.row[false] - prev.height - 2 or vim.o.lines - vim.o.cmdheight - 3
   local win = api.nvim_open_win(buf, false, {
-    relative = "editor",
+    relative = 'editor',
     width = width + 2,
     height = height,
     col = vim.o.columns - 2,
     row = row,
-    anchor = "SE",
-    style = "minimal",
+    anchor = 'SE',
+    style = 'minimal',
     focusable = false,
-    border = "double",
+    border = 'double',
   })
 
   local level_hl = notification_hl[level]
 
   vim.list_extend(highlights, level_hl)
-  vim.wo[win].winhighlight = table.concat(highlights, ",")
+  vim.wo[win].winhighlight = table.concat(highlights, ',')
 
-  vim.bo[buf].filetype = "vim-notify"
+  vim.bo[buf].filetype = 'vim-notify'
   vim.wo[win].wrap = true
   if timeout then
     vim.defer_fn(function()
@@ -82,7 +82,7 @@ if vim.notify then
   --@param log_level Optional log level
   --@param opts Dictionary with optional options (timeout, etc)
   vim.notify = function(message, log_level, _)
-    assert(message, "The message key of vim.notify should be a string")
+    assert(message, 'The message key of vim.notify should be a string')
     wxy.notify(message, { timeout = 5000, log_level = log_level })
   end
 end
@@ -111,9 +111,9 @@ function wxy.empty(item)
     return true
   end
   local item_type = type(item)
-  if item_type == "string" then
-    return item == ""
-  elseif item_type == "table" then
+  if item_type == 'string' then
+    return item == ''
+  elseif item_type == 'table' then
     return vim.tbl_isempty(item)
   end
 end

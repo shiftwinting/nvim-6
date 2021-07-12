@@ -1,4 +1,4 @@
-local _tables = require("wongxy.statusline.tables")
+local _tables = require 'wongxy.statusline.tables'
 local colors = _tables.colors
 local mode_names = _tables.mode_names
 local mode_colors = _tables.mode_colors
@@ -7,89 +7,89 @@ local exceptions = _tables.exceptions
 local fn = vim.fn
 local api = vim.api
 
-local bg_color = wxy.darken_color(wxy.hi_value("Normal", "bg"), -11)
+local bg_color = wxy.darken_color(wxy.hi_value('Normal', 'bg'), -11)
 
 local function set_highlight()
-  bg_color = wxy.darken_color(wxy.hi_value("Normal", "bg"), -11)
-  wxy.highlight_all({
+  bg_color = wxy.darken_color(wxy.hi_value('Normal', 'bg'), -11)
+  wxy.highlight_all {
     {
-      "StatusLine",
+      'StatusLine',
       {
-        guifg = wxy.hi_value("Normal", "fg"),
+        guifg = wxy.hi_value('Normal', 'fg'),
         guibg = bg_color,
       },
     },
-    { "StatusLineIndicator", { guifg = colors.blue, guibg = bg_color } },
+    { 'StatusLineIndicator', { guifg = colors.blue, guibg = bg_color } },
     -- StatusLineModeSymbol
     -- { "StatusLineModeName", { guifg = colors.fg } },
-    { "StatusLineFileIcon", { guifg = "#c2ccd0", guibg = bg_color } },
-    { "StatusLineFileName", { guifg = colors.magenta, guibg = bg_color, gui = "bold" } },
+    { 'StatusLineFileIcon', { guifg = '#c2ccd0', guibg = bg_color } },
+    { 'StatusLineFileName', { guifg = colors.magenta, guibg = bg_color, gui = 'bold' } },
     -- { "StatusLineLocation", { guifg = colors.fg } },
-    { "StatusLineLspStatus", { guifg = colors.green, guibg = bg_color, gui = "bold" } },
-    { "StatusLineDiagnosticHint", { guifg = colors.blue, guibg = bg_color } },
-    { "StatusLineDiagnosticInfo", { guifg = colors.cyan, guibg = bg_color } },
-    { "StatusLineDiagnosticWarn", { guifg = colors.yellow, guibg = bg_color } },
-    { "StatusLineDiagnosticError", { guifg = colors.red, guibg = bg_color } },
-    { "StatusLineDiffAdded", { guifg = colors.green, guibg = bg_color } },
-    { "StatusLineDiffModified", { guifg = colors.orange, guibg = bg_color } },
-    { "StatusLineDiffRemoved", { guifg = colors.red, guibg = bg_color } },
-  })
+    { 'StatusLineLspStatus', { guifg = colors.green, guibg = bg_color, gui = 'bold' } },
+    { 'StatusLineDiagnosticHint', { guifg = colors.blue, guibg = bg_color } },
+    { 'StatusLineDiagnosticInfo', { guifg = colors.cyan, guibg = bg_color } },
+    { 'StatusLineDiagnosticWarn', { guifg = colors.yellow, guibg = bg_color } },
+    { 'StatusLineDiagnosticError', { guifg = colors.red, guibg = bg_color } },
+    { 'StatusLineDiffAdded', { guifg = colors.green, guibg = bg_color } },
+    { 'StatusLineDiffModified', { guifg = colors.orange, guibg = bg_color } },
+    { 'StatusLineDiffRemoved', { guifg = colors.red, guibg = bg_color } },
+  }
 end
 
 local function mode_symbol()
   local mode = fn.mode()
-  wxy.highlight("StatusLineModeSymbol", { guifg = mode_colors[mode], guibg = bg_color })
-  return "%#StatusLineModeSymbol#" .. mode_symbols[mode]
+  wxy.highlight('StatusLineModeSymbol', { guifg = mode_colors[mode], guibg = bg_color })
+  return '%#StatusLineModeSymbol#' .. mode_symbols[mode]
 end
 
 local function mode_name()
   local mode = fn.mode()
-  return "%#StatusLineModeName#" .. mode_names[mode]
+  return '%#StatusLineModeName#' .. mode_names[mode]
 end
 
 local function file_icon()
-  local name, icon = fn.bufname(), ""
-  local ok, devicons = pcall(require, "nvim-web-devicons")
+  local name, icon = fn.bufname(), ''
+  local ok, devicons = pcall(require, 'nvim-web-devicons')
   if ok then
     local icon_hi
-    icon, icon_hi = devicons.get_icon(name, fn.fnamemodify(name, ":e"), { default = true })
-    wxy.highlight("StatusLineFileIcon", { guifg = wxy.hi_value(icon_hi, "fg"), guibg = bg_color })
+    icon, icon_hi = devicons.get_icon(name, fn.fnamemodify(name, ':e'), { default = true })
+    wxy.highlight('StatusLineFileIcon', { guifg = wxy.hi_value(icon_hi, 'fg'), guibg = bg_color })
   end
-  return "%#StatusLineFileIcon#" .. icon
+  return '%#StatusLineFileIcon#' .. icon
 end
 
 local function file_name()
-  local path = fn.expand("%:~:.")
-  if path == "" then
-    return ""
+  local path = fn.expand '%:~:.'
+  if path == '' then
+    return ''
   end
-  local icon = ""
+  local icon = ''
   if vim.bo.readonly then
-    icon = ""
+    icon = ''
   else
     if vim.bo.modifiable then
       if vim.bo.modified then
-        icon = ""
+        icon = ''
       else
-        icon = ""
+        icon = ''
       end
     end
   end
-  return "%#StatusLineFileName#" .. path .. " " .. icon
+  return '%#StatusLineFileName#' .. path .. ' ' .. icon
 end
 
 local diagnostic = (function()
   local levels = {
-    error = "Error",
-    warning = "Warning",
-    information = "Information",
-    hint = "Hint",
+    error = 'Error',
+    warning = 'Warning',
+    information = 'Information',
+    hint = 'Hint',
   }
   return function()
     local result = { error = 0, warning = 0, information = 0, hint = 0 }
 
     local info = vim.b.coc_diagnostic_info
-    if type(info) == "table" then
+    if type(info) == 'table' then
       result = info
     else
       if #vim.lsp.get_active_clients() > 0 then
@@ -101,39 +101,39 @@ local diagnostic = (function()
 
     local signs = {}
     if result.error > 0 then
-      table.insert(signs, "%#StatusLineDiagnosticError# " .. result.error)
+      table.insert(signs, '%#StatusLineDiagnosticError# ' .. result.error)
     end
     if result.warning > 0 then
-      table.insert(signs, "%#StatusLineDiagnosticWarn# " .. result.warning)
+      table.insert(signs, '%#StatusLineDiagnosticWarn# ' .. result.warning)
     end
     if result.information > 0 then
-      table.insert(signs, "%#StatusLineDiagnosticInfo# " .. result.information)
+      table.insert(signs, '%#StatusLineDiagnosticInfo# ' .. result.information)
     end
     if result.hint > 0 then
-      table.insert(signs, "%#StatusLineDiagnosticHint# " .. result.hint)
+      table.insert(signs, '%#StatusLineDiagnosticHint# ' .. result.hint)
     end
-    return table.concat(signs, " ")
+    return table.concat(signs, ' ')
   end
 end)()
 
 local function lsp_status()
-  local status = vim.trim(vim.g.coc_status or "")
-  return status == "" and "" or "%#StatusLineLspStatus# " .. status
+  local status = vim.trim(vim.g.coc_status or '')
+  return status == '' and '' or '%#StatusLineLspStatus# ' .. status
 end
 
 local git_diff = (function()
-  wxy.autocmd({
+  wxy.autocmd {
     {
-      { "BufEnter", "BufWritePost", "BufRead" },
+      { 'BufEnter', 'BufWritePost', 'BufRead' },
       function()
-        if #fn.expand("%") == 0 then
+        if #fn.expand '%' == 0 then
           return
         end
         fn.jobstart(
           string.format(
             [[git -C %s --no-pager diff --no-color --no-ext-diff -U0 -- %s]],
-            fn.expand("%:h"),
-            fn.expand("%:t")
+            fn.expand '%:h',
+            fn.expand '%:t'
           ),
           {
             stdout_buffered = true,
@@ -146,8 +146,8 @@ local git_diff = (function()
                   if string.find(line, [[^@@ ]]) then
                     local tokens = vim.fn.matchlist(line, [[^@@ -\v(\d+),?(\d*) \+(\d+),?(\d*)]])
                     local line_stats = {
-                      mod_count = tokens[3] == "" and 1 or tonumber(tokens[3]),
-                      new_count = tokens[5] == "" and 1 or tonumber(tokens[5]),
+                      mod_count = tokens[3] == '' and 1 or tonumber(tokens[3]),
+                      new_count = tokens[5] == '' and 1 or tonumber(tokens[5]),
                     }
 
                     if line_stats.mod_count == 0 and line_stats.new_count > 0 then
@@ -168,57 +168,57 @@ local git_diff = (function()
           }
         )
       end,
-      "*",
+      '*',
     },
-  })
+  }
   return function()
     local signs = {}
     local added, modified, removed = unpack(vim.g.git_diff or { 0, 0, 0 })
     if added > 0 then
-      table.insert(signs, "%#StatusLineDiffAdded# " .. added)
+      table.insert(signs, '%#StatusLineDiffAdded# ' .. added)
     end
     if modified > 0 then
-      table.insert(signs, "%#StatusLineDiffModified# " .. modified)
+      table.insert(signs, '%#StatusLineDiffModified# ' .. modified)
     end
     if removed > 0 then
-      table.insert(signs, "%#StatusLineDiffRemoved# " .. removed)
+      table.insert(signs, '%#StatusLineDiffRemoved# ' .. removed)
     end
     if #signs > 0 then
-      return table.concat(signs, " ")
+      return table.concat(signs, ' ')
     end
-    return ""
+    return ''
   end
 end)()
 
 local os_name = (function()
-  local name = ""
+  local name = ''
   if IS_LINUX then
-    name = ""
+    name = ''
   elseif IS_WINDOWS then
-    name = ""
+    name = ''
   elseif IS_MAC then
-    name = ""
+    name = ''
   end
   return name
 end)()
 
-local spacer = " "
+local spacer = ' '
 
 ---@return string
 local function build_status(...)
   local secs = {}
-  for _, item in ipairs({ ... }) do
-    if type(item) == "function" then
+  for _, item in ipairs { ... } do
+    if type(item) == 'function' then
       table.insert(secs, item())
     else
       table.insert(secs, item)
     end
   end
-  return table.concat(secs, " ")
+  return table.concat(secs, ' ')
 end
 
 _G.statusline = function()
-  local status = ""
+  local status = ''
 
   local curwin = vim.g.statusline_winid or 0
   local curbuf = vim.api.nvim_win_get_buf(curwin)
@@ -226,49 +226,49 @@ _G.statusline = function()
   local filetype = vim.bo[curbuf].filetype
 
   if exceptions.filetypes[filetype] then
-    status = build_status("%#StatusLine#", exceptions.filetypes[filetype] .. " " .. bufname)
+    status = build_status('%#StatusLine#', exceptions.filetypes[filetype] .. ' ' .. bufname)
   elseif api.nvim_get_current_win() == curwin then
     status = build_status(
-      "%#StatusLineIndicator#▌",
+      '%#StatusLineIndicator#▌',
       -- left
       mode_symbol,
       mode_name,
       spacer,
       file_icon,
       file_name,
-      "%#StatusLineLocation#%3l:%-2c",
+      '%#StatusLineLocation#%3l:%-2c',
       diagnostic,
       spacer,
       lsp_status,
       -- right
-      "%=",
+      '%=',
       git_diff,
-      "%#StartsLine#" .. (filetype == "" and "PlainText" or filetype:upper()),
+      '%#StartsLine#' .. (filetype == '' and 'PlainText' or filetype:upper()),
       os_name,
-      os.date("%H:%M"),
-      "%#StatusLineIndicator#▌"
+      os.date '%H:%M',
+      '%#StatusLineIndicator#▌'
     )
   else
-    status = build_status("%#StatusLine#", bufname)
+    status = build_status('%#StatusLine#', bufname)
   end
 
   return status
 end
 
 local function setup()
-  vim.o.statusline = "%!v:lua.statusline()"
+  vim.o.statusline = '%!v:lua.statusline()'
 end
 
 -- Waiting other auto commands by ColorScheme
 vim.defer_fn(set_highlight, 200)
 setup()
 
-wxy.autocmd({
+wxy.autocmd {
   {
-    "ColorScheme",
+    'ColorScheme',
     function()
       vim.defer_fn(set_highlight, 200)
     end,
-    "*",
+    '*',
   },
-})
+}

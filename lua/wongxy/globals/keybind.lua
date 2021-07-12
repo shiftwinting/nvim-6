@@ -4,7 +4,7 @@ local Map = {}
 
 function Map:new()
   local instance = {
-    rhs = "",
+    rhs = '',
     opts = {
       noremap = false,
       silent = false,
@@ -25,23 +25,23 @@ function Map:cmd(cmd_string)
 end
 
 function Map:cr(cmd_string)
-  self.rhs = (":%s<CR>"):format(cmd_string)
+  self.rhs = (':%s<CR>'):format(cmd_string)
   return self
 end
 
 function Map:args(cmd_string)
-  self.rhs = (":%s<Space>"):format(cmd_string)
+  self.rhs = (':%s<Space>'):format(cmd_string)
   return self
 end
 
 function Map:cu(cmd_string)
-  self.rhs = (":<C-u>%s<CR>"):format(cmd_string)
+  self.rhs = (':<C-u>%s<CR>'):format(cmd_string)
   return self
 end
 
 --@param callback function
 function Map:fn(callback)
-  self.rhs = string.format(":<C-u>lua wxy._execute(%s)<CR>", wxy._create(callback))
+  self.rhs = string.format(':<C-u>lua wxy._execute(%s)<CR>', wxy._create(callback))
   return self
 end
 
@@ -70,7 +70,7 @@ end
 --- must be called last
 ---@param key string: such as "n|j"
 function Map:bind(key)
-  local modes, lhs = key:match("([^|]*)|?(.*)")
+  local modes, lhs = key:match '([^|]*)|?(.*)'
   for idx = 1, #modes do
     nvim_set_keymap(modes:sub(idx, idx), lhs, self.rhs, self.opts)
   end
