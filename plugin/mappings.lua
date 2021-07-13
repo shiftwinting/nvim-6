@@ -50,7 +50,11 @@ load_maps {
   ['ic|<C-e>'] = cmd '<End>',
   -- quit
   ['n|<space>q'] = cmd 'ZZ',
+  -- confirm in cmdline
   ['c|<C-o>'] = cmd '<CR>',
+  -- quickly add empty lines
+  ['n|[<space>'] = cmd ":<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[",
+  ['n|]<space>'] = cu 'put =repeat(nr2char(10), v:count1)',
 }
 -- Nvim Tree
 load_maps {
