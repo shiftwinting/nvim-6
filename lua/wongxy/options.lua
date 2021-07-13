@@ -123,7 +123,7 @@ opt.listchars = {
   tab = '»·',
   extends = '›',
   precedes = '‹',
-  trail = '•',
+  trail = '·', --
 }
 
 -- Indentation
