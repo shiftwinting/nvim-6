@@ -35,15 +35,13 @@ local theme_configs = {
   end,
 }
 
-local function init()
+local function setup()
   if not vim.g.colors_name then
     local theme
-    if fn.empty(fn.glob(cache_theme_path)) > 0 then
+    if fn.empty(cache_theme_path) > 0 then
       theme = default_theme
     else
-      local file = io.open(cache_theme_path, 'r')
-      theme = file:read()
-      file:close()
+      theme = fn.readfile(cache_theme_path)[1]
     end
     if theme_configs[theme] then
       theme_configs[theme]()
@@ -52,7 +50,7 @@ local function init()
   end
 end
 
-local function cache_theme()
+local function cache()
   if vim.g.colors_name then
     fn.writefile({ vim.g.colors_name }, cache_theme_path)
   end
@@ -66,15 +64,15 @@ end
 
 wxy.autocmd {
   {
-    'ColorScheme',
-    cache_theme,
-    '*',
-  },
-  {
     'ColorSchemePre',
     clean,
     '*',
   },
+  {
+    'ColorScheme',
+    cache,
+    '*',
+  },
 }
 
-init()
+setup()
