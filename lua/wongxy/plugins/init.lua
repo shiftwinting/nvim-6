@@ -34,19 +34,16 @@ local function load()
   end)
 end
 
-vim.api.nvim_exec(
-  [[
-    command! PackerInstall           lua require('wongxy.plugins').install()
-    command! PackerUpdate            lua require('wongxy.plugins').update()
-    command! PackerSync              lua require('wongxy.plugins').sync()
-    command! PackerClean             lua require('wongxy.plugins').clean()
-    command! -nargs=* PackerCompile  lua require('wongxy.plugins').compile(<q-args>)
-    command! PackerStatus            lua require('wongxy.plugins').status()
-    command! PackerProfile           lua require('wongxy.plugins').profile_output()
-    command! -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('wongxy.plugins').loader(<q-args>)
-]],
-  false
-)
+vim.cmd [[
+  command! PackerInstall           lua require('wongxy.plugins').install()
+  command! PackerUpdate            lua require('wongxy.plugins').update()
+  command! PackerSync              lua require('wongxy.plugins').sync()
+  command! PackerClean             lua require('wongxy.plugins').clean()
+  command! -nargs=* PackerCompile  lua require('wongxy.plugins').compile(<q-args>)
+  command! PackerStatus            lua require('wongxy.plugins').status()
+  command! PackerProfile           lua require('wongxy.plugins').profile_output()
+  command! -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('wongxy.plugins').loader(<q-args>)
+]]
 
 return setmetatable({}, {
   __index = function(_, key)
