@@ -117,12 +117,15 @@ opt.breakindentopt = 'sbr'
 opt.conceallevel = 2
 
 opt.list = true
+
 opt.listchars = {
-  eol = ' ',
+  eol = '↵',
   tab = '»·',
   extends = '›',
   precedes = '‹',
-  trail = '·', --
+  trail = '·',
+  -- nbsp = '␣',
+  -- space = '␣',
 }
 
 -- Indentation
