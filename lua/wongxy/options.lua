@@ -181,6 +181,8 @@ opt.cmdheight = 2
 opt.pumblend = 15
 opt.winblend = 15
 
+opt.shada = "!,'0,f0,<50,s10,h"
+
 opt.guicursor = {
   [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]],
   [[a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor]],
