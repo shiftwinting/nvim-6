@@ -39,8 +39,6 @@ load_maps {
   -- yank
   ['n|Y'] = cmd 'y$',
   -- movement
-  ['n|j'] = cmd 'gj',
-  ['n|k'] = cmd 'gk',
   ['n|0'] = cmd("getline('.')[0 : col('.') - 2] =~# '^\\s\\+$' ? '0' : '^'"):silent():expr(),
   ['i|<A-h>'] = cmd '<Left>',
   ['i|<A-j>'] = cmd '<Down>',
@@ -55,79 +53,67 @@ load_maps {
   -- quickly add empty lines
   ['n|[<space>'] = cmd ":<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[",
   ['n|]<space>'] = cu 'put =repeat(nr2char(10), v:count1)',
-}
--- Nvim Tree
-load_maps {
+
+  -- Nvim Tree
   ['n|<leader>e'] = cr('NvimTreeToggle'):silent(),
   ['n|<leader>F'] = cr('NvimTreeFindFile'):silent(),
-}
--- vista
-load_maps {
+
+  -- vista
   ['n|<leader>v'] = cr('Vista!!'):silent(),
-}
--- acelerated jk (enhanced jk move)
-load_maps {
+
+  -- acelerated jk (enhanced jk move)
   ['n|j'] = cmd '<Plug>(accelerated_jk_gj)',
   ['n|k'] = cmd '<Plug>(accelerated_jk_gk)',
-}
--- hop.nvim  motion
-load_maps {
+
+  -- hop.nvim  motion
   ['n|<leader>w'] = cr('HopWord'):silent(),
   ['n|<leader>W'] = cr('HopChar1'):silent(),
   ['n|<leader>l'] = cr('HopLine'):silent(),
   ['n|<leader>/'] = cr('HopPattern'):silent(),
-}
--- vim-niceblock
-load_maps {
+
+  -- vim-niceblock
   ['x|I'] = cmd '<Plug>(niceblock-I)',
   ['x|A'] = cmd '<Plug>(niceblock-A)',
-}
--- telescope
-load_maps {
+
+  -- telescope
   ['n|<space>tc'] = cr('Telescope colorscheme'):silent(),
   ['n|<space>ff'] = cr('Telescope find_files'):silent(),
   ['n|<space>fh'] = cr('Telescope oldfiles'):silent(),
   ['n|<space>fb'] = cr('Telescope buffers'):silent(),
   ['n|<space>fw'] = cr('Telescope live_grep'):silent(),
   ['n|<space>fm'] = cr('Telescope marks'):silent(),
-}
--- telescope-coc
-load_maps {
+
+  -- telescope-coc
   ['n|<space>a'] = cr('Telescope coc diagnostics'):silent(),
   ['n|<space>A'] = cr('Telescope coc workspace_diagnostics'):silent(),
   ['n|<space>s'] = cr('Telescope coc document_symbols'):silent(),
   ['n|<space>S'] = cr('Telescope coc workspace_symbols'):silent(),
   ['n|<space>c'] = cr('Telescope coc commands'):silent(),
   ['n|<space>d'] = cr('Telescope coc definitions'):silent(),
-}
--- Nvim Bufferline
-load_maps {
+
+  -- Nvim Bufferline
   ['n|<leader>b'] = cr('BufferLinePick'):silent(),
   ['n|]b'] = cr('BufferLineCycleNext'):silent(),
   ['n|[b'] = cr('BufferLineCyclePrev'):silent(),
-}
--- Nvim toggleterm --
-load_maps {
+
+  -- Nvim toggleterm --
   ['n|<leader>ot'] = cr('ToggleTerm'):silent(),
   ['t|<leader>ot'] = cmd('<C-\\><C-n><CMD>ToggleTerm<CR>'):silent(),
   ['n|<leader>og'] = cr('LazyGit'):silent(),
   ['t|<leader>og'] = cmd('<C-\\><C-n><CMD>LazyGit<CR>'):silent(),
-}
--- resize widnow by talek/obvious-resize --
-load_maps {
+
+  -- resize widnow by talek/obvious-resize --
   ['n|<C-Up>'] = cu('ObviousResizeUp'):silent(),
   ['n|<C-Down>'] = cu('ObviousResizeDown'):silent(),
   ['n|<C-Left>'] = cu('ObviousResizeLeft'):silent(),
   ['n|<C-Right>'] = cu('ObviousResizeRight'):silent(),
-}
---- neogit ---
-load_maps {
+
+  --- neogit ---
   ['n|<space>gs'] = cr('Neogit kind=split'):silent(),
   ['n|<space>gc'] = cr('Neogit commit'):silent(),
   ['n|<space>gl'] = cr('Neogit pull'):silent(),
   ['n|<space>gp'] = cr('Neogit push'):silent(),
-}
---- markdown-preview
-load_maps {
+
+  --- markdown-preview
   ['n|<leader>om'] = cr('MarkdownPreviewToggle'):silent(),
 }
