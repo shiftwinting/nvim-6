@@ -127,7 +127,7 @@ opt.listchars = {
 }
 
 -- Indentation
-opt.wrap = true
+opt.wrap = false
 opt.textwidth = 80
 opt.expandtab = true
 opt.autoindent = true
