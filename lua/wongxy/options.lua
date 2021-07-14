@@ -1,6 +1,5 @@
 local opt = vim.opt
 local fn = vim.fn
-
 opt.shortmess = {
   t = true,
   A = true,
@@ -171,12 +170,17 @@ end
 
 opt.completeopt = { 'menuone', 'noselect' }
 opt.showmode = false
-opt.scrolloff = 4
-opt.sidescrolloff = 5
+opt.scrolloff = 6
+opt.sidescrolloff = 7
 opt.ruler = false
 opt.pumheight = 15
 opt.cmdheight = 2
 opt.pumblend = 15
 opt.winblend = 15
 
+opt.guicursor = {
+  [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]],
+  [[a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor]],
+  [[sm:block-blinkwait175-blinkoff150-blinkon175]],
+}
 opt.guifont = 'OperatorMono Nerd Font:h15'
