@@ -5,7 +5,6 @@ vim.cmd 'syntax enable'
 require 'wongxy.globals'
 require 'wongxy.options'
 require 'wongxy.plugins'
-require 'wongxy.colorscheme'
 require 'wongxy.statusline'
 
 -- load local profile
