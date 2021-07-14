@@ -70,9 +70,11 @@ wxy.autocmd {
   },
   {
     'ColorScheme',
-    cache,
+    function()
+      vim.schedule(cache)
+    end,
     '*',
   },
 }
 
-setup()
+vim.schedule(setup)
