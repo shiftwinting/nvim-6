@@ -84,7 +84,7 @@ return {
   },
 
   --Movement
-  ['rhysd/clever-f.vim'] = { event = 'BufEnter' },
+  ['ggandor/lightspeed.nvim'] = { event = 'BufEnter' },
   ['phaazon/hop.nvim'] = {
     cmd = { 'HopWord', 'HopLine', 'HopPattern', 'HopChar1' },
     config = function()

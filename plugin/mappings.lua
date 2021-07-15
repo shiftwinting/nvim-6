@@ -10,7 +10,6 @@ vim.g.mapleader = ','
 
 -- Basic --
 load_maps {
-  ['n|s'] = cmd '',
   ['n|;'] = cmd ':',
   ['i|jj'] = cmd '<esc>`^',
   ['i|jk'] = cmd '<esc>`^',
