@@ -33,8 +33,8 @@ return {
   'rhysd/accelerated-jk',
   'antoinemadec/FixCursorHold.nvim',
   'xiyaowong/nvim-cursorword',
-  ['romainl/vim-cool'] = { event = 'BufEnter' },
-  ['kana/vim-niceblock'] = { event = 'BufEnter' },
+  ['romainl/vim-cool'] = { event = 'BufRead' },
+  ['kana/vim-niceblock'] = { event = 'BufRead' },
   ['nacro90/numb.nvim'] = {
     event = 'CmdlineEnter',
     config = function()
@@ -51,13 +51,13 @@ return {
   },
   ['talek/obvious-resize'] = { config = 'vim.g.obvious_resize_default = 2' },
   ['b3nj5m1n/kommentary'] = {
-    event = { 'BufEnter', 'InsertEnter' },
+    event = { 'BufRead', 'InsertEnter' },
     config = function()
       require('kommentary.config').configure_language('lua', { prefer_single_line_comments = true })
     end,
   },
   ['blackCauldron7/surround.nvim'] = {
-    event = { 'BufEnter', 'InsertEnter' },
+    event = { 'BufRead', 'InsertEnter' },
     config = function()
       require('surround').setup {
         mappings_style = 'surround',
@@ -65,7 +65,7 @@ return {
     end,
   },
   ['norcalli/nvim-colorizer.lua'] = {
-    event = { 'BufEnter' },
+    event = { 'BufRead' },
     config = function()
       require('colorizer').setup({ '*' }, {
         names = false,
@@ -84,7 +84,7 @@ return {
   },
 
   --Movement
-  ['ggandor/lightspeed.nvim'] = { event = 'BufEnter' },
+  ['ggandor/lightspeed.nvim'] = { event = 'BufRead' },
   ['phaazon/hop.nvim'] = {
     cmd = { 'HopWord', 'HopLine', 'HopPattern', 'HopChar1' },
     config = function()
@@ -94,7 +94,7 @@ return {
 
   -- treesitter
   ['nvim-treesitter/nvim-treesitter'] = {
-    event = { 'BufEnter', 'InsertEnter' },
+    event = { 'BufRead', 'InsertEnter' },
     config = conf 'nvim-treesitter',
   },
   ['p00f/nvim-ts-rainbow'] = { after = 'nvim-treesitter' },
