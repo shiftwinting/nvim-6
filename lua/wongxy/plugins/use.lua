@@ -21,10 +21,10 @@ return {
   },
 
   -- UI
-  ['akinsho/nvim-bufferline.lua'] = { config = conf 'nvim-bufferline' },
+  ['akinsho/nvim-bufferline.lua'] = { event = 'VimEnter', config = conf 'nvim-bufferline' },
 
   ['lukas-reineke/indent-blankline.nvim'] = {
-    event = { 'BufRead', 'InsertEnter' },
+    event = { 'InsertEnter' },
     config = conf 'indent-blakline',
   },
 
@@ -33,8 +33,8 @@ return {
   'rhysd/accelerated-jk',
   'antoinemadec/FixCursorHold.nvim',
   'xiyaowong/nvim-cursorword',
-  ['romainl/vim-cool'] = { event = 'BufRead' },
-  ['kana/vim-niceblock'] = { event = 'BufRead' },
+  ['romainl/vim-cool'] = { event = 'BufEnter' },
+  ['kana/vim-niceblock'] = { event = 'BufEnter' },
   ['nacro90/numb.nvim'] = {
     event = 'CmdlineEnter',
     config = function()
@@ -42,7 +42,6 @@ return {
     end,
   },
   ['karb94/neoscroll.nvim'] = {
-    event = 'BufRead',
     keys = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', '<C-y>', 'zt', 'zz', 'zb' },
     config = function()
       require('neoscroll').setup {
@@ -52,13 +51,13 @@ return {
   },
   ['talek/obvious-resize'] = { config = 'vim.g.obvious_resize_default = 2' },
   ['b3nj5m1n/kommentary'] = {
-    event = { 'BufRead', 'InsertEnter' },
+    event = { 'BufEnter', 'InsertEnter' },
     config = function()
       require('kommentary.config').configure_language('lua', { prefer_single_line_comments = true })
     end,
   },
   ['blackCauldron7/surround.nvim'] = {
-    event = { 'BufRead', 'InsertEnter' },
+    event = { 'BufEnter', 'InsertEnter' },
     config = function()
       require('surround').setup {
         mappings_style = 'surround',
@@ -66,7 +65,7 @@ return {
     end,
   },
   ['norcalli/nvim-colorizer.lua'] = {
-    event = { 'BufRead', 'BufEnter' },
+    event = { 'BufEnter' },
     config = function()
       require('colorizer').setup({ '*' }, {
         names = false,
@@ -85,7 +84,7 @@ return {
   },
 
   --Movement
-  ['rhysd/clever-f.vim'] = { event = 'BufRead' },
+  ['rhysd/clever-f.vim'] = { event = 'BufEnter' },
   ['phaazon/hop.nvim'] = {
     cmd = { 'HopWord', 'HopLine', 'HopPattern', 'HopChar1' },
     config = function()
@@ -95,7 +94,7 @@ return {
 
   -- treesitter
   ['nvim-treesitter/nvim-treesitter'] = {
-    event = 'BufRead',
+    event = { 'BufEnter', 'InsertEnter' },
     config = conf 'nvim-treesitter',
   },
   ['p00f/nvim-ts-rainbow'] = { after = 'nvim-treesitter' },
@@ -114,7 +113,7 @@ return {
     config = conf 'neogit',
   },
   ['lewis6991/gitsigns.nvim'] = {
-    event = { 'BufRead', 'BufNewFile' },
+    event = { 'TextChanged' },
     requires = 'nvim-lua/plenary.nvim',
     config = conf 'gitsigns',
   },
@@ -139,11 +138,11 @@ return {
   -- lsp, completion
   ['neoclide/coc.nvim'] = {
     branch = 'release',
-    event = { 'InsertEnter', 'BufRead' },
+    event = { 'InsertEnter' },
     cmd = { 'CocStart', 'CocConfig', 'CocInstall', 'CocUninstall' },
     config = conf 'coc',
   },
-  'honza/vim-snippets',
+  ['honza/vim-snippets'] = { event = 'InsertEnter' },
 
   -- profile
   ['tweekmonster/startuptime.vim'] = { cmd = 'StartupTime' },
