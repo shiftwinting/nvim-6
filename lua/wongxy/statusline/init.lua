@@ -131,19 +131,21 @@ end
 
 local git_branch = (function()
   local branch = ''
+  local update = function()
+    fn.jobstart('git branch --show-current', {
+      stdout_buffered = true,
+      on_stdout = function(_, data, _)
+        if data then
+          branch = data[1]
+        end
+      end,
+    })
+  end
+  vim.schedule(update)
   wxy.autocmd {
     {
       { 'BufWritePost', 'BufRead' },
-      function()
-        fn.jobstart('git branch --show-current', {
-          stdout_buffered = true,
-          on_stdout = function(_, data, _)
-            if data then
-              branch = data[1]
-            end
-          end,
-        })
-      end,
+      update,
       '*',
     },
   }
@@ -154,52 +156,54 @@ end)()
 
 local git_diff = (function()
   local git_diff = { 0, 0, 0 }
+  local update = function()
+    if #fn.expand '%' == 0 then
+      return
+    end
+    fn.jobstart(
+      string.format(
+        [[git -C %s --no-pager diff --no-color --no-ext-diff -U0 -- %s]],
+        fn.expand '%:h',
+        fn.expand '%:t'
+      ),
+      {
+        stdout_buffered = true,
+        on_stdout = function(_, data, _)
+          if data then
+            -- process diff data
+            -- from lualine.nvim
+            local added, modified, removed = 0, 0, 0
+            for _, line in ipairs(data) do
+              if string.find(line, [[^@@ ]]) then
+                local tokens = vim.fn.matchlist(line, [[^@@ -\v(\d+),?(\d*) \+(\d+),?(\d*)]])
+                local line_stats = {
+                  mod_count = tokens[3] == '' and 1 or tonumber(tokens[3]),
+                  new_count = tokens[5] == '' and 1 or tonumber(tokens[5]),
+                }
+
+                if line_stats.mod_count == 0 and line_stats.new_count > 0 then
+                  added = added + line_stats.new_count
+                elseif line_stats.mod_count > 0 and line_stats.new_count == 0 then
+                  removed = removed + line_stats.mod_count
+                else
+                  local min = math.min(line_stats.mod_count, line_stats.new_count)
+                  modified = modified + min
+                  added = added + line_stats.new_count - min
+                  removed = removed + line_stats.mod_count - min
+                end
+              end
+            end
+            git_diff = { added, modified, removed }
+          end
+        end,
+      }
+    )
+  end
+  vim.schedule(update)
   wxy.autocmd {
     {
       { 'BufWritePost', 'BufRead' },
-      function()
-        if #fn.expand '%' == 0 then
-          return
-        end
-        fn.jobstart(
-          string.format(
-            [[git -C %s --no-pager diff --no-color --no-ext-diff -U0 -- %s]],
-            fn.expand '%:h',
-            fn.expand '%:t'
-          ),
-          {
-            stdout_buffered = true,
-            on_stdout = function(_, data, _)
-              if data then
-                -- process diff data
-                -- from lualine.nvim
-                local added, modified, removed = 0, 0, 0
-                for _, line in ipairs(data) do
-                  if string.find(line, [[^@@ ]]) then
-                    local tokens = vim.fn.matchlist(line, [[^@@ -\v(\d+),?(\d*) \+(\d+),?(\d*)]])
-                    local line_stats = {
-                      mod_count = tokens[3] == '' and 1 or tonumber(tokens[3]),
-                      new_count = tokens[5] == '' and 1 or tonumber(tokens[5]),
-                    }
-
-                    if line_stats.mod_count == 0 and line_stats.new_count > 0 then
-                      added = added + line_stats.new_count
-                    elseif line_stats.mod_count > 0 and line_stats.new_count == 0 then
-                      removed = removed + line_stats.mod_count
-                    else
-                      local min = math.min(line_stats.mod_count, line_stats.new_count)
-                      modified = modified + min
-                      added = added + line_stats.new_count - min
-                      removed = removed + line_stats.mod_count - min
-                    end
-                  end
-                end
-                git_diff = { added, modified, removed }
-              end
-            end,
-          }
-        )
-      end,
+      update,
       '*',
     },
   }
