@@ -23,6 +23,10 @@ local function set_highlight()
     -- StatusLineModeSymbol
     -- { "StatusLineModeName", { guifg = colors.fg } },
     { 'StatusLineFileIcon', { guifg = '#c2ccd0', guibg = bg_color } },
+    {
+      'StatusLineFilePath',
+      { guifg = wxy.hi_value('Comment', 'fg'), guibg = bg_color, gui = 'italic' },
+    },
     { 'StatusLineFileName', { guifg = colors.magenta, guibg = bg_color, gui = 'bold' } },
     -- { "StatusLineLocation", { guifg = colors.fg } },
     { 'StatusLineLspStatus', { guifg = colors.green, guibg = bg_color, gui = 'bold' } },
@@ -59,23 +63,26 @@ local function file_icon()
 end
 
 local function file_name()
-  local path = fn.expand '%:~:.'
-  if path == '' then
+  local name = fn.expand '%:t'
+  if name == '' then
     return ''
   end
+
+  local path = fn.expand '%:h'
+  if path == '.' then
+    path = ''
+  else
+    path = path .. PATH_SEP
+  end
+
   local icon = ''
   if vim.bo.readonly then
     icon = ''
-  else
-    if vim.bo.modifiable then
-      if vim.bo.modified then
-        icon = ''
-      else
-        icon = ''
-      end
-    end
+  elseif vim.bo.modified then
+    icon = ''
   end
-  return '%#StatusLineFileName#' .. path .. ' ' .. icon
+
+  return '%#StatusLineFilePath#' .. path .. '%#StatusLineFileName#' .. name .. ' ' .. icon
 end
 
 local diagnostic = (function()
@@ -255,14 +262,6 @@ _G.statusline = function()
   return status
 end
 
-local function setup()
-  vim.o.statusline = '%!v:lua.statusline()'
-end
-
--- Waiting other auto commands by ColorScheme
-vim.defer_fn(set_highlight, 200)
-setup()
-
 wxy.autocmd {
   {
     'ColorScheme',
@@ -272,3 +271,5 @@ wxy.autocmd {
     '*',
   },
 }
+
+vim.o.statusline = '%!v:lua.statusline()'
