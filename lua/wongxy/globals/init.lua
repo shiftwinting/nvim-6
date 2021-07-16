@@ -1,5 +1,6 @@
 _G.wxy = {}
 
+_G.PATH_SEP = package.config:sub(1, 1)
 _G.HOME = os.getenv 'HOME' .. '/'
 _G.OS = vim.loop.os_uname().sysname
 _G.IS_MAC = OS == 'Darwin'

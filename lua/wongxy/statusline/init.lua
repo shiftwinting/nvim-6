@@ -34,6 +34,7 @@ local function set_highlight()
     { 'StatusLineDiagnosticInfo', { guifg = colors.cyan, guibg = bg_color } },
     { 'StatusLineDiagnosticWarn', { guifg = colors.yellow, guibg = bg_color } },
     { 'StatusLineDiagnosticError', { guifg = colors.red, guibg = bg_color } },
+    { 'StatusLineGitBranch', { guifg = colors.violet, guibg = bg_color } },
     { 'StatusLineDiffAdded', { guifg = colors.green, guibg = bg_color } },
     { 'StatusLineDiffModified', { guifg = colors.orange, guibg = bg_color } },
     { 'StatusLineDiffRemoved', { guifg = colors.red, guibg = bg_color } },
@@ -128,10 +129,34 @@ local function lsp_status()
   return status == '' and '' or '%#StatusLineLspStatus# ' .. status
 end
 
-local git_diff = (function()
+local git_branch = (function()
+  local branch = ''
   wxy.autocmd {
     {
-      { 'BufEnter', 'BufWritePost', 'BufRead' },
+      { 'BufWritePost', 'BufRead' },
+      function()
+        fn.jobstart('git branch --show-current', {
+          stdout_buffered = true,
+          on_stdout = function(_, data, _)
+            if data then
+              branch = data[1]
+            end
+          end,
+        })
+      end,
+      '*',
+    },
+  }
+  return function()
+    return branch == '' and '' or '%#StatusLineGitBranch# ' .. branch
+  end
+end)()
+
+local git_diff = (function()
+  local git_diff = { 0, 0, 0 }
+  wxy.autocmd {
+    {
+      { 'BufWritePost', 'BufRead' },
       function()
         if #fn.expand '%' == 0 then
           return
@@ -169,7 +194,7 @@ local git_diff = (function()
                     end
                   end
                 end
-                vim.g.git_diff = { added, modified, removed }
+                git_diff = { added, modified, removed }
               end
             end,
           }
@@ -180,7 +205,7 @@ local git_diff = (function()
   }
   return function()
     local signs = {}
-    local added, modified, removed = unpack(vim.g.git_diff or { 0, 0, 0 })
+    local added, modified, removed = unpack(git_diff)
     if added > 0 then
       table.insert(signs, '%#StatusLineDiffAdded# ' .. added)
     end
@@ -249,6 +274,7 @@ _G.statusline = function()
       lsp_status,
       -- right
       '%=',
+      git_branch,
       git_diff,
       '%#StartsLine#' .. (filetype == '' and 'PlainText' or filetype:upper()),
       os_name,
