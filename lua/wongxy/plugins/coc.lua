@@ -127,6 +127,16 @@ keybind.load_maps {
   -- coc-translator --
   ['n|tt'] = cmd('<Plug>(coc-translator-p)'):silent(),
   ['v|tt'] = cmd('<Plug>(coc-translator-pv)'):silent(),
+
+  -------------------
+  -- telescope-coc --
+  -------------------
+  ['n|<space>a'] = cr('Telescope coc diagnostics'):silent(),
+  ['n|<space>A'] = cr('Telescope coc workspace_diagnostics'):silent(),
+  ['n|<space>s'] = cr('Telescope coc document_symbols'):silent(),
+  ['n|<space>S'] = cr('Telescope coc workspace_symbols'):silent(),
+  ['n|<space>c'] = cr('Telescope coc commands'):silent(),
+  ['n|<space>d'] = cr('Telescope coc definitions'):silent(),
 }
 -- inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 

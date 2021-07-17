@@ -82,14 +82,6 @@ load_maps {
   ['n|<space>fw'] = cr('Telescope live_grep'):silent(),
   ['n|<space>fm'] = cr('Telescope marks'):silent(),
 
-  -- telescope-coc
-  ['n|<space>a'] = cr('Telescope coc diagnostics'):silent(),
-  ['n|<space>A'] = cr('Telescope coc workspace_diagnostics'):silent(),
-  ['n|<space>s'] = cr('Telescope coc document_symbols'):silent(),
-  ['n|<space>S'] = cr('Telescope coc workspace_symbols'):silent(),
-  ['n|<space>c'] = cr('Telescope coc commands'):silent(),
-  ['n|<space>d'] = cr('Telescope coc definitions'):silent(),
-
   -- Nvim Bufferline
   ['n|<leader>b'] = cr('BufferLinePick'):silent(),
   ['n|]b'] = cr('BufferLineCycleNext'):silent(),
