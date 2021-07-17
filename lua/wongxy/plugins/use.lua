@@ -130,7 +130,11 @@ return {
   ['nvim-telescope/telescope.nvim'] = {
     cmd = 'Telescope',
     config = conf 'telescope',
-    requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    },
   },
   'fannheyward/telescope-coc.nvim',
   'xiyaowong/telescope-emoji.nvim',
