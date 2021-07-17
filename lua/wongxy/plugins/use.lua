@@ -12,6 +12,7 @@ return {
   'sainnhe/edge',
   'sainnhe/gruvbox-material',
   'monsonjeremy/onedark.nvim',
+  'shaunsingh/nord.nvim',
   ['xiyaowong/nvim-transparent'] = { config = conf 'transparent' },
 
   -- File Tree
